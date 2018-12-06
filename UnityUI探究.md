@@ -281,3 +281,31 @@ GraphicRaycaster的实现相当直接——遍历所有“Raycast Target”属�
 #### 子画布和重写排序(OverrideSorting)属性
 
 子画布中地[overrideSorting](https://docs.unity3d.com/ScriptReference/Canvas-overrideSorting.html)属性会导致GraphicRaycast测试停止遍历Transform层级。如果启用它不会引起排序或射线检测问题，那么应该用其减少射线检测的层级遍历开销。
+
+
+
+#### 禁用画布
+
+在显示或隐藏UI中不连续的部分时，常见的做法是在UI的根节点启用或禁用GameObject，这样可以确保被禁用的UI组件不会收到输入回调或Unity回调。
+
+但是，这样做会导致画布丢弃它的VBO数据。重新启用画布需要画布（及其子画布）执行重建和重新批处理过程。如果这一操作很频繁，CPU占用可能会导致程序帧率低。
+
+一个可行的解决办法是，将需要显示/隐藏的UI放置到它们专用的画布或子画布上，然后只启用或禁用这个画布组件。这样可以使UI的网格不进行绘制，但它们仍然会驻留在内存中，并且其原始批处理会被保留。进一步的，在这一UI层级中不会有[OnEnable](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnEnable.html)和[OnDisable](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnDisable.html)回调。
+
+- 需要注意的是，这样做并不会禁用被隐藏的UI上的任何MonoBehaviour，这些MonoBehaviour仍然会收到Unity的生命周期回调，比如Update。
+
+如果要避免这一问题，以这种方式实现隐藏的UI上的MonoBehaviour不应该直接实现Unity的生命周期回调，而应该去接收它们的UI根节点的自定义的“CallbackManager”的回调。当UI被显示和隐藏是，这个“CallbackManager”应该收到通知，并决定是否传播生命周期事件。
+
+####分配事件相机
+
+如果Canvas的渲染模式为 *World Space* 或者 *Screen Space - Camera* 并且使用了Unity内置的InputManager，一定要为其设置合适的EventManager/RenderCamera属性。在脚本中，这两个属性都通过[worldCamera](https://docs.unity3d.com/ScriptReference/Canvas-worldCamera.html)属性来设置。
+
+如果没有设置这个属性，UI系统会通过在Tag为Main Camera的GameObject上寻找Camera组件来查找主相机。这一查找操作在每个World Space或Camera Space画布上至少发生一次。由于[ GameObject.FindWithTag](https://docs.unity3d.com/ScriptReference/GameObject.FindWithTag.html)的查找速度很慢，强烈建议在初始化时为World Space和Camera Space画布设置相机。
+
+在Overlay画布上不存在这一问题。
+
+#### UGUI源码
+
+https://bitbucket.org/Unity-Technologies/ui/
+
+可以修改UI系统的C#源代码并编译成DLL覆盖Unity中附带的UI系统DLL来实现自定义优化内容。
