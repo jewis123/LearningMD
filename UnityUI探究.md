@@ -78,7 +78,7 @@ Graphic重建不通过任何特定顺序的图形组件列表进行，也不需�
 
 最简单的做法是直接禁用(disable)那些对玩家不可见的UI元素。最常见的情况是打开了带有不透明背景的全屏UI，在这种情况下，所有在全屏UI底层的UI元素都可以被禁用。
 
-禁用UI元素的最简单的方式是禁用根GameObject或者含有UI元素的那个GameObject。还有一个替代方案是[禁用画布](https://blog.csdn.net/qq_21397217/article/details/82458304)。
+禁用UI元素的最简单的方式是禁用根GameObject或者含有UI元素的那个GameObject。还有一个替代方案是禁用画布。
 
 最后，确保不要通过将UI元素的alpha值设为0这种方式来隐藏UI元素，因为这样仍然会将元素发送到GPU并且可能花费宝贵的渲染时间。如果UI元素不需要Graphic组件，可以直接将Graphic组件移除，这时射线仍然可以工作。
 
@@ -179,7 +179,7 @@ Shader "UI/Fast-Default" ｛
 
 ###UI画布重建
 
-要显示任何UI内容，UI系统都必须要为屏幕上的每个UI元素构建用于表示它们的几何结构。这个过程包括运行动态布局代码、生成用于表示UI中的文字的多边形、尽量多的将几何体合并到单个网格以降低DrawCall。这是个分多布完成的操作，在本系列文章的第一节[基本原理](http://gad.qq.com/article/detail/286735)中介绍了它的细节。
+要显示任何UI内容，UI系统都必须要为屏幕上的每个UI元素构建用于表示它们的几何结构。这个过程包括运行动态布局代码、生成用于表示UI中的文字的多边形、尽量多的将几何体合并到单个网格以降低DrawCall。这是个分多步完成的操作，在前面介绍了它的细节。
 
 有两个导致画布重建性能问题的主要原因：
 
@@ -192,7 +192,10 @@ Shader "UI/Fast-Default" ｛
 
 ####子节点顺序
 
-Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它们的排序顺序，先出现的对象会排在后出现的对象的后面。批处理过程会从上到下的遍历Hierarchy，收集所有使用相同材质、相同纹理并且没有中间层的对象。“中间层”是指带有不同材质的绘图对象，它的边界与两个可另行批处理(otherwise-batchable)对象重叠并且位于两个可批处理对象之间。 中间层会强制破坏批处理。
+Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它们的排序顺序，先出现的对象会排在后出现的对象的后面。批处理过程会从上到下的遍历Hierarchy，收集所有使用相同材质、相同纹理并且没有中间层的对象。**“中间层”是指带有不同材质的绘图对象，它的边界与两个可另行批处理(otherwise-batchable)对象重叠并且位于两个可批处理对象之间。** *中间层会强制破坏本来的批处理* 。
+
+- 例子： Canvs - A/A/A       绘制一次
+- Canvas- A/B/A                   绘制三次
 
 > [?2]:原文：An “intermediate layer” is a graphical object with a different material, whose bounding box overlaps two otherwise-batchable objects and is placed in the hierarchy between the two batchable objects.
 
@@ -207,7 +210,7 @@ Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它�
 
 ####拆分画布
 
-不考虑非常复杂的UI时，拆分画布通常是个不错的做法，无论是将元素移动到子画布还是兄弟画布。
+***不考虑非常复杂的UI时***，拆分画布通常是个不错的做法，无论是将元素移动到子画布还是兄弟画布。
 
 当UI的特定部分必须独立于其他UI来控制绘制深度，保证永远在其他层的上面会下面时（例如，引导箭头），最后使用兄弟画布。
 
@@ -277,4 +280,4 @@ GraphicRaycaster的实现相当直接——遍历所有“Raycast Target”属�
 
 #### 子画布和重写排序(OverrideSorting)属性
 
-子画布中地[overrideSorting](https://docs.unity3d.com/ScriptReference/Canvas-overrideSorting.html)属性会导致GraphicRaycast测试停止遍历Transform层级。如果启用它不会引起排序会射线检测问题，那么应该用其减少射线检测地层级遍历开销。
+子画布中地[overrideSorting](https://docs.unity3d.com/ScriptReference/Canvas-overrideSorting.html)属性会导致GraphicRaycast测试停止遍历Transform层级。如果启用它不会引起排序或射线检测问题，那么应该用其减少射线检测的层级遍历开销。
