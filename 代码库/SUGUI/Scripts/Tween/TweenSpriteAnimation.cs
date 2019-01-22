@@ -109,7 +109,6 @@ public class TweenSpriteAnimation : MonoBehaviour {
 	}
 	
 #if UNITY_EDITOR
-	///获取原始文件资源下的全部子资源
 	[ContextMenu("ApplyTexture")]
 	void ApplyTexture() {
 			if(texFrame==null){
