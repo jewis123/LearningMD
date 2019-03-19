@@ -18,6 +18,8 @@
 
   这里我们的环境为Unity3D，在AssetStore下载SteamVR即可。商店中还有例如Vive Input Utility 或者 VRTK之类的都是辅助插件，如果你下的是SteamVR v2.0+那么你可以不用那些了。
 
+  也可到github release页下载：https://github.com/ValveSoftware/steamvr_unity_plugin/releases
+
 - 导入插件
 
   从商店导入插件后，会有弹窗让你初始化设置，这里用它推荐的就好，后续有需求可以通过菜单栏进入插件窗口修改。打开Steam Input窗口，点击Sava and Generate。生成输入代码。
@@ -273,7 +275,7 @@ Vector3类型的Action比较罕见。在SteamVR Home中，这用于滚动，x，
   - Required：
   - Localization：
   - Localized String:
-- Save and Generate：保存ActionSet
+- Save and Generate：保存ActionSet，当进度条完成时，它将在项目中创建一个名为SteamVR_Input的文件夹，其中包含所有这些代码文件。可以通过此窗口顶部的 *高级设置*  配置此路径。
 - Open Binding UI：打开按键绑定界面。
 
 Action详情之前已经介绍的差不多了，接下来看一下按键绑定界面。
@@ -291,3 +293,9 @@ Action详情之前已经介绍的差不多了，接下来看一下按键绑定�
 3.-> 4.点击时触发的Action
 
 5.添加更多的交互映射
+
+
+
+### 观察运行时输入
+
+点击菜单选项 SteamVR Input Live View。这是由操作集和控制器分隔的所有操作的实时视图。当一个动作的值发生变化时，它会突出显示绿色，然后逐渐消失，为你提供状态变化的强烈视觉指示。动作的黄色背景表示您的代码尚未访问它。一旦您以某种方式访问它们，我们才会开始更新操作。如果按下按钮时没有看到任何反应，检查一下SteamVR是否连接正确，并且看一下控制台是否报错。
