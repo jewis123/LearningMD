@@ -26,7 +26,7 @@
 
   一切都没问题后，可以打开InteractionSystem/Sample/InteractionException场景熟悉VIVE可实现的交互操作。
 
-### 目录结构（部分重要）
+### 目录结构（部分）
 
 ```
 SteamVR
@@ -203,7 +203,7 @@ SteamVR_RenderModel组件需要与将设置其索引的内容放在同一个游�
 
 **[SteamVR]**
 
-在SteamVR这个预制体只有Stean VR_Render这一个脚本，这个脚本在之前已经介绍了。这个预制体是必须在项目中添加的，即使不手动添加也会自动添加。 
+在【SteamVR、这个预制体只有Stean VR_Render这一个脚本，这个脚本在之前已经介绍了。这个预制体是必须在项目中添加的，即使不手动添加也会自动添加。 
 
 **[Status]**
 
