@@ -280,11 +280,11 @@ Vector3类型的Action比较罕见。在SteamVR Home中，这用于滚动，x，
 
 Action详情之前已经介绍的差不多了，接下来看一下按键绑定界面。
 
-![TIM截图20190319153333](C:\Users\43432\Desktop\LearningMD\XR\SteamVR\TIM截图20190319153333.png)
+![TIM截图20190319153333](C:\Users\43432\Desktop\LearningMD\XR\SteamVR\截图\TIM截图20190319153333.png)
 
-![TIM截图20190319154436](C:\Users\43432\Desktop\LearningMD\XR\SteamVR\TIM截图20190319154436.png)
+![TIM截图20190319154436](C:\Users\43432\Desktop\LearningMD\XR\SteamVR\截图\TIM截图20190319154436.png)
 
-![TIM截图20190319185644](C:\Users\43432\Desktop\LearningMD\XR\SteamVR\TIM截图20190319185644.png)
+![TIM截图20190319185644](C:\Users\43432\Desktop\LearningMD\XR\SteamVR\截图\TIM截图20190319185644.png)
 
 1.表示手柄上的触摸板的配置
 
