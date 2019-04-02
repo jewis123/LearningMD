@@ -62,7 +62,7 @@
 using Valve.VR.InteractionSystem;
 
 //定义SteamVR_Action_Boolean类型的动作变量，并且指定动作集和动作映射
-public SteamVR_Action_Boolean plantAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Planting", "Plant");  //动作集Planting，动作Plant。大小写敏感。
+public SteamVR_Action_Boolean plantAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Planting", "Plant");  //动作集Planting，动作Plant。大小写未指定即不敏感。
 ```
 
 ```C#
@@ -93,10 +93,29 @@ public SteamVR_Action_Boolean plantAction = SteamVR_Input.GetAction<SteamVR_Acti
 
 **探究：**
 
-接下来我们看一下SteamVR_Action_Boolean.cs中有些什么内容。
+- 首先我们来看一下Valve输入系统的核心脚本SteamVR_Input中的GetAction函数：
 
-- delegate委托，用来定义外部回调格式，与之匹配的是Listener。
-- event类型变量：定义了很多针对sourceMap容器的状态改变事件，sourceMap容器中存放是输入源的事件。
-- void类型的各种Listener,它们将外部事件存入sourceMap容器，当状态改变时，执行事件。
-- bool型的Getter，适合我们做逻辑判断
+  - 函数签名：
+
+    ```
+    public static T GetAction<T>(string actionSetName, string actionName, bool caseSensitive = false, bool returnNulls = false) where T : SteamVR_Action，new()
+    ```
+
+    我们发现GetAction参数列表需要指定动作集名称（指定键位映射列表），actionName（特定键位映射），大小是否敏感（避免小写重名，默认不敏感），返回类型（默认不返回null)，同时约定泛型T必须为拥有无参构造函数的SteamVR_Action类型（类似上面代码的SteamVR_Action_Boolean）。
+
+  - 我们在SteamVR_Input脚本中也发现了类似以下的函数（XXX是SteamVR的六种输入类型），而这些函数其实是对GetAction函数的封装。
+
+    ```
+    SteamVR_Action_Boolean GetXXXAction(string actionSetName, string actionName, bool caseSensitive = false)
+    ```
+
+    
+
+- 接下来我们看一下SteamVR_Action_Boolean.cs中有些什么内容。
+  - delegate委托，用来定义外部回调格式，与之匹配的是Listener。
+  - event类型变量：定义了很多针对sourceMap容器的状态改变事件，sourceMap容器中存放是输入源的事件。
+  - void类型的各种Listener,它们将外部事件存入sourceMap容器，当状态改变时，执行事件。
+  - bool型的Getter，适合我们做逻辑判断
+
+
 
