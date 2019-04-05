@@ -93,7 +93,7 @@ public SteamVR_Action_Boolean plantAction = SteamVR_Input.GetAction<SteamVR_Acti
 
 **探究：**
 
-- 首先我们来看一下Valve输入系统的核心脚本SteamVR_Input中的GetAction函数：
+- 首先我们来看一下SteamVR输入系统的核心脚本SteamVR_Input中的GetAction函数：
 
   - 函数签名：
 
