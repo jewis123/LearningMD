@@ -19,9 +19,9 @@ SteamVR中需要将UI渲染模式设置为世界空间，又因为InteractiveSys
 
 由于VR的输入特性，UI交互就涉及手柄操作，因此，VR中的UI设计是比较复杂的，首先要设计3DUI样式，其次要确定交互方式。
 
-总结下，VR中的UI分为两种：平面形式和立体形式，但是都需要添加物理碰撞盒。
+总结下，VR中的3DUI分为两种：平面形式和立体形式，但是都需要添加物理碰撞盒。立体UI一般通过手部交互，平面UI一般通过射线交互。
 
-在Interactions_Example示例中，我们可以发现UI交互需要完成的几个步骤
+在Interactions_Example示例中，我们可以发现立体UI交互需要完成的几个步骤
 
 - UI对象要加上Interactable组件（不光是UI对象，所有可交互对象都要加上这个组件，可以说这个组件是SteamVR交互系统的核心组件）
 - UI Element组件（需要绑定事件函数），如果是平面型UI也可以直接向
@@ -30,9 +30,9 @@ SteamVR中需要将UI渲染模式设置为世界空间，又因为InteractiveSys
 
 **相关组件**
 
-Interactable
+Interactable：负责交互
 
-UI Element
+UI Element：负责UI事件，是基于手部的交互
 
 **库**
 

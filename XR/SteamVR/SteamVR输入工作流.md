@@ -49,8 +49,8 @@
 另注：
 
 - 实际操作中发现Hand脚本中要指定Player引用，所以这个脚本是有限制的，至少得指定父级Player组件。
-
-- 如果想要在运行时激活多个ActionSet,可以添加SteamVRActiveActionSetOnLoad组件让其加载指定动作集，非推荐做法，容易发生按键冲突。
+- 如果想要在运行时激活多个ActionSet,可以添加SteamVRActiveActionSetOnLoad组件让其加载指定动作集，非推荐做法，容易发生按键冲突。使用时需要多注意。
+- 如果出现手部模型渲染不出来的现象，试试SteamVR Input面板重新生成一下，或者，看看是不是没有打开Steam
 
 ### Planting组件分析
 
