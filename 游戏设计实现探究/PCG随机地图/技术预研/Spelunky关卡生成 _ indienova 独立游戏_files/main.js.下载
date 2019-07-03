@@ -1,0 +1,127 @@
+$(document).ready(function () {
+
+    // 通用的自定义代码
+    if(typeof(pageJS)=="function"){
+        pageJS();
+    }
+
+    // iframe Tweak
+    $("iframe").each(function(){
+        // var ifr_source = $(this).attr('src');
+        // var wmode = "wmode=transparent";
+        // if(ifr_source.indexOf('?') != -1) $(this).attr('src',ifr_source+'&'+wmode);
+        // else $(this).attr('src',ifr_source+'?'+wmode);
+    });
+
+    // Comments
+    if ($('.comment-replying-link'))
+        $('.comment-replying-link').on('click', function() {
+            $('#commentSwitcher').html('您的回复（<a href="javascript:switchBack();">或者不回复，直接评论</a>）');
+            var content = $('#userComment').val();
+            $('#userComment').val(content + ' @' + $(this).data('at-id') + '：');
+            $('#commentParent').val($(this).data('comment-id'));
+            $('#commentReplyToUserID').val($(this).data('at-uid'));
+        });
+
+    if ($('.comment-edit-link'))
+        $('.comment-edit-link').on('click', function() {
+            var cid = $(this).data('comment-id');
+            var comment = '<form method="post" action="/sitefunc/editComment" enctype="application/x-www-form-urlencoded">';
+            comment += '<textarea name="editComment" class="form-control">' + $(this).data('comment') + '</textarea>';
+            comment += '<input type="hidden" name="editCommentID" value="' + $(this).data('comment-id') + '">';
+            comment += '<button class="btn btn-xs btn-default">修改评论</button>';
+            comment += '</form>';
+            $('#comment-html-' + cid).html(comment);
+        });
+
+    if ($('.comment-remove-link'))
+        $('.comment-remove-link').on('click', function() {
+            if (confirm('您确实要删除这条评论吗？删除后会发送一封告知私信给评论人')) {
+                var cid = $(this).data('comment-id');
+                $.post("/func/removeComment", {
+                    'cid'   : cid,
+                    'link'  : window.location.href
+                }).done(function (data) {
+                    var obj = $.parseJSON(data);
+                    if (obj.result == 'success') {
+                        $('#li-comment-' + cid).remove();
+                    } else {
+                        alert(obj.msg);
+                    }
+                }).fail(function () {
+                    alert('服务器响应错误，请稍候重试');
+                });
+            } else {
+                return false;
+            }
+        });
+
+    if ($('.comment-hearts-add-link'))
+        $('.comment-hearts-add-link').on('click', function () {
+            var target = $(this);
+            var cid = $(this).data('comment-id');
+            $.post("/func/addFav", {
+                'targetID': cid,
+                'title': '',
+                'path': '',
+                'type': 10
+            }).done(function (data) {
+                var obj = $.parseJSON(data);
+                if (obj.result == 'success') {
+                    $(target).unbind('click');
+                    $(target).find('i').removeClass('icon-heart-empty').addClass('icon-heart3');
+                    var span = $(target).find('span')[0];
+                    var value = ($(span).html());
+                    value++;
+                    $(span).html(value);
+                } else {
+                    alert(obj.msg);
+                }
+            }).fail(function () {
+                alert('服务器响应错误，请稍候重试');
+            });
+        });
+
+    if ($('.comment-hearts-remove-link'))
+        $('.comment-hearts-remove-link').on('click', function () {
+            var target = $(this);
+            var cid = $(this).data('comment-id');
+            $.post("/func/removeFav", {
+                'targetID': cid,
+                'type': 10
+            }).done(function (data) {
+                var obj = $.parseJSON(data);
+                if (obj.result == 'success') {
+                    $(target).unbind('click');
+                    $(target).find('i').removeClass('icon-heart3').addClass('icon-heart-empty');
+                    var span = $(target).find('span')[0];
+                    var value = ($(span).html());
+                    value--;
+                    if (value < 0) value = 0;
+                    $(span).html(value);
+                } else {
+                    alert(obj.msg);
+                }
+            }).fail(function () {
+                alert('服务器响应错误，请稍候重试');
+            });
+        });
+
+    if ($('#form-captcha'))
+        $('#formComment').validate();
+
+    if ($('#indienovaInlineVideo') && jQuery().MediaElementPlayer) {
+        $('#indienovaInlineVideo').on('contextmenu',function(e) { return false; });
+        $('#indienovaInlineVideo').mediaelementplayer({
+            pluginPath: '/assets/js/vendor/mejs/',
+            stretching: 'responsive',
+            shimScriptAccess: 'always'
+        });
+    }
+});
+
+function switchBack() {
+    $('#commentSwitcher').html('您的评论');
+    $('#commentParent').val('0');
+    $('#commentReplyToUserID').val('0');
+}

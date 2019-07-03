@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/ -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" name="viewport">
+
+    <link rel="stylesheet" href="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/stylepack.css" type="text/css">
+                            <link rel="stylesheet" href="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/audioplayer.css" type="text/css">
+                        <link rel="stylesheet" href="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/mediaelementplayer.min.css" type="text/css">
+    
+    <link rel="stylesheet" href="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/indienova-style.css" type="text/css">
+
+    <!-- Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://static.indienova.com/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="https://static.indienova.com/assets/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://static.indienova.com/assets/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://static.indienova.com/assets/favicon/manifest.json">
+    <link rel="mask-icon" href="https://static.indienova.com/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="indienova">
+    <meta name="application-name" content="indienova">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <div class="fit-vids-style">­<style> .fluid-width-video-wrapper { width: 100%; position: relative; padding: 0; } .fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } </style></div><script type="text/javascript" async="" charset="utf-8" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/core.php"></script><script async="" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/analytics.js.下载"></script><script src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/push.js.下载"></script><script type="text/javascript" async="" charset="utf-8" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/c.php"></script><script src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/ie10-viewport-bug-workaround.js.下载"></script>
+
+    <!-- External JavaScripts
+    ============================================= -->
+    <script type="text/javascript" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/jquery.js.下载"></script>
+    <script type="text/javascript" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/plugins.js.下载"></script>
+    <script type="text/javascript" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/prettify.js.下载"></script>
+    <!--<script type="text/javascript" src="/assets/js/parallax.min.js"></script>-->
+        
+    <!-- Document Title ============================================= -->
+            <title>一种 Roguelike 地牢生成算法 | indienova 独立游戏</title>
+    
+    
+    <meta name="description" content="indienova 独立游戏 新闻，评测，开发教学, 烽火连城">
+    <meta name="keywords" content="独立游戏 indienova 新闻 评测 开发 教学 烽火连城">
+    <meta name="author" content="indienova.com 烽火连城">
+</head>
+<body class="stretched no-transition device-lg" data-spy="scroll" data-target=".scrollspy">
+
+    <!-- Document Wrapper ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+            <div class="device-xs visible-xs"></div>
+    <div class="device-sm visible-sm"></div>
+    <div class="device-md visible-md"></div>
+    <div class="device-lg visible-lg"></div>
+    <div id="top-bar">
+
+        <div class="container topline clearfix">
+
+            <div class="col_half nobottommargin">
+
+                <!-- Top Links
+                ============================================= -->
+                <div class="top-links">
+                    <ul class="sf-menu clearfix sf-js-enabled" style="touch-action: pan-y;">
+                        <li>
+                            <a href="https://indienova.com/" class="hidden-xs">首页</a>
+                            <a href="https://indienova.com/" class="visible-xs"><i class="icon-cn-indienova"></i></a>
+                        </li>
+                        <li id="user-block">
+                                                            <a href="https://indienova.com/get/login" data-lightbox="ajax"><i class="icon-line2-user"></i> 登录／注册</a>
+                            
+                                                    </li>
+                                                
+                        <li>
+                            <a href="https://indienova.com/en" class="hidden-xs sf-with-ul">
+                                <img width="14" height="14" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/gb.svg" alt="English">
+                                &nbsp; English
+                            <i class="icon-angle-down"></i></a>
+                            <a href="https://indienova.com/en" class="visible-xs sf-with-ul">
+                                <img width="14" height="14" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/gb.svg" alt="English">
+                                &nbsp; En
+                            <i class="icon-angle-down"></i></a>
+                            <ul class="topper-list" style="display: none;">
+                                <li>
+                                    <a href="https://indienova.com/en">
+                                        <img width="14" height="14" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/gb.svg" alt="English">
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://indienova.com/">
+                                        <img width="14" height="14" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/cn.svg" alt="Chinese">
+                                        简体中文
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- .top-links end -->
+
+            </div>
+
+            <div class="col_half fright col_last nobottommargin">
+
+                <!-- Top Social
+                ============================================= -->
+                <div id="top-social">
+                    <ul>
+                        <li><a data-hover-width="104" style="width: 40px;" href="http://weibo.com/indienova" target="new" class="si-weibo" title="新浪微博"><span class="ts-icon"><i class="icon-cn-weibo"></i></span><span class="ts-text">新浪微博</span></a></li>
+                        <li><a data-hover-width="113" style="width: 40px;" href="https://static.indienova.com/assets/images/QR_WeChat-new.jpg" data-lightbox="image" class="si-wechat" title="indienova"><span class="ts-icon"><i class="icon-cn-wechat"></i></span><span class="ts-text">indienova</span></a></li>
+                        <li><a data-hover-width="409" style="width: 40px;" href="https://static.indienova.com/assets/images/QR_QQ_3.jpg" data-lightbox="image" class="si-qq" title="QQ 群：484558766 (满), 651728262, 438069902, 695554827"><span class="ts-icon"><i class="icon-cn-qq"></i></span><span class="ts-text">QQ 群：484558766 (满), 651728262, 438069902, 695554827</span></a></li>
+                        <li><a data-hover-width="104" style="width: 40px;" href="http://zhuanlan.zhihu.com/indienova" target="new" class="si-intensedebate" title="知乎专栏"><span class="ts-icon"><i class="icon-cn-zhihu"></i></span><span class="ts-text">知乎专栏</span></a></li>
+                        <li><a data-hover-width="113" style="width: 40px;" href="http://steamcommunity.com/id/indienova/" target="new" class="si-appstore" title="indienova"><span class="ts-icon"><i class="icon-steam"></i></span><span class="ts-text">indienova</span></a></li>
+                        <li><a data-hover-width="113" style="width: 40px;" href="https://www.facebook.com/Indienova-1689611754692764/" target="new" class="si-facebook" title="Facebook"><span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a></li>
+                        <li><a data-hover-width="94" style="width: 40px;" href="https://twitter.com/indienovacn" target="new" class="si-twitter" title="Twitter"><span class="ts-icon"><i class="icon-twitter"></i></span><span class="ts-text">Twitter</span></a></li>
+                        <li><a data-hover-width="187" style="width: 40px;" href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="si-email3" title="info(at)indienova.com"><span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">info(at)indienova.com</span></a></li>
+                    </ul>
+                </div><!-- #top-social end -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Header
+    ============================================= -->
+    <header id="header" class="xsticky-header sticky-header">
+
+        <div id="header-wrap">
+
+            <div class="container clearfix">
+
+                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+                <!-- Logo
+                ============================================= -->
+                <div id="logo">
+
+                    <!--<a href="/" class="standard-logo" data-dark-logo="https://static.indienova.com/assets/images/logos/indienova_dog_dark.png"><img-->
+                            <!--src="https://static.indienova.com/assets/images/logos/indienova_dog.png" alt="indienova"></a>-->
+                    <!--<a href="/" class="retina-logo" data-dark-logo="https://static.indienova.com/assets/images/logos/indienova_dog_dark@2x.png"><img-->
+                            <!--src="https://static.indienova.com/assets/images/logos/indienova_dog@2x.png" alt="indienova"></a>-->
+
+                    <a href="https://indienova.com/" class="standard-logo" data-dark-logo="https://static.indienova.com/assets/images/logos/indienova_newdark.png"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/indienova_new.png" alt="indienova"></a>
+                    <a href="https://indienova.com/" class="retina-logo" data-dark-logo="https://static.indienova.com/assets/images/logos/indienova_newdark@2x.png"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/indienova_new@2x.png" alt="indienova"></a>
+                </div>
+                 <!--#logo end-->
+
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav id="primary-menu" class="sticky-style-2">
+
+                    <ul class="sf-js-enabled" style="touch-action: pan-y;">
+                        <li class="sub-menu">
+                            <a href="https://indienova.com/indie-game-news/" class="sf-with-ul">
+                                <div>文章<i class="icon-caret-down"></i></div>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a href="https://indienova.com/channel/news"><div><i class="icon-note"></i>资讯</div></a></li>
+                                <li><a href="https://indienova.com/channel/game"><div><i class="icon-line2-fire"></i>前瞻</div></a></li>
+                                <li><a href="https://indienova.com/channel/reviews"><div><i class="icon-pen"></i>评测</div></a></li>
+                                <li><a href="https://indienova.com/channel/culture"><div><i class="icon-bulb"></i>漫谈</div></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="https://indienova.com/column" class="sf-with-ul">
+                                <div>专题<i class="icon-caret-down"></i></div>
+                            </a>
+                            <ul style="display: none;">
+
+                                <!--游戏推荐-->
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="sf-with-ul"><div><i class="icon-line-paper-stack"></i> 游戏推荐</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/column/1"><div><i class="icon-line-paper-stack"></i>Indie Focus 近期新游</div></a></li>
+                                        <li><a href="https://indienova.com/column/8"><div><i class="icon-line-paper-stack"></i>indienova Picks 精选</div></a></li>
+                                        <li><a href="https://indienova.com/column/29"><div><i class="icon-line-paper-stack"></i>一周值得关注的发售作品</div></a></li>
+                                        <li><a href="https://indienova.com/column/41"><div><i class="icon-line-paper-stack"></i>诺娃速递</div></a></li>
+                                    </ul>
+                                </li>
+
+                                <!--游戏评论-->
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="sf-with-ul"><div><i class="icon-line-paper-stack"></i> 游戏评论</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/column/6"><div><i class="icon-line-paper-stack"></i>游必有方 Podcast</div></a></li>
+                                        <li><a href="https://indienova.com/column/3"><div><i class="icon-line-paper-stack"></i>独立游戏潮（RED）</div></a></li>
+                                    </ul>
+                                </li>
+
+
+                                <!--游戏开发专题-->
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="sf-with-ul"><div><i class="icon-line-paper-stack"></i> 游戏开发专题</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/column/15"><div><i class="icon-line-paper-stack"></i>游戏设计模式</div></a></li>
+                                        <li><a href="https://indienova.com/column/14"><div><i class="icon-line-paper-stack"></i>Roguelike 开发</div></a></li>
+                                        <li><a href="https://indienova.com/column/7"><div><i class="icon-line-paper-stack"></i>GMS 中文教程</div></a></li>
+                                    </ul>
+                                </li>
+
+                                <!--游戏设计专题-->
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="sf-with-ul"><div><i class="icon-line-paper-stack"></i> 游戏设计专题</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/column/10"><div><i class="icon-line-paper-stack"></i>游戏与所有</div></a></li>
+                                        <li><a href="https://indienova.com/column/33"><div><i class="icon-line-paper-stack"></i>让人眼前一亮的游戏设计</div></a></li>
+                                        <li><a href="https://indienova.com/column/17"><div><i class="icon-line-paper-stack"></i>游戏音乐分析</div></a></li>
+                                        <li><a href="https://indienova.com/column/4"><div><i class="icon-line-paper-stack"></i>游戏情感设计</div></a></li>
+                                        <li><a href="https://indienova.com/column/22"><div><i class="icon-line-paper-stack"></i>游戏相关书籍</div></a></li>
+                                        <li><a href="https://indienova.com/column/11"><div><i class="icon-line-paper-stack"></i>游戏设计课程笔记</div></a></li>
+                                        <li><a href="https://indienova.com/column/24"><div><i class="icon-line-paper-stack"></i>游戏设计工具</div></a></li>
+                                        <li><a href="https://indienova.com/column/26"><div><i class="icon-line-paper-stack"></i>游戏设计灵感</div></a></li>
+                                        <li><a href="https://indienova.com/column/27"><div><i class="icon-line-paper-stack"></i>设计师谈设计</div></a></li>
+                                        <li><a href="https://indienova.com/column/28"><div><i class="icon-line-paper-stack"></i>游戏研究方法</div></a></li>
+                                        <li><a href="https://indienova.com/column/38"><div><i class="icon-line-paper-stack"></i>功能游戏</div></a></li>
+                                        <li><a href="https://indienova.com/column/9"><div><i class="icon-line-paper-stack"></i>游戏设计专业院校</div></a></li>
+                                        <li><a href="https://indienova.com/column/19"><div><i class="icon-line-paper-stack"></i>像素课堂</div></a></li>
+                                    </ul>
+                                </li>
+
+                                <!--游戏文化专题-->
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="sf-with-ul"><div><i class="icon-line-paper-stack"></i> 游戏文化专题</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/column/23"><div><i class="icon-line-paper-stack"></i>工作室访谈</div></a></li>
+                                        <li><a href="https://indienova.com/column/5"><div><i class="icon-line-paper-stack"></i>indie Figure 游戏人</div></a></li>
+                                        <li><a href="https://indienova.com/column/12"><div><i class="icon-line-paper-stack"></i>Supply</div></a></li>
+                                        <li><a href="https://indienova.com/column/16"><div><i class="icon-line-paper-stack"></i>电子 RPG 小史</div></a></li>
+                                        <li><a href="https://indienova.com/column/18"><div><i class="icon-line-paper-stack"></i>独立游戏音乐欣赏</div></a></li>
+                                        <li><a href="https://indienova.com/column/21"><div><i class="icon-line-paper-stack"></i>游戏瑰宝</div></a></li>
+                                        <li><a href="https://indienova.com/column/2"><div><i class="icon-line-paper-stack"></i>ALT. CTRL. GAMING</div></a></li>
+                                    </ul>
+                                </li>
+
+                                <!--Game Jam-->
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" class="sf-with-ul"><div><i class="icon-line-paper-stack"></i> Game Jam</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/column/31"><div><i class="icon-line-paper-stack"></i>Ludum Dare</div></a></li>
+                                        <li><a href="https://indienova.com/column/13"><div><i class="icon-line-paper-stack"></i>Global Game Jam</div></a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="https://indienova.com/indie-game-development/" class="sf-with-ul">
+                                <div>开发<i class="icon-caret-down"></i></div>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a href="https://indienova.com/channel/engine"><div><i class="icon-line2-rocket"></i>引擎</div></a></li>
+                                <li><a href="https://indienova.com/channel/design"><div><i class="icon-atom"></i>设计</div></a></li>
+                                <li><a href="https://indienova.com/channel/programming"><div><i class="icon-line2-screen-desktop"></i>编程</div></a></li>
+                                <li><a href="https://indienova.com/channel/software"><div><i class="icon-line2-wrench"></i>工具</div></a></li>
+                                <li><a href="https://indienova.com/sp/gameDevResource"><div><i class="icon-line2-globe"></i>资源</div></a></li>
+                                <li><a href="https://indienova.com/resource"><div><i class="icon-line-box"></i>素材</div></a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="https://indienova.com/usergames" class="sf-with-ul">
+                                <div>游戏<i class="icon-caret-down"></i></div>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a href="https://indienova.com/usergames">
+                                    <div><i class="icon-line2-ghost"></i> 会员开发游戏库</div>
+                                </a></li>
+
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/gamedb" class="sf-with-ul"><div><i class="icon-cn-pacman"></i> GameDB 游戏库</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/gamedb"><div><i class="icon-cn-pacman"></i> GameDB 游戏库</div></a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/win/p/1"><i class="icon-platform-win2"></i> Windows</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/nintendo-switch/p/1"><i class="icon-console-switch"></i> Switch</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/ps4--1/p/1"><i class="icon-console-ps"></i> PS4</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/ios/p/1"><i class="icon-platform-mac2"></i> iOS</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/xboxone/p/1"><i class="icon-console-xbox"></i> XBOX One</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/android/p/1"><i class="icon-platform-android2"></i> Android</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/wechat-mini-game/p/1"><i class="icon-cn-wechat"></i> 微信小游戏</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/3ds/p/1"><i class="icon-console-nintendo"></i> 3DS</a></li>
+                                        <li><a href="https://indienova.com/gamedb/platform/psvita/p/1"><i class="icon-console-ps"></i> PS Vita</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="sub-menu">
+                                    <a href="https://indienova.com/steam" class="sf-with-ul"><div><i class="icon-steam"></i> Steam 独立游戏库</div></a>
+                                    <ul style="display: none;">
+                                        <li><a href="https://indienova.com/steam"><div><i class="icon-steam"></i> Steam 独立游戏库</div></a></li>
+                                        <li><a href="https://indienova.com/sp/trends"><div><i class="icon-line2-users"></i> 会员 Steam 数据统计</div></a></li>
+                                        <li><a href="https://indienova.com/steam/chinese"><div class="text-danger"><i class="icon-steam"></i> 华人 Steam 独立游戏</div></a></li>
+                                        <li><a href="https://indienova.com/steam/greenlight"><div class="text-success"><i class="icon-steam"></i> 华人 Steam 绿光列表</div></a></li>
+                                        <li><a href="https://indienova.com/steam/recommended"><div><i class="icon-like"></i> 推荐 Steam 游戏</div></a></li>
+                                        <li><a href="https://indienova.com/steam/mustbuy"><div><i class="icon-diamond2"></i> 必买 Steam 游戏</div></a></li>
+                                        <li><a href="https://indienova.com/corp/steamkey"><div><i class="icon-steam"></i> 免费 Steam Key</div></a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="https://indienova.com/corp/ggjgamelist" target="_blank"><div><i class="icon-line2-ghost"></i> GGJ 中国区作品展示</div></a></li>
+                                <li><a href="https://indienova.com/corp/gutenberg" target="_blank"><div><i class="icon-line-globe"></i> 游戏古登堡官中计划</div></a></li>
+                                <li><a href="https://indienova.com/corp/publishing" target="_blank"><div><i class="icon-line-globe"></i> indienova 游戏发行</div></a></li>
+                            </ul>
+                        </li>
+                        <li class="mega-menu"><a href="https://indienova.com/blogs/all"><div>日志</div></a></li>
+                        <li><a href="https://indienova.com/groups"><div>小组</div></a></li>
+                        <li><a href="https://indienova.com/novapress"><div>钥玩<sup class="text-red"><i class="icon-star3"></i></sup></div></a></li>
+                    </ul>
+
+                    <!-- Top Search
+                    ============================================= -->
+                    <div id="top-search">
+                        <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                                                        <form action="https://indienova.com/search" enctype="application/x-www-form-urlencoded" method="post">
+                                    <input type="text" name="q" class="form-control" value="" placeholder="搜索网站内容关键字 ...">
+                                </form>
+                            
+                                            </div>
+                    <!-- #top-search end -->
+
+                </nav>
+                <!-- #primary-menu end -->
+            </div>
+                    </div>
+
+    </header><!-- #header end -->
+        
+        
+        
+        
+        
+        
+        
+        <!-- Content ============================================= -->
+        <section id="content">
+            <div class="content-wrap">
+                <div class="section indienova-title-bg" style="background-image: url(&quot;https://hive.indienova.com/farm/article/headpic/2014/02/Dungeon-Algorithm.jpg&quot;); background-position: 0% -1400px;" data-stellar-background-ratio="2" data-stellar-vertical-offset="226">
+    <div class="container text-center clearfix">
+        <h1>一种 Roguelike 地牢生成算法</h1>
+
+        <!-- 文章顶部信息 -->
+        <span class="header-info">作者：<a href="https://indienova.com/u/eastecho">eastecho <sup><i class="icon-star3"></i></sup></a>
+            <br>2014-02-27<br>
+                            <small>
+                    
+                                                <i class="icon-thumbs-up2"></i> <a href="https://indienova.com/get/login" data-lightbox="ajax" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="点赞"><span class="number-first">26</span></a>
+                        
+                    
+                                                <i class="icon-bookmark-empty"></i> <a href="https://indienova.com/get/login" data-lightbox="ajax" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="收藏"><span class="number-first">71</span></a>
+                        
+                                        <i class="icon-comments-alt"></i> <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#comments" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="点击查看评论"><span class="number-last">2</span></a>
+                </small>
+            
+            
+        </span>
+        <!-- End of 文章顶部信息 -->
+
+    </div>
+    <div class="overlay"></div>
+</div>
+<div class="container">
+
+    <!-- CONTENT BODY -->
+    <div class="postcontent clearfix indienova-post-content">
+        <article class="clearfix">
+            <div class="single-post indienova-single-post fr-view"><h4 id="iah-0">引言</h4>
+                <p>文章作者：<a title="Mike Anderson" href="http://www.roguebasin.com/index.php?title=Mike_Anderson" target="_blank">Mike Anderson</a></p>
+
+
+<p>随机生成的地图是 <a href="https://indienova.com/tag/roguelike/">Roguelike</a> 类游戏最独特的一点，它让游戏变得很有乐趣，因为玩家永远要面对新的挑战。</p>
+
+
+<p>但是随机地图却不是那么容易生成的。在传统的游戏中，一般你都会有一个地图编辑器，可以自由的创建地图。在任何一款称得上是“Roguelike”的游戏中，开发者都要自己创造一个“虚拟地图编辑器”，这样才能随机创建无限的动态地图，从而让玩家在其中流连忘返。</p>
+
+
+<p>在这篇文章里，我会将自己在开发一款名为&nbsp;<a href="http://sourceforge.net/projects/tyrant/" target="_blank">Tyrant</a> 的 Roguelike 游戏中使用的方法记录下来。我怀疑这可能只能算是一个原型，但是我之前也没有见过什么一本正经讲述生成 Roguelike 地图算法的文章。而且，它工作得还是比较令人满意的，所以，我愿意将它分享给大家。</p>
+
+
+<h4 id="iah-1">这款算法的目标</h4>
+
+
+<p>在写任何代码之前，了解自己的目标总是很重要的，这对编程很有帮助，哪怕你随后会做无数的修改。</p>
+
+
+<p>一个地牢（<a href="https://indienova.com/tag/dungeon/">Dungeon</a>）应该包含以下要点：</p>
+
+
+<ul>
+
+
+<li>一组相互连通的房间、门和通道</li>
+
+
+<li>一个入口（向上走的楼梯）</li>
+
+
+<li>一个出口（向下走的楼梯）</li>
+
+
+<li>所有的空间必须能够到达</li>
+
+
+</ul>
+
+
+<p>最后一点尤其重要。要知道，你的玩家在契而不舍的努力之后，应该能够顺利通过这一层，不要让他们失望。另外，如果放了某个物品到地图上的某个空间，它应该不会被藏在无法到达的地方。</p>
+
+
+<h4 id="iah-2">计划</h4>
+
+
+<p>在我写&nbsp;Tyrant 的时候，我尝试了很多种不同的算法来生成地图，这里所讲的是我能做到的最好的一个，也是目前游戏中使用的那个。</p>
+
+
+<p>我的灵感来自于此：“如果我是地下城的一个居民，那么我该怎么去建设我的地牢呢？”</p>
+
+
+<p>显然，我并不会将我的地下城建造成一个一个看起来不错的小房间，然后在中间用长长的通道连接起来。所以，当我需要为我的小怪物们提供更多空间的时候，我应该是拿起我的斧头，挖一个更大一些的洞。这样当他们有所需要的时候就会增加一些新房间——尽管它们看起来可能杂乱无章。</p>
+
+
+<p>有些地下城主可能想要用吊桥呀、陷阱呀什么的来守护比较“有趣”的房间，但是这些需求都异曲同工。由一个小的地牢开始，慢慢向四周扩散，直到整个地牢形成。这就是我们的计划。</p>
+
+
+<h4 id="iah-3">算法</h4>
+
+
+<p>在这个算法里面，“元素”代表着某种地图元素，比如：大房间、小房间、通道、圆形竞技场、保险柜等等。</p>
+
+
+<ol>
+
+
+<li>将整个地图填满土</li>
+
+
+<li>在地图中间挖一个房间出来</li>
+
+
+<li>选中某一房间（如果有多个的话）的墙壁</li>
+
+
+<li>确定要修建某种新元素</li>
+
+
+<li>查看从选中的墙延伸出去是否有足够的空间承载新的元素</li>
+
+
+<li>如果有的话继续，不然就返回第 3 步</li>
+
+
+<li>从选中的墙处增加新的元素</li>
+
+
+<li>返回第 3 步，直到地牢建设完成</li>
+
+
+<li>在地图的随机点上安排上楼和下楼的楼梯</li>
+
+
+<li>最后，放进去怪兽和物品</li>
+
+
+</ol>
+
+
+<p>第 1、2 步很简单。只要你创建好地图就可以去做到。我发现，写一个 <code>fillRect</code> 指令用来填充一个区域是比较有效的做法。</p>
+
+
+<p>第 3 步麻烦一些。你不能随意的寻找一个方块区域去添加你的元素，因为规则是要将元素添加到当前的地牢当中。这样会使得连接看起来比较不错，也确保了所有的区域都可以到达。Tyrant 的做法是：在地图上随机选择一个方块，直到找到横向或者纵向毗邻一个干净的方块那个。这样做的好处是：它给了你一个近乎公平的方式去选择某一面墙。</p>
+
+
+<p>第 4 步不太困难。我自己写了一个随机方法来决定建造哪一种元素。你可以自己定义它们，调整某些元素出现的权重，这会让你的地牢有自己的特点和侧重点。一个规划比较好的地牢会有很多规矩的房间，中间有长而且直的走廊连接。而洞穴则可能有一堆打洞以及曲折的小道等等。</p>
+
+
+<p>第 5 步更复杂一些，而且也是整个算法的核心。针对每一种元素，你需要知道它会占用的空间大小。然后你要去判断它是否和已经有的元素相交。Tyrant 使用了相对简单的一种方法：它会先得到要创建的元素所占用的空间大小，得到这个空间的数据，然后检查是否这个空间由土填满。</p>
+
+
+<p>第 6 步决定是否创建这个元素。如果这个待确定的空间包含有除了土之外的内容，那么就回到第 3 步继续。注意，大部分元素在这步都会被打回。不过这不是个问题，因为处理时间可以忽略。Tyrant 尝试着将某个元素加入 300 次左右到地牢中去，一般只有 40 次左右会通过这步。</p>
+
+
+<p>第 7 步会将新元素添加到地图上去。在这步，你还可以增加一些有趣的元素，比如动物、居民、秘道门和财宝什么的。</p>
+
+
+<p><span style="line-height: 1.6em;">第 8 步返回去创建更多的房间。确切的次数跟你地牢的尺寸以及其它参数有关。</span></p>
+
+
+<p>第 9 步要看个人喜好了。最简单的方法就是随机的去查找方块，直到找到一个空的位置去放置楼梯。</p>
+
+
+<p>第 10 步就是随机的创建怪兽。Tyrant 在这一步才加入游戏中大多数的怪兽，由少量的特殊怪兽或者生物会在生成房间的时候添加进去。</p>
+
+
+<p>就这样啦，这里所说的只是算法的规则，具体还要您自己去实现啦。</p>
+
+
+<h4 id="iah-4">例子</h4>
+
+
+<p>好了，在看了半天算法之后，我们来一个例子吧：</p>
+
+
+<p>Key:</p>
+
+
+<pre class="prettyprint"><span class="com"># = 地板</span><span class="pln">
+D </span><span class="pun">=</span><span class="pln"> </span><span class="pun">门</span><span class="pln">
+W </span><span class="pun">=</span><span class="pln"> </span><span class="pun">正在考查中的墙</span><span class="pln">
+C </span><span class="pun">=</span><span class="pln"> </span><span class="pun">宝箱</span></pre>
+
+
+<p>1.&nbsp;第一个房间</p>
+
+
+<pre class="prettyprint"><span class="com">#####</span><span class="pln">
+</span><span class="com">#####</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>2. 随机选择一面墙</p>
+
+
+<pre class="prettyprint"><span class="com">#####</span><span class="pln">
+</span><span class="com">#####W</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>3. 为新的通道元素进行区域搜索（包括两边的空间）</p>
+
+
+<pre class="prettyprint"><span class="com">#####**********</span><span class="pln">
+</span><span class="com">#####W*********</span><span class="pln">
+</span><span class="com">#####**********</span></pre>
+
+
+<p>4. 是空的，可以添加元素</p>
+
+
+<pre class="prettyprint"><span class="com">#####</span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>5. 选择另外一面墙</p>
+
+
+<pre class="prettyprint"><span class="com">#####     W</span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>6. 扫描寻找新的房间所占用空间：</p>
+
+
+<pre class="prettyprint"><span class="pln">       </span><span class="pun">******</span><span class="pln">
+       </span><span class="pun">******</span><span class="pln">
+       </span><span class="pun">******</span><span class="pln">
+       </span><span class="pun">******</span><span class="pln">
+       </span><span class="pun">******</span><span class="pln">
+</span><span class="com">#####  ***W**</span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>7. 这个地区也可以，那就添加一个新房间，再往里面扔一个宝箱 C（Chest）：</p>
+
+
+<pre class="prettyprint"><span class="pln">        </span><span class="com">####</span><span class="pln">
+        </span><span class="com">###C</span><span class="pln">
+        </span><span class="com">####</span><span class="pln">
+        </span><span class="com">####</span><span class="pln">
+</span><span class="com">#####     D  </span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>8. 跟前面做法一样，我们增加一个新的通道元素</p>
+
+
+<pre class="prettyprint"><span class="pln">             </span><span class="com">#</span><span class="pln">
+             </span><span class="com">#</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+        </span><span class="com">###C #</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+</span><span class="com">#####     D  #</span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>9. 这一次，我们试着为第二个房间增加一个通道元素</p>
+
+
+<pre class="prettyprint"><span class="pln">             </span><span class="com">#</span><span class="pln">
+             </span><span class="com">#</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+        </span><span class="com">###C*******</span><span class="pln">
+        </span><span class="com">####W******</span><span class="pln">
+        </span><span class="com">####*******</span><span class="pln">
+</span><span class="com">#####     D  #</span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>10. 扫描失败了，已经被占用</p>
+
+
+<pre class="prettyprint"><span class="pln">             </span><span class="com">#</span><span class="pln">
+             </span><span class="com">#</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+        </span><span class="com">###C #</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+        </span><span class="com">#### #</span><span class="pln">
+</span><span class="com">#####     D  #</span><span class="pln">
+</span><span class="com">#####D########</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>11. 比较特别的元素，一个菱形的房间</p>
+
+
+<pre class="prettyprint"><span class="pln">             </span><span class="com">#</span><span class="pln">
+             </span><span class="com">#   ###</span><span class="pln">
+        </span><span class="com">#### #  #####</span><span class="pln">
+        </span><span class="com">###C # #######</span><span class="pln">
+        </span><span class="com">#### #D#######</span><span class="pln">
+        </span><span class="com">#### # #######</span><span class="pln">
+</span><span class="com">#####     D  #  #####</span><span class="pln">
+</span><span class="com">#####D########   ###</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>12. 添加一个隐藏的暗门，以及充满陷阱的通道：</p>
+
+
+<pre class="prettyprint"><span class="pln">             </span><span class="com">#</span><span class="pln">
+             </span><span class="com">#   ###</span><span class="pln">
+        </span><span class="com">#### #  #####</span><span class="pln">
+        </span><span class="com">###C # #######S###T##TT#T##</span><span class="pln">
+        </span><span class="com">#### #D#######</span><span class="pln">
+        </span><span class="com">#### # #######</span><span class="pln">
+</span><span class="com">#####     D  #  #####</span><span class="pln">
+</span><span class="com">#####D########   ###</span><span class="pln">
+</span><span class="com">#####</span></pre>
+
+
+<p>13. 继续……</p>
+
+
+<h4 id="iah-5">总结</h4>
+
+
+<p>好了，这就是我的算法，我希望它对你有用，或者从一个有趣的角度去看如何解决一个问题。</p>
+
+
+<h4 id="iah-6">代码实现</h4>
+
+
+<p><strong>Java 代码实现</strong><br>
+<a title="Java Example of Dungeon-Building Algorithm" href="http://www.roguebasin.com/index.php?title=Java_Example_of_Dungeon-Building_Algorithm" target="_blank">Java 代码实现</a><br>
+你可以通过 <a href="http://openprocessing.org/visuals/?visualID=18822" target="_blank" rel="nofollow">Open Processing</a> 在浏览器里面运行它（需要做一些小修改）。它会创建一个图形化的地牢。</p>
+
+
+<p><strong>Python Curses 代码实现</strong><br>
+<a title="Python Curses Example of Dungeon-Building Algorithm" href="http://www.roguebasin.com/index.php?title=Python_Curses_Example_of_Dungeon-Building_Algorithm" target="_blank">Python Curses&nbsp;代码实现</a></p>
+
+
+<p><strong>C++ 代码实现</strong><br>
+<a title="C++ Example of Dungeon-Building Algorithm" href="http://www.roguebasin.com/index.php?title=C%2B%2B_Example_of_Dungeon-Building_Algorithm" target="_blank">C++ 代码实现</a></p>
+
+
+<p><strong>C# 代码实现</strong><br>
+<a title="CSharp Example of a Dungeon-Building Algorithm" href="http://www.roguebasin.com/index.php?title=CSharp_Example_of_a_Dungeon-Building_Algorithm" target="_blank">C# 代码实现</a></p>
+
+
+<p>原文地址：<a href="http://www.roguebasin.com/index.php?title=Dungeon-Building_Algorithm" target="_blank">链接</a></p>            </div>
+        </article>
+    </div>
+
+    <!-- CONTENT SIDEBAR -->
+            <div class="sidebar col_last blog-sidebar">
+            <div id="side-title-image" class="hidden-xs hidden-sm hidden-ms">
+                <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/Dungeon-Algorithm.jpg" class="title-image img-responsive">
+            </div><div class="scrollspy"><ul id="indienova-header-list" class="nav hidden-xs hidden-sm hidden-ms affix" data-spy="affix"><li class=""><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-0" title="引言">引言</a></li><li class=""><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-1" title="这款算法的目标">这款算法的目标</a></li><li class="active"><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-2" title="计划">计划</a></li><li class=""><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-3" title="算法">算法</a></li><li><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-4" title="例子">例子</a></li><li><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-5" title="总结">总结</a></li><li><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#iah-6" title="代码实现">代码实现</a></li><li><a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#comments" title="直接查看文章评论"><i class="icon-chat-2"></i> 文章评论</a></li><li></li></ul></div>
+        </div>
+    </div>
+
+<div id="indienova-misc">
+
+    <!-- 评价 -->
+    
+    <div class="container">
+        <div class="postcontent clearfix indienova-post-content">
+
+            
+                <!-- 赞和收藏 -->
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-md-1"></div>
+
+                    <div class="col-xs-12 col-md-10">
+
+                        <div class="col_half">
+                            <div class="article-action">
+                                <a href="https://indienova.com/get/login" data-lightbox="ajax" class="thumb-vote" data-id="382" data-type="5" data-path="/indie-game-development/roguelike-dungeon-building-algorithm/" data-title="一种 Roguelike 地牢生成算法">
+                                    <div class="icon"><i class="icon-thumbs-up"></i></div>
+                                    <div class="info">赞这篇文章</div>
+                                    <div class="count">26</div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col_half col_last">
+                            <div class="article-action">
+                                <a href="https://indienova.com/get/login" data-lightbox="ajax" class="fav-vote" data-id="382" data-type="1" data-path="/indie-game-development/roguelike-dungeon-building-algorithm/" data-title="一种 Roguelike 地牢生成算法">
+                                    <div class="icon"><i class="icon-bookmark-empty"></i></div>
+                                    <div class="info">收藏这篇文章</div>
+                                    <div class="count">71</div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-1"></div>
+                </div>
+                <!-- End of 赞和收藏 -->
+
+            
+            <!-- 投稿 -->
+            
+            <!-- 点赞会员 -->
+                            <div class="liked-users-holder">
+                    <h4>近期点赞的会员</h4>
+                    <div class="icons">
+                                                    <a href="https://indienova.com/u/zlps" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="zlps"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/228176-1534905632x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/argeiphontes" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="Argeiphontes"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/d5a461d11bbfcbf50557e24d4665ba13" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/amberzuizuibang" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="amberzuizuibang"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/8360a1807daa5ab4a27ab3684199a502" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/zjhlogo" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="zjhlogo"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/40304a54c3ab69c010bbf7af2b24e27e" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/wx-oHXAkwok_EWhs9rBI_2D_D1eOJms" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title=""><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/228223-1534954268x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                            <a href="javascript:void(0);" id="moreLikedUsers" title="查看全部"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/more.png" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/cyclohexane" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="CyclohexaneC6H12"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/114867-1518254159x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/manutd" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="Hy."><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/224798-1533741141x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/moonfesl" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="东来"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/175633-1526464116x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/rollinginthedeep" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="RollingInTheDeep"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/0ac7f02ce8b3112df1f376c198b65f02" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/xuan" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="xuan"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/0a88970ec2619bc9dfe174f50decb3ba" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/deepvincent" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="deepvincent"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/0b961f2dd847aa452d6d8ed60abfc758" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/19264389271" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="19264389271"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/898b184df9771e50736a2761d656eb2f" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/zclman" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="zclman"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/15322-1498563974x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/wky393" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="BadCandy"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/28322-1510542654x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/redsaberzero" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="redsaberzero"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/1304300a0b4439f709ad70338bcef37f" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/jaredgame" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="JaredGame"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/8ed2b4a36014f8a190d2d43aec8392ec" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/fuckman" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="fuckman"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/7285559c74062285d061cedeadaf3d08" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/flybutton" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="Mr.Panda"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/17819-1501754472x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/demigod" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="创艺"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/97442fa6dbd7afd7e62165c4d86cc6de" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/yiiip" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="Felix Liu"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/12799-1503975368x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/wb-2159471407" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="ph做游戏"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/15907-1498743979x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/fifthgently" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="第五轻柔"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/13733-1496647136x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/dashi919" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="Dashi919"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/e117495a5aea3e9478ed5d4aa8eaa971" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/puppetmaster" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="Puppetmaster"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/b63ef3fecc46fd0cd38e2a16828c3019" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/newwork" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="newwork"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/c1a767ab4cdba608e626348724fe201e" class="img-circle" width="40" height="40"></a>
+                                                                                <a href="https://indienova.com/u/nekoike" class="hidden-user" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="nekoike"><img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/9175-1520924278x300.jpg_rect200" class="img-circle" width="40" height="40"></a>
+                                                                        </div>
+                    <div class="clearfix"></div>
+                </div>
+            
+            <!---->
+
+            <!-- 相关 GameDB 游戏 -->
+            
+            <!-- 分享 -->
+                            <div class="si-share clearfix">
+                    <span><i class="icon-share"></i> &nbsp;分享这篇文章</span>
+                    <div>
+                        <a href="http://service.weibo.com/share/share.php?title=%E4%B8%80%E7%A7%8D+Roguelike+%E5%9C%B0%E7%89%A2%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95%EF%BC%9A%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%98%AF+Roguelike+%E7%B1%BB%E6%B8%B8%E6%88%8F%E6%9C%80%E7%8B%AC%E7%89%B9%E7%9A%84%E4%B8%80%E7%82%B9%EF%BC%8C%E5%AE%83%E8%AE%A9%E6%B8%B8%E6%88%8F%E5%8F%98%E5%BE%97%E5%BE%88%E6%9C%89%E4%B9%90%E8%B6%A3%EF%BC%8C%E5%9B%A0%E4%B8%BA%E7%8E%A9%E5%AE%B6%E6%B0%B8%E8%BF%9C%E8%A6%81%E9%9D%A2%E5%AF%B9%E6%96%B0%E7%9A%84%E6%8C%91%E6%88%98%E3%80%82%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E5%A4%9A%E5%A6%82%E7%89%9B%E6%AF%9B%EF%BC%8C%E8%BF%99%E7%AF%87%E6%9D%A5%E8%87%AA+Mike+Anderson%E3%80%82&amp;url=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/" class="social-icon si-borderless si-weibo" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="分享到新浪微博">
+                            <i class="icon-cn-weibo"></i><i class="icon-cn-weibo"></i>
+                        </a>
+                        <a href="https://indienova.com/inc/qr.php?url=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/" data-lightbox="image" class="social-icon si-borderless si-wechat" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="分享到微信">
+                            <i class="icon-cn-wechat"></i><i class="icon-cn-wechat"></i>
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/" class="social-icon si-borderless si-facebook" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="分享到 Facebook">
+                            <i class="icon-facebook"></i><i class="icon-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?source=webclient&amp;original_referer=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/&amp;text=%E4%B8%80%E7%A7%8D+Roguelike+%E5%9C%B0%E7%89%A2%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95%EF%BC%9A%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%98%AF+Roguelike+%E7%B1%BB%E6%B8%B8%E6%88%8F%E6%9C%80%E7%8B%AC%E7%89%B9%E7%9A%84%E4%B8%80%E7%82%B9%EF%BC%8C%E5%AE%83%E8%AE%A9%E6%B8%B8%E6%88%8F%E5%8F%98%E5%BE%97%E5%BE%88%E6%9C%89%E4%B9%90%E8%B6%A3%EF%BC%8C%E5%9B%A0%E4%B8%BA%E7%8E%A9%E5%AE%B6%E6%B0%B8%E8%BF%9C%E8%A6%81%E9%9D%A2%E5%AF%B9%E6%96%B0%E7%9A%84%E6%8C%91%E6%88%98%E3%80%82%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E5%A4%9A%E5%A6%82%E7%89%9B%E6%AF%9B%EF%BC%8C%E8%BF%99%E7%AF%87%E6%9D%A5%E8%87%AA+Mike+Anderson%E3%80%82&amp;url=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/&amp;related=indienovacn&amp;via=indienovacn" class="social-icon si-borderless si-twitter" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="分享到 Twitter">
+                            <i class="icon-twitter"></i><i class="icon-twitter"></i>
+                        </a>
+                        <a href="https://plus.google.com/share?url=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/" class="social-icon si-borderless si-gplus" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="分享到 Google+">
+                            <i class="icon-gplus"></i><i class="icon-gplus"></i>
+                        </a>
+                        <!--<a href="http://digg.com/submit?phase=2%20&url=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/&title=%E4%B8%80%E7%A7%8D+Roguelike+%E5%9C%B0%E7%89%A2%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95%EF%BC%9A%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%98%AF+Roguelike+%E7%B1%BB%E6%B8%B8%E6%88%8F%E6%9C%80%E7%8B%AC%E7%89%B9%E7%9A%84%E4%B8%80%E7%82%B9%EF%BC%8C%E5%AE%83%E8%AE%A9%E6%B8%B8%E6%88%8F%E5%8F%98%E5%BE%97%E5%BE%88%E6%9C%89%E4%B9%90%E8%B6%A3%EF%BC%8C%E5%9B%A0%E4%B8%BA%E7%8E%A9%E5%AE%B6%E6%B0%B8%E8%BF%9C%E8%A6%81%E9%9D%A2%E5%AF%B9%E6%96%B0%E7%9A%84%E6%8C%91%E6%88%98%E3%80%82%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E5%A4%9A%E5%A6%82%E7%89%9B%E6%AF%9B%EF%BC%8C%E8%BF%99%E7%AF%87%E6%9D%A5%E8%87%AA+Mike+Anderson%E3%80%82" class="social-icon si-borderless si-digg" data-toggle="tooltip" data-placement="top" title="分享到 Google+" target="_blank">-->
+                            <!--<i class="icon-digg"></i><i class="icon-digg"></i>-->
+                        <!--</a>-->
+                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=indienovaPostSharer&amp;title=%E4%B8%80%E7%A7%8D+Roguelike+%E5%9C%B0%E7%89%A2%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95%EF%BC%9A%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%98%AF+Roguelike+%E7%B1%BB%E6%B8%B8%E6%88%8F%E6%9C%80%E7%8B%AC%E7%89%B9%E7%9A%84%E4%B8%80%E7%82%B9%EF%BC%8C%E5%AE%83%E8%AE%A9%E6%B8%B8%E6%88%8F%E5%8F%98%E5%BE%97%E5%BE%88%E6%9C%89%E4%B9%90%E8%B6%A3%EF%BC%8C%E5%9B%A0%E4%B8%BA%E7%8E%A9%E5%AE%B6%E6%B0%B8%E8%BF%9C%E8%A6%81%E9%9D%A2%E5%AF%B9%E6%96%B0%E7%9A%84%E6%8C%91%E6%88%98%E3%80%82%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E5%A4%9A%E5%A6%82%E7%89%9B%E6%AF%9B%EF%BC%8C%E8%BF%99%E7%AF%87%E6%9D%A5%E8%87%AA+Mike+Anderson%E3%80%82&amp;url=https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/" class="social-icon si-borderless si-linkedin" data-toggle="tooltip" data-placement="top" title="" target="_blank" data-original-title="分享到 Linkedin">
+                            <i class="icon-linkedin"></i><i class="icon-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                    </div>
+    </div>
+
+    <!-- Author -->
+    <div class="container">
+        <div class="postcontent clearfix indienova-related">
+            <div class="indienova-author topmargin-sm">
+                                    <div class="verified-star"><i class="icon-star3"></i></div>
+                                <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/1x300.jpg" class="img-circle" width="100" height="100">
+                <h3><a href="https://indienova.com/u/eastecho">eastecho</a>&nbsp;
+                    <!-- Single button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            作者 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://indienova.com/u/eastecho"> <i class="icon-line2-user"></i> 查看作者主页</a></li>
+                            <li><a href="https://indienova.com/author/eastecho/"> <i class="icon-line2-notebook"></i> 查看作者文章</a></li>
+                        </ul>
+                    </div>
+                </h3>
+                <p>从前的边城浪子，现在的路人乙&nbsp;</p>
+                <div class="author-social bottommargin-sm">
+                                        <a href="http://weibo.com/windofchange" target="_blank" class="social-icon si-small si-borderless si-weibo" data-toggle="tooltip" data-placement="top" title="" data-original-title="Weibo"><i class="icon-cn-weibo"></i><i class="icon-cn-weibo"></i></a>                                        <a href="javascript:void(0);" class="social-icon si-small si-borderless si-wechat" data-toggle="tooltip" data-placement="top" title="" data-original-title="WeChat: eastecho-gao"><i class="icon-cn-wechat"></i><i class="icon-cn-wechat"></i></a>                                        <a href="javascript:void(0);" class="social-icon si-small si-borderless si-qq" data-toggle="tooltip" data-placement="top" title="" data-original-title="QQ: 104388"><i class="icon-cn-qq"></i><i class="icon-cn-qq"></i></a>                                        <a href="https://www.facebook.com/eastecho" target="_blank" class="social-icon si-small si-borderless si-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i class="icon-facebook"></i><i class="icon-facebook"></i></a>                                        <a href="https://twitter.com/eastecho" target="_blank" class="social-icon si-small si-borderless si-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="icon-twitter"></i><i class="icon-twitter"></i></a>                                        <a href="https://www.pinterest.com/eastecho" target="_blank" class="social-icon si-small si-borderless si-pinterest" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest"><i class="icon-pinterest"></i><i class="icon-pinterest"></i></a>                                        <a href="https://github.com/eastecho" target="_blank" class="social-icon si-small si-borderless si-github" data-toggle="tooltip" data-placement="top" title="" data-original-title="GitHub"><i class="icon-github2"></i><i class="icon-github2"></i></a>                                        <a href="https://plus.google.com/u/0/105302717550389638645/posts" target="_blank" class="social-icon si-small si-borderless si-google" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google+"><i class="icon-google-plus"></i><i class="icon-google-plus"></i></a>                                    </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+                    <div class="sidebar col_last blog-sidebar">
+                                    <h5 class="topmargin-sm"><i class="icon-line-paper-stack"></i> 收录于专题</h5>
+                    <div class="mini-block">
+                        <ul>
+                                                    <li><a href="https://indienova.com/column/14">Roguelike 开发</a></li>
+                                                </ul>
+                    </div>
+                            </div>
+            </div>
+    <!-- End of Author -->
+
+    <!-- Related -->
+    <div class="bottommargin-sm indienova-title-mini">
+        <div class="container clearfix">
+            <h1>您可能还会对这些文章感兴趣</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="postcontent clearfix indienova-related">
+            <div id="oc-portfolio" class="owl-carousel portfolio-carousel portfolio-notitle owl-theme owl-loaded">
+
+                                    
+                                    
+                                    
+                                    
+                                    
+                
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-720px, 0px, 0px); transition: all 0s ease 0s; width: 2740px; padding-left: 50px; padding-right: 50px;"><div class="owl-item cloned" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/procedural-content-generation-tile-based-random-cave-map/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/cave.jpg_t205" alt="随机生成 Tile Based 地图之——洞穴">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/procedural-content-generation-tile-based-random-cave-map/" title="随机生成 Tile Based 地图之——洞穴">随机生成 Tile Based 地图之——洞穴</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/rooms-and-mazes-a-procedural-dungeon-generator/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/Room-And-Maze.jpg_t205" alt="房间和迷宫：一个地牢生成算法">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/rooms-and-mazes-a-procedural-dungeon-generator/" title="房间和迷宫：一个地牢生成算法">房间和迷宫：一个地牢生成算法</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/generate-tile-based-maze-with-backtracking/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/Maze.jpg_t205" alt="简单的使用回溯法生成 Tile Based 迷宫">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/generate-tile-based-maze-with-backtracking/" title="简单的使用回溯法生成 Tile Based 迷宫">简单的使用回溯法生成 Tile Based 迷宫</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item active" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/sight-light-how-to-create-2d-visibility-shadow-effects-for-your-game/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/RayTrace.jpg_t205" alt="视线和光线：如何创建 2D 视觉范围效果">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/sight-light-how-to-create-2d-visibility-shadow-effects-for-your-game/" title="视线和光线：如何创建 2D 视觉范围效果">视线和光线：如何创建 2D 视觉范围效果</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item active" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/tile-based-line-of-sight-explained/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/los.jpg_t205" alt="基于 Tile 地图的视觉范围生成方法以及实现">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/tile-based-line-of-sight-explained/" title="基于 Tile 地图的视觉范围生成方法以及实现">基于 Tile 地图的视觉范围生成方法以及实现</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item active" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/procedural-content-generation-tile-based-random-cave-map/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/cave.jpg_t205" alt="随机生成 Tile Based 地图之——洞穴">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/procedural-content-generation-tile-based-random-cave-map/" title="随机生成 Tile Based 地图之——洞穴">随机生成 Tile Based 地图之——洞穴</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/rooms-and-mazes-a-procedural-dungeon-generator/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/Room-And-Maze.jpg_t205" alt="房间和迷宫：一个地牢生成算法">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/rooms-and-mazes-a-procedural-dungeon-generator/" title="房间和迷宫：一个地牢生成算法">房间和迷宫：一个地牢生成算法</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/generate-tile-based-maze-with-backtracking/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/Maze.jpg_t205" alt="简单的使用回溯法生成 Tile Based 迷宫">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/generate-tile-based-maze-with-backtracking/" title="简单的使用回溯法生成 Tile Based 迷宫">简单的使用回溯法生成 Tile Based 迷宫</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/sight-light-how-to-create-2d-visibility-shadow-effects-for-your-game/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/RayTrace.jpg_t205" alt="视线和光线：如何创建 2D 视觉范围效果">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/sight-light-how-to-create-2d-visibility-shadow-effects-for-your-game/" title="视线和光线：如何创建 2D 视觉范围效果">视线和光线：如何创建 2D 视觉范围效果</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/tile-based-line-of-sight-explained/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/los.jpg_t205" alt="基于 Tile 地图的视觉范围生成方法以及实现">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/tile-based-line-of-sight-explained/" title="基于 Tile 地图的视觉范围生成方法以及实现">基于 Tile 地图的视觉范围生成方法以及实现</a></h3>
+                            </div>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 220px; margin-right: 20px;"><div class="oc-item">
+                        <div class="iportfolio">
+                            <div class="portfolio-image">
+                                <a href="https://indienova.com/indie-game-development/procedural-content-generation-tile-based-random-cave-map/">
+                                    <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/cave.jpg_t205" alt="随机生成 Tile Based 地图之——洞穴">
+                                    <div class="portfolio-overlay"></div>
+                                </a>
+                            </div>
+                            <div class="portfolio-desc">
+                                <h3><a href="https://indienova.com/indie-game-development/procedural-content-generation-tile-based-random-cave-map/" title="随机生成 Tile Based 地图之——洞穴">随机生成 Tile Based 地图之——洞穴</a></h3>
+                            </div>
+                        </div>
+                    </div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style=""><i class="icon-angle-left"></i></div><div class="owl-next" style=""><i class="icon-angle-right"></i></div></div><div class="owl-dots" style="display: none;"></div></div></div>
+            <div class="clear"></div>
+        </div>
+        <div class="sidebar col_last blog-sidebar indienova-tags bottommargin-sm">
+                                                <span class="label label-info"><a href="https://indienova.com/tag/pcg/">PCG</a></span>
+                                                                <span class="label label-info"><a href="https://indienova.com/tag/dungeon/">Dungeon</a></span>
+                                                                <span class="label label-info"><a href="https://indienova.com/tag/algorithm-2/">Algorithm</a></span>
+                                                                <span class="label label-info"><a href="https://indienova.com/tag/roguelikedev/">RoguelikeDev</a></span>
+                                    </div>
+    </div>
+
+
+
+    <!-- 评论 -->
+            <!--Comments-->
+        <a name="comments"></a>
+
+                    <div class="bottommargin-sm indienova-title-mini topmargin-sm">
+                <div class="container clearfix">
+                    <h1>参与此文章的讨论</h1>
+                </div>
+            </div>
+                <div class="container">
+            <div class="postcontent clearfix indienova-comments">
+                                    
+                        <ol class="commentlist clearfix">
+                                                            <li class="comment even thread-even depth-1" id="li-comment-4139">
+                                    <div id="comment-4139" class="comment-wrap clearfix">
+                                        <div class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <a href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/">
+                                                    <span class="comment-avatar clearfix">
+                                                        <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/user_icon.jpg" title="朱大仙" class="avatar avatar-60 photo avatar-default" height="60" width="60">
+                                                                                                            </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content clearfix">
+                                            <div class="comment-author">
+                                                                                                    
+                                                        朱大仙                                                    
+                                                                                                    <span>2015-05-09</span>
+                                            </div>
+
+                                            <p id="comment-html-4139">这真是帅呆了！我就是想要这个教程</p>
+                                            
+                                            <!-- Comment Funcs -->
+                                            <div class="comment-func">
+                                                                                                        <a class="comment-hearts-link" href="https://indienova.com/get/login" data-lightbox="ajax" data-title="顶一下" data-toggle="tooltip" data-placement="top" data-comment-id="4139" data-original-title="" title=""><i class="icon-heart-empty"></i> <span>0</span></a>
+                                                    
+                                                                                                <a class="comment-replying-link" href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#makeComment" data-comment-id="4139" data-at-id="朱大仙" data-at-uid="0" data-title="回复" data-toggle="tooltip" data-placement="top" title="" data-original-title="回复"><i class="icon-reply"></i></a>
+                                            </div>
+                                            <!-- End of Comment Funcs -->
+
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                                                    </li>
+                                                            <li class="comment even thread-even depth-1" id="li-comment-5271">
+                                    <div id="comment-5271" class="comment-wrap clearfix">
+                                        <div class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <a href="https://indienova.com/u/wszz0218">
+                                                    <span class="comment-avatar clearfix">
+                                                        <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/f5fa063a14b6d508c2af45c15430dee6" title="wszz0218" class="avatar avatar-60 photo avatar-default" height="60" width="60">
+                                                                                                            </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content clearfix">
+                                            <div class="comment-author">
+                                                                                                        <a href="https://indienova.com/u/wszz0218">wszz0218</a>
+                                                                                                            
+                                                                                                <span>2016-04-16</span>
+                                            </div>
+
+                                            <p id="comment-html-5271">最近我也在做类似的游戏，这个教程给了我很大启发<br>
+但是有几个补充问题希望交流下<br>
+1、墙壁的生成，现在相当于只生成了地板，还得补充墙壁<br>
+2、房间的生成也做成自动生成的</p>
+                                            
+                                            <!-- Comment Funcs -->
+                                            <div class="comment-func">
+                                                                                                        <a class="comment-hearts-link" href="https://indienova.com/get/login" data-lightbox="ajax" data-title="顶一下" data-toggle="tooltip" data-placement="top" data-comment-id="5271" data-original-title="" title=""><i class="icon-heart-empty"></i> <span>0</span></a>
+                                                    
+                                                                                                <a class="comment-replying-link" href="https://indienova.com/indie-game-development/roguelike-dungeon-building-algorithm/#makeComment" data-comment-id="5271" data-at-id="wszz0218" data-at-uid="762" data-title="回复" data-toggle="tooltip" data-placement="top" title="" data-original-title="回复"><i class="icon-reply"></i></a>
+                                            </div>
+                                            <!-- End of Comment Funcs -->
+
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                                                    </li>
+                                                    </ol>
+                        <!-- .commentlist end -->
+                    
+                                    <!-- Comment Form
+                ============================================= -->
+                <a name="makeComment"></a>
+                <div id="respond" class="clearfix">
+                                                <div class="text-center">
+                                <h4>您需要登录或者注册后才能发表评论</h4>
+                                                                    
+                                        <a href="https://indienova.com/get/login" data-lightbox="ajax" class="button button-rounded button-reveal button-large button-green tright"><i class="icon-line2-ghost"></i><span>登录／注册</span></a>
+                                    
+                                                                </div>
+                        
+                    
+                </div><!-- #respond end -->
+            </div>
+
+            <div class="sidebar col_last">
+                            </div>
+        </div></div>
+<script src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/bootstrap-typeahead.min.js.下载"></script>
+<div id="failed-message" data-notify-position="top-right" data-notify-type="error" data-notify-msg="&lt;i class=&#39;icon-minus-sign&#39;&gt;&lt;/i&gt; 操作失败！请通知管理人员。"></div>
+<script>
+
+    var aid = '382';
+
+    function pageJS() {
+        var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var bg = $('.indienova-title-bg');
+        if (w <= 991) {
+            bg.attr('data-stellar-vertical-offset', '226');
+        }
+
+        var h4s = $('.indienova-single-post h4');
+        if (h4s.length > 0) {
+            $('#side-title-image').after('<div class="scrollspy"><ul id="indienova-header-list" class="nav hidden-xs hidden-sm hidden-ms" data-spy="affix"></ul></div>');
+            if ($('.indienova-single-post').html().trim().substr(1, 2) != 'h4') {
+                $('.indienova-single-post').prepend('<h4>引言</h4>');
+            }
+
+            h4s = $('.indienova-single-post h4');
+            for(var i=0; i<h4s.length; i++) {
+                $(h4s[i]).attr('id', 'iah-' + i);
+                var title = ($(h4s[i]).html()).replace(/\'/g, "").replace(/\"/g, "");
+                title = title.replace(/<br>/g, " - ");
+                title = title.replace(/<small>/g, "");
+                title = title.replace(/<\/small>/g, "");
+                title = title.replace(/<strong>/g, "");
+                title = title.replace(/<\/strong>/g, "");
+                $('#indienova-header-list').append('<li><a href="#iah-' + i + '" title="' + title + '">' + $(h4s[i]).html() + '</a></li>');
+            }
+            $('#indienova-header-list').append('<li><a href="#comments" title="直接查看文章评论"><i class="icon-chat-2"></i> 文章评论</a><li>');
+
+            $('#indienova-header-list').affix({
+                offset: {
+                    top: $('#indienova-header-list').offset().top - 140,
+                    bottom: ($('footer').outerHeight(true) + $('#indienova-misc').outerHeight(true)) + 180
+                }
+            });
+        }
+
+        var ocPortfolio = $("#oc-portfolio");
+
+        ocPortfolio.owlCarousel({
+            margin: 20,
+            nav: true,
+            stagePadding: 50,
+            loop: 'true',
+            navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
+            autoplay: false,
+            autoplayHoverPause: true,
+            dots: false,
+            responsive:{
+            0:{ items:1 },
+            600:{ items:2 },
+            1000:{ items:3 }
+        }
+    });
+
+        /*
+                  */
+
+        /* spoiler */
+
+        $('.spoiler-div').on('click', function() {
+            $(this).find('.spoiler-content').removeClass('spoiler-content');
+            $(this).find('.spoiler-info').remove();
+            $(this).removeClass('spoiler-div');
+            $(this).unbind('click');
+        });
+
+        /* more users */
+        $('#moreLikedUsers').on('click', function() {
+            $(this).remove();
+            $('.hidden-user').removeClass('hidden-user');
+        });
+
+        /* more games */
+        $('#moreRelatedGames').on('click', function() {
+            $('.related-games-holder').find('div').removeClass('initHidden');
+            $(this).parent().parent().remove();
+        });
+    }
+</script>            </div>
+        </section><!-- #content end -->
+
+                <!-- Footer
+        ============================================= -->
+        <a name="footer"></a>
+        <footer id="footer" class="dark">
+
+            <div class="container">
+
+                <!-- Footer Widgets
+                ============================================= -->
+                <div class="footer-widgets-wrap clearfix">
+
+                    <div class="col_one_fourth">
+
+                        <div class="widget clearfix">
+
+                            <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/indienova_footer_new.png" srcset="https://static.indienova.com/assets/images/logos/indienova_footer_new@2x.png 2x" alt="indeinova" class="footer-logo">
+
+                            <p class="nobottommargin">由喜爱<strong>独立游戏</strong>，追求游戏乐趣的我们建立于 <strong>2013</strong> 年。</p>
+
+                            <a href="http://weibo.com/indienova" class="social-icon si-small si-rounded topmargin-sm si-weibo" target="_blank">
+                                <i class="icon-cn-weibo"></i>
+                                <i class="icon-cn-weibo"></i>
+                            </a>
+
+                            <a href="https://static.indienova.com/assets/images/QR_WeChat-new.jpg" data-lightbox="image" class="social-icon si-small si-rounded topmargin-sm si-wechat" data-toggle="tooltip" data-placement="top" title="" data-original-title="微信号：indienova">
+                                <i class="icon-cn-wechat"></i>
+                                <i class="icon-cn-wechat"></i>
+                            </a>
+
+                            <a href="https://static.indienova.com/assets/images/QR_QQ_3.jpg" data-lightbox="image" class="social-icon si-small si-rounded topmargin-sm si-qq" data-toggle="tooltip" data-placement="top" title="" data-original-title="QQ 群：651728262, 484558766 (满), 438069902, 695554827">
+                                <i class="icon-cn-qq"></i>
+                                <i class="icon-cn-qq"></i>
+                            </a>
+
+                            <a href="http://zhuanlan.zhihu.com/indienova" class="social-icon si-small si-rounded topmargin-sm si-intensedebate" data-toggle="tooltip" data-placement="top" title="" data-original-title="知乎专栏" target="_blank">
+                                <i class="icon-cn-zhihu"></i>
+                                <i class="icon-cn-zhihu"></i>
+                            </a>
+
+                            <div class="clearfix"></div>
+
+                            <a href="http://steamcommunity.com/id/indienova/" class="social-icon si-small si-rounded notopmargin si-appstore" target="_blank">
+                                <i class="icon-steam"></i>
+                                <i class="icon-steam"></i>
+                            </a>
+
+                            <a href="https://www.facebook.com/Indienova-1689611754692764/" class="social-icon si-small si-rounded notopmargin si-facebook" target="_blank">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+
+                            <a href="https://twitter.com/indienovacn" class="social-icon si-small si-rounded notopmargin si-twitter" target="_blank">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+
+                            <a href="https://github.com/eastecho" class="social-icon si-small si-rounded notopmargin si-github" target="_blank">
+                                <i class="icon-github"></i>
+                                <i class="icon-github"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col_one_fourth">
+
+                        <div class="widget widget_links clearfix">
+
+                            <h4>关注我们</h4>
+
+                            <div class="text-center">
+                                <img src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/QR_footer.png" width="120" height="120" class="footer-qr">
+                                <p><small>扫描二维码关注微信公众号</small></p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col_one_fourth">
+
+                        <div class="widget widget_links clearfix">
+                            <!--<h4>在线游戏</h4>-->
+
+                            <!--<div id="post-list-footer">-->
+                                <!--<div class="spost clearfix">-->
+                                    <!--<div class="entry-image hidden-sm">-->
+                                        <!--<a href="#"><img class="img-circle" src="/assets/images/indienova_thumb.png" alt=""></a>-->
+                                    <!--</div>-->
+                                    <!--<div class="entry-c">-->
+                                        <!--<div class="entry-title">-->
+                                            <!--<h4><a href="#">暂未开放</a></h4>-->
+                                        <!--</div>-->
+                                        <!--<ul class="entry-meta">-->
+                                            <!--<li>日期待定</li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+
+                            <h4>容易错过的内容</h4>
+
+                            <ul>
+                                <li><a href="https://indienova.com/usergames">会员开发的游戏</a></li>
+                                <li><a href="https://indienova.com/sp/gameDevResource">游戏开发资源大全</a></li>
+                                <li><a href="https://indienova.com/steam/recommended">推荐的 Steam 游戏</a></li>
+                                <li><a href="https://indienova.com/steam/mustbuy">必买的 Steam 游戏</a></li>
+                                <li><a href="https://indienova.com/blogs/all">会员日志／DevLog</a></li>
+                                <li><a href="https://indienova.com/resource">游戏开发素材</a></li>
+                                <li><a href="https://indienova.com/corp/gutenberg">游戏古登堡计划</a></li>
+                                <li><a href="https://indienova.com/corp/contribute">向 indienova 投稿</a></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col_one_fourth col_last">
+
+                        <div class="widget quick-contact-widget clearfix">
+
+                            <h4>快速联系我们</h4>
+
+                            <div id="quick-contact-form-result" data-notify-type="success" data-notify-msg="&lt;i class=icon-ok-sign&gt;&lt;/i&gt; 信息已经成功发送！"></div>
+
+                            <form id="quick-contact-form" name="quick-contact-form" action="https://indienova.com/func/quickcontact" method="post" class="quick-contact-form nobottommargin" novalidate="novalidate">
+
+                                <div class="form-process"></div>
+
+                                                                        <p>您可以<a href="https://indienova.com/get/login" data-lightbox="ajax"><strong>注册／登录</strong></a>后再发送信息，以便我们直接通过站内私信快速联系您。</p>
+                                        <div class="input-group divcenter">
+                                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                                            <input type="text" class="required form-control input-block-level" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="您的名字" aria-required="true">
+                                        </div>
+                                        <div class="input-group divcenter">
+                                            <span class="input-group-addon"><i class="icon-email3"></i></span>
+                                            <input type="text" class="required form-control email input-block-level" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="邮件地址" aria-required="true">
+                                        </div>
+                                    
+                                
+                                <textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="信息" aria-required="true"></textarea>
+                                <input type="text" class="hidden" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="">
+                                <button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="btn btn-danger nomargin" value="submit">发送信息</button>
+
+                            </form>
+
+                            <script type="text/javascript">
+
+                                $("#quick-contact-form").validate({
+                                    submitHandler: function(form) {
+                                        $(form).animate({ opacity: 0.4 });
+                                        $(form).find('.form-process').fadeIn();
+                                        $(form).ajaxSubmit({
+                                            target: '#quick-contact-form-result',
+                                            success: function() {
+                                                $(form).animate({ opacity: 1 });
+                                                $(form).find('.form-process').fadeOut();
+                                                $(form).find('.form-control').val('');
+                                                $('#quick-contact-form-result').attr('data-notify-msg', $('#quick-contact-form-result').html()).html('');
+                                                SEMICOLON.widget.notifications($('#quick-contact-form-result'));
+                                            }
+                                        });
+                                    }
+                                });
+
+                            </script>
+
+                        </div>
+
+                    </div>
+
+                </div><!-- .footer-widgets-wrap end -->
+
+            </div>
+
+            <!-- Copyrights
+            ============================================= -->
+            <div id="copyrights">
+
+                <div class="container clearfix">
+
+                    <div class="col_full nobottommargin center">
+                        <div class="copyrights-menu copyright-links clearfix">
+                            <a href="https://indienova.com/corp/privacy">隐私声明</a>/<a href="https://indienova.com/corp/sitemap">网站地图</a>/<a href="https://indienova.com/corp/faq">常见问题</a>/<a href="https://indienova.com/corp/about">关于我们</a>/<a href="https://indienova.com/corp/suggestion">联系我们</a>
+                        </div>
+                        版权所有 © 2013 - 2019 indienova.com 保留所有权利<p class="nobottommargin"><small>京 ICP 备 16052096 号 | 增值电信业务经营许可证：京 B2-20160196</small></p>
+                        <!-- GeoTrust True Site[tm] Smart Icon tag. Do not edit. -->
+                        <!--<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="//smarticon.geotrust.com/si.js"></SCRIPT>-->
+                        <!-- end GeoTrust Smart Icon tag -->
+                        <div class="hidden">
+                            2019-07-03 14:12:24                            <script>
+                                var cnzz_s_tag = document.createElement('script');
+                                cnzz_s_tag.type = 'text/javascript';
+                                cnzz_s_tag.async = true;
+                                cnzz_s_tag.charset = 'utf-8';
+                                cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1000033182&async=1';
+                                var root_s = document.getElementsByTagName('script')[0];
+                                root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- #copyrights end -->
+
+        </footer><!-- #footer end -->
+
+        <script>
+            
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-102514550-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top ============================================= -->
+    <div id="gotoTop" class="icon-angle-up" style="display: block;"></div>
+
+    <!-- Footer Scripts ============================================= -->
+                    <script type="text/javascript" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/audioplayer.js.下载"></script>
+                <script src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/mediaelement-and-player.min.js.下载"></script>
+    <script src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/zh-cn.js.下载"></script>
+            <script src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/jweixin-1.2.0.js.下载"></script>
+    <script type="text/javascript" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/functions.js.下载"></script>
+    <script type="text/javascript" src="./一种 Roguelike 地牢生成算法 _ indienova 独立游戏_files/main.js.下载"></script>
+
+                <script>
+                $(document).ready(function () {
+                    /*
+                                             */
+                    wx.config({
+                        debug: false,
+                        appId: 'wx38efb8b5dace1256',
+                        timestamp: '1562134344',
+                        nonceStr: 'ESSbS1mNvDOvqSju',
+                        signature: '232b5010d1879aef43c4e2d974b700357697ef5a',
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+                    });
+
+                    // 微信
+                    wx.ready(function() {
+
+                        wx.onMenuShareTimeline({
+                            title: $('title').html(),
+                            link: window.location.href,
+                            imgUrl: 'https://hive.indienova.com/farm/article/headpic/2014/02/Dungeon-Algorithm.jpg',
+                            success: function() {},
+                            cancel: function() {}
+                        });
+
+                        wx.onMenuShareAppMessage({
+                            title: $('title').html(),
+                            desc: '随机生成的地图是 Roguelike 类游戏最独特的一点，它让游戏变得很有乐趣，因为玩家永远要面对新的挑战。相关算法多如牛毛，这篇来自 Mike Anderson。',
+                            link: window.location.href,
+                            imgUrl: 'https://hive.indienova.com/farm/article/headpic/2014/02/Dungeon-Algorithm.jpg',
+                            type: '',
+                            dataUrl: ''
+                        });
+
+                    });
+
+                    /*
+                                             */
+
+                    $('pre').each(function(index){
+                        if ($(this)[0].style) {
+                            if ($(this)[0].style.length == 0)
+                                $(this).addClass('prettyprint');
+                        }
+                    });
+
+                    window.prettyPrint && prettyPrint();
+                });
+            </script>
+        
+    
+<div id="iv-container"><div class="iv-loader"></div> <div class="iv-snap-view"><div class="iv-snap-image-wrap"><div class="iv-snap-handle"></div></div><div class="iv-zoom-slider"><div class="iv-zoom-handle"></div></div></div><div class="iv-image-view"><div class="iv-image-wrap"></div></div><div class="iv-close"></div><div></div></div></body></html>
