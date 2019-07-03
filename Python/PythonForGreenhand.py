@@ -146,10 +146,12 @@ tup2 = ('20',)  # 一个元素的元组
 # 可以改变取出来的值
 
 # 使用+号拼接列表
+my_list3  =my_list1+my_list2  #合并列表
+
 
 ################################
 
-# Set :
+#                                               Set :
 
 # 基本功能是进行 成员关系测试 和 删除重复元素
 student = {'Tom', 'Jim', 'Mary', 'Tom', 'Jack', 'Rose'}
@@ -197,6 +199,9 @@ dict = {}  # 先定义空字典再加元素
 dict['one'] = "1 - 菜鸟教程"
 dict[2] = "2 - 菜鸟工具"
 print(dict)
+a = {1:'2'}
+b = {2:'3'}
+c = dict(a,**b) #合并字典
 
 tinydict = {'name': 'runoob', 'code': 1, 'site': 'www.runoob.com'}  # 直接定义字典和元素
 
@@ -421,4 +426,225 @@ if __name__ == '__main__':
 # 从某个模块中导入多个函数,格式为： from somemodule import firstfunc, secondfunc, thirdfunc
 # 将某个模块中的全部函数导入，格式为： from somemodule import *
 ## import时发生了什么？
+    # 寻找模块名字空间
+    # 将该名字空间下的内容导入到本名字空间
     
+'''高阶函数'''
+# 函数可以赋值给变量
+
+# map函数：将一个函数作用到序列全体元素上
+# map函数返回一个作用好的序列（py2）/迭代器（PY3）
+def f(x):
+    return x * x
+print(list(map(f,[1,2,3,4,5])))
+
+### 例子：英文名字规范化
+def normalize(name):
+    L = list(map(lambda x:x.lower(),list(name)[1:]))
+    L.insert(0,name[0].upper())
+    return ''.join(L)
+L1 = ['adam', 'LISA', 'barT']
+L2 = list(map(normalize, L1))
+print(L2)
+
+
+# reduce函数：将序列的前两个值产生的结果继续与后一个值作用一直到结尾
+from functools import reduce
+def add(x,y):
+    return x + y
+print( reduce(add, [1, 3, 5, 7, 9]))
+
+### 例子：针对字符串中数字使用reduce
+from functools import reduce
+
+DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+def char2num(s):
+    return DIGITS[s]
+def str2int(s):
+    return reduce(lambda x, y: x * 10 + y, map(char2num, s))
+
+# filter函数：把函数作用于序列每一个元素，剔除不符合函数的元素
+
+### 例子：判断回数
+def is_palindrome(n):
+    pass
+output = filter(is_palindrome, range(1, 1000))
+print('1~1000:', list(output))
+if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121, 131, 141, 151, 161, 171, 181, 191]:
+    print('测试成功!')
+else:
+    print('测试失败!')
+
+# sorted函数：通过指定排序规则，针对序列进行排序
+### 例子：按分数由高到低排序
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+print(sorted(L,key = lambda x:x[1],reverse = True))
+
+'''闭包'''
+def outer(x):
+    def inner(y):
+        return x+y
+    return inner
+
+f = outer(1); # f指向内层
+print(f)
+print(f(2))   # f()才调用外层
+# 注意点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+##如果一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：
+
+###错版：
+def count():
+    fs = []
+    for i in range(1, 4):
+        def f():
+             return i*i
+        fs.append(f)
+    return fs
+
+f1, f2, f3 = count()
+
+### 改版
+def count():
+    def f(j):
+        def g():
+            return j*j
+        return g
+    fs = []
+    for i in range(1, 4):
+        fs.append(f(i)) # f(i)立刻被执行，因此i的当前值被传入f()
+    return fs
+
+
+'''装饰器'''
+# 在不修改原来代码，运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。
+## 本质上是闭包
+import functools
+
+def log(func):
+    @functools.wraps(func)   #避免原函数的__name__属性变化
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+@log
+def old(y,m,d):
+    print('%d-%d-%d'%(y,m,d))
+
+old(2019,6,12)  # old = log(old)
+
+#如果希望装饰器也能传入参数，那就要再套一闭包
+def log(text):
+    def decorator(func):
+        @functools.wraps(func)   #避免原函数的__name__属性变化
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+
+@log('excute')
+def now():
+    print('2016-6-12')
+
+now()   # now = log('execute')(now)
+#  分析：首先执行log('execute')，返回的是decorator函数，再调用返回的函数，参数是now函数，返回值最终是wrapper函数。
+
+
+# 偏函数：指定一个函数的参数，形成一个方便的调用，从而避免函数的定义体，但这依然可以给函数传入参数
+
+def int2(x, base=2):
+    return int(x, base)
+## =
+import functools 
+int2 = functools.partial(int, base=2)
+print(int2('1010'))
+print(int2('1010',base = 10))
+
+"""面向对象高级编程"""
+
+'''__slots__'''
+# 动态语言的特性：我们可以在任何时候给实例增加属性或方法
+# 但是给一个实例绑定方法 对于另一个实例是不起作用的
+# 为了给所有实例都新增方法 ， 可以给class绑定方法
+# 过于动态有时候增加了不可靠性，__slots__就是用来限制类属性的，试图绑定多余属性将得到AttributeError的错误。
+
+class Student(object):
+    __slots__ = ('name', 'age') # 只允许定义name和age,注意用tuple
+
+# 使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用，对继承的子类是不起作用的：
+# 除非在子类中也定义__slots__，这样，子类实例允许定义的属性就是自身的__slots__加上父类的__slots__。
+
+
+'''@property'''
+#参数检查
+
+# 原版
+class Student(object):
+
+    def get_score(self):
+         return self._score
+
+    def set_score(self, value):
+        if not isinstance(value, int):
+            raise ValueError('score must be an integer!')
+        if value < 0 or value > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        self._score = value
+
+#改版
+class Student(object):
+
+    @property                       #getter函数使用@property        ,  @property和@xx.setter通常成对出现；也可以只要@property，表示只读
+    def score(self):            
+        return self._score
+
+    @score.setter                   #setter函数指明    
+    def score(self, value):         #函数名不变
+        if not isinstance(value, int):
+            raise ValueError('score must be an integer!')
+        if value < 0 or value > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        self._score = value
+
+
+s = Student()
+s.score = 60 # OK，实际转化为s.set_score(60)
+s.score # OK，实际转化为s.get_score()
+##60
+s.score = 9999
+##Traceback (most recent call last):
+##  ...
+##ValueError: score must between 0 ~ 100!
+
+
+'''多重继承'''
+# 为了避免继承结构的复杂性
+# 通过多重继承，一个子类就可以同时获得多个父类的所有功能。
+# 关系复杂时，通常提取出一些可共性的类，然后通过多继承的方式，组合出一个新类型
+# 多重继承中各类的属性或方法重复，遵循取左原则
+
+'''枚举类'''
+# 静态语言中常见的枚举类型,python放在了enum模块中
+
+from enum import Enum
+Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+for name, member in Month.__members__.items():
+    print(name, '=>', member, ',', member.value)
+
+# 如果需要更精确地控制枚举类型，可以从Enum派生出自定义类：
+from enum import Enum, unique
+
+@unique     #  @unique装饰器可以帮助我们检查保证没有重复值。
+class Weekday(Enum):
+    Sun = 0 # Sun的value被设定为0
+    Mon = 1
+    Tue = 2
+    Wed = 3
+    Thu = 4
+    Fri = 5
+    Sat = 6
+
+print(Weekday.Sun)
+print(Weekday['Mon'])
+print(Weekday(0))
