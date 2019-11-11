@@ -117,11 +117,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="A.cpp" />
     <ClCompile Include="C:\Users\duoyi\Desktop\CMAKE\src\glad.c" />
     <ClCompile Include="triangletest.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader_s.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="useuniformtest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,6 +16,9 @@
     <Filter Include="头文件\HelloTriangle">
       <UniqueIdentifier>{fa38c5f7-b474-4a31-86aa-e0ceafccb1f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\HelloShader">
+      <UniqueIdentifier>{9c5e45e9-4f89-42a9-b76f-006c3b1df98e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\duoyi\Desktop\CMAKE\src\glad.c">
@@ -30,8 +33,10 @@
     <ClCompile Include="triangletest.h">
       <Filter>头文件\HelloTriangle</Filter>
     </ClCompile>
-    <ClCompile Include="A.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="useuniformtest.h">
+      <Filter>头文件\HelloShader</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

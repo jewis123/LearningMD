@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "triangletest.h"
+#include "useuniformtest.h"
 
 using namespace std;
 
@@ -39,8 +40,10 @@ int windowInit() {
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); // 注册窗口回调
 
 	//调用
-	HelloTriangle triangle;
-	triangle.Do(window, processInput);
+	//HelloTriangle triangle;
+	//triangle.Do(window, processInput);
+	HelloUniform uniformtest;
+	uniformtest.Do(window, processInput);
 
 	//清理释放
 	glfwTerminate();
