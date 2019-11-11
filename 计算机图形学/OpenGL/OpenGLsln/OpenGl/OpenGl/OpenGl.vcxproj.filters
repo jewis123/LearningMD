@@ -13,11 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="源文件\shaders">
-      <UniqueIdentifier>{8ee2bc26-6e43-4180-a9f2-7d159c4bf4c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\shaders\1.HelloTriangle">
-      <UniqueIdentifier>{570e79b5-b61c-46bf-82fd-555dc6e99925}</UniqueIdentifier>
+    <Filter Include="头文件\HelloTriangle">
+      <UniqueIdentifier>{fa38c5f7-b474-4a31-86aa-e0ceafccb1f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +22,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="shader_s.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="triangletest.h">
+      <Filter>头文件\HelloTriangle</Filter>
+    </ClCompile>
+    <ClCompile Include="A.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

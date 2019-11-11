@@ -1,3 +1,7 @@
-﻿  main.cpp
+﻿  glad.c
+  shader_s.h
+  main.cpp
+  triangletest.h
+  正在生成代码...
   OpenGl.vcxproj -> C:\Users\duoyi\Desktop\LearnimgMD\trunk\OpenGL\OpenGLsln\OpenGl\Debug\OpenGl.exe
   OpenGl.vcxproj -> C:\Users\duoyi\Desktop\LearnimgMD\trunk\OpenGL\OpenGLsln\OpenGl\Debug\OpenGl.pdb (Partial PDB)
