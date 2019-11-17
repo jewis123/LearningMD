@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "triangletest.h"
 #include "useuniformtest.h"
+#include "texturetest.h"
 
 using namespace std;
 
@@ -42,8 +43,12 @@ int windowInit() {
 	//调用
 	//HelloTriangle triangle;
 	//triangle.Do(window, processInput);
-	HelloUniform uniformtest;
-	uniformtest.Do(window, processInput);
+
+	//HelloUniform uniformtest;
+	//uniformtest.Do(window, processInput);
+
+	HelloTexture texturetest;
+	texturetest.Do(window, processInput);
 
 	//清理释放
 	glfwTerminate();

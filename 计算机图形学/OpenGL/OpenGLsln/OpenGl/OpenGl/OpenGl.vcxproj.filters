@@ -13,10 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\HelloTriangle">
+    <Filter Include="头文件\3.HelloTexture">
+      <UniqueIdentifier>{cb930902-ad3d-4516-8ae8-8e4f08c58e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\1.HelloTriangle">
       <UniqueIdentifier>{fa38c5f7-b474-4a31-86aa-e0ceafccb1f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\HelloShader">
+    <Filter Include="头文件\2.HelloShader">
       <UniqueIdentifier>{9c5e45e9-4f89-42a9-b76f-006c3b1df98e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -31,12 +34,25 @@
       <Filter>头文件</Filter>
     </ClCompile>
     <ClCompile Include="triangletest.h">
-      <Filter>头文件\HelloTriangle</Filter>
+      <Filter>头文件\1.HelloTriangle</Filter>
+    </ClCompile>
+    <ClCompile Include="stbimg.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="useuniformtest.h">
-      <Filter>头文件\HelloShader</Filter>
+      <Filter>头文件\2.HelloShader</Filter>
     </ClInclude>
+    <ClInclude Include="texturetest.h">
+      <Filter>头文件\3.HelloTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\HelloTexture\usetexture.vertex" />
+    <None Include="shaders\HelloTexture\usetexture.frag" />
   </ItemGroup>
 </Project>

@@ -118,12 +118,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\duoyi\Desktop\CMAKE\src\glad.c" />
+    <ClCompile Include="stbimg.cpp" />
     <ClCompile Include="triangletest.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader_s.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="texturetest.h" />
     <ClInclude Include="useuniformtest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\HelloTexture\usetexture.frag" />
+    <None Include="shaders\HelloTexture\usetexture.vertex" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
