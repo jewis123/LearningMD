@@ -1,7 +1,8 @@
-##Attribute
+## Attribute
 Attribute是C#的功能，在Unity中可以使用Attribute来给变量和方法增加新的特性或者功能。先看一些能更改你脚本在Inspector上显示效果的Attribute，这篇文章也可以用作手册查看，不定期补充。
 
-#####-变量级别。
+##### 变量级别
+
 1.**[Serializefield]**：如果想要给一个unity特有的私有变量手动赋值时使用。
 2.**[Header("XXXX")]**：unity脚本中的变量在Inspector面板中时顺序排列的，如果想在特定的变量上加一个说明时可以使用。
 3.**[HideInInspector]**：如果想让某个公有变量不在Inspector面板中显示时使用。
@@ -11,11 +12,11 @@ Attribute是C#的功能，在Unity中可以使用Attribute来给变量和方法�
 7.**[Tooltip("XXXX")]**：当鼠标悬停在变量名上时会出现XXX的提示。
 8.**[FormerlySerializedAs("XXX")]**：总以XXX的命名来序列化变量，即使变量现有名称改变，也不会丢失序列化信息。
 
-#####**-函数级别。**
+##### 函数级别
    1.**[MenuItem ("XX/XXXX")]**：在Editor中创建菜单项，点击后执行该方法，可以利用该属性做很多扩展功能。 需要方法为static。你可以在菜单栏中找到你自定义的菜单项。
     2.**[ContextMenu(function name)]**：可以将函数添加到contextMenu下。就是组件右上角小齿轮那里。可以放参数Reset之类一键操作的函数。
 
-#####**-类级别。**
+#####  类级别
    1.**[RequireComponent( typeof (XXX))]**：如果在写脚本的时候，需要XXX组件而不想手动添加时使用。
     2.**[AddComponentMenu("XX/XXXX")]**：加在脚本class程序块之上，意为将XXXX脚本放在XX的级联菜单下。在Inspector中点击AddComponent按钮就可以发现自定义的级联菜单
     3.**[DisallowMultipleComponent]**：可以避免在同一个物体上添加相同脚本。

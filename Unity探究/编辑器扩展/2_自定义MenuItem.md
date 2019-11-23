@@ -30,7 +30,8 @@ public class MenuItems
 >* Assets/Create ： items将被在“Assets/Create”下被找到
 >* CONTEXT/xxxComponentName： items 将在组建面板上右击时被找到
 
-####添加热键
+#### 添加热键
+
  *    ’%‘ – CTRL
  *    ‘#’ – Shift
  *    ‘&’ – Alt
@@ -56,7 +57,7 @@ public class MenuItems
 ```
 ![](https://upload-images.jianshu.io/upload_images/3806085-0144e439ca48b7a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####menu item 第二个参数：验证
+#### menu item 第二个参数：验证
 有些情况下，我们希望menu item 只在特定情况下能交互，这时我们需要enable/disable menu item。
 这种情况下，要用validation，即验证。
 validation方法是一种静态方法，需要满足如下条件：
@@ -80,17 +81,19 @@ validation方法是一种静态方法，需要满足如下条件：
         return Selection.activeObject.GetType() == typeof(Texture2D);
     }
 ```
-####menu item 第三个参数：优先级
+#### menu item 第三个参数：优先级
 可以给自定义的menu item设置优先级，让他显示在醒目的位置
+
 ```
 [MenuItem("Assets/PriorityItem", false,100)]  //值越大越靠后
 ```
 
 
 
-####相关类
+#### 相关类
 **MenuCommand**
 这个类可以传递上下文信息，可以用来修改组件数据
+
 ```
     [MenuItem("CONTEXT/Rigidbody/MassSet")]
     static void MassSet(MenuCommand command)
