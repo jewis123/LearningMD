@@ -1,4 +1,9 @@
-﻿  正在跳过...(未检测到相关更改)
+﻿  glad.c
   shader_s.h
+  main.cpp
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\uniformtest.h(54): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  triangletest.h
+  stbimg.cpp
+  正在生成代码...
   OpenGl.vcxproj -> C:\Users\duoyi\Desktop\LearnimgMD\trunk\计算机图形学\OpenGL\OpenGLsln\OpenGl\Debug\OpenGl.exe
   OpenGl.vcxproj -> C:\Users\duoyi\Desktop\LearnimgMD\trunk\计算机图形学\OpenGL\OpenGLsln\OpenGl\Debug\OpenGl.pdb (Partial PDB)

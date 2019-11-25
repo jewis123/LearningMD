@@ -1,0 +1,29 @@
+#ifndef  USEXXX_H
+#define USEXXX_H
+
+#include <iostream>
+#include <GLFW/glfw3.h>
+#include "shader_s.h"
+#include "stb_image.h"
+
+#include <glm\glm.hpp>
+#include <glm\gtc\matrix_transform.hpp>
+#include <glm\gtc\type_ptr.hpp>
+using namespace std;
+
+void helloXXX(GLFWwindow *window, Shader shaderProgram, void processInput(GLFWwindow*));
+
+class HelloTexture {
+public:
+	void Do(GLFWwindow* window, void processInput(GLFWwindow*)) {
+		Shader ourshader("shaders/HelloXXX/useXXX.vertex", "shaders/HelloXXX/useXXX.frag");
+		helloXXX(window, ourshader, processInput);
+	}
+
+	void helloTexture(GLFWwindow *window, Shader shaderProgram, void processInput(GLFWwindow*)) {
+	}
+
+	//¿Îºó×÷Òµ
+
+};
+#endif

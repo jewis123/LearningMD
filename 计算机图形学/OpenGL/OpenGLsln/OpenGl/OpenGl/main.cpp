@@ -2,8 +2,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "triangletest.h"
-#include "useuniformtest.h"
+#include "uniformtest.h"
 #include "texturetest.h"
+#include "transfertest.h"
+
 
 using namespace std;
 
@@ -47,8 +49,11 @@ int windowInit() {
 	//HelloUniform uniformtest;
 	//uniformtest.Do(window, processInput);
 
-	HelloTexture texturetest;
-	texturetest.Do(window, processInput);
+	//HelloTexture texturetest;
+	//texturetest.Do(window, processInput);
+
+	HelloTransfer transfertest;
+	transfertest.Do(window, processInput);
 
 	//«Â¿Ì Õ∑≈
 	glfwTerminate();

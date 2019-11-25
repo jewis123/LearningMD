@@ -22,6 +22,9 @@
     <Filter Include="头文件\2.HelloShader">
       <UniqueIdentifier>{9c5e45e9-4f89-42a9-b76f-006c3b1df98e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\4.HelloTransfer">
+      <UniqueIdentifier>{fd22e200-a921-443d-ab26-0616fbd78d84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\duoyi\Desktop\CMAKE\src\glad.c">
@@ -41,14 +44,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="useuniformtest.h">
-      <Filter>头文件\2.HelloShader</Filter>
-    </ClInclude>
     <ClInclude Include="texturetest.h">
       <Filter>头文件\3.HelloTexture</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="transfertest.h">
+      <Filter>头文件\4.HelloTransfer</Filter>
+    </ClInclude>
+    <ClInclude Include="uniformtest.h">
+      <Filter>头文件\2.HelloShader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

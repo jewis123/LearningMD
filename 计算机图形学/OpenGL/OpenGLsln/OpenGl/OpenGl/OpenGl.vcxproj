@@ -78,6 +78,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\duoyi\Desktop\LearnimgMD\trunk\计算机图形学\OpenGL\OpenGLsln\include\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -126,7 +127,8 @@
   <ItemGroup>
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="texturetest.h" />
-    <ClInclude Include="useuniformtest.h" />
+    <ClInclude Include="uniformtest.h" />
+    <ClInclude Include="transfertest.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\HelloTexture\usetexture.frag" />
