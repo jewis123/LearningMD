@@ -1,0 +1,197 @@
+// jQuery cookie 插件
+(function($,document,undefined){var pluses=/\+/g;function raw(s){return s}function decoded(s){return unRfc2068(decodeURIComponent(s.replace(pluses," ")))}function unRfc2068(value){if(value.indexOf('"')===0){value=value.slice(1,-1).replace('\\"','"').replace("\\\\","\\")}return value}var config=$.cookie=function(key,value,options){if(value!==undefined){options=$.extend({},config.defaults,options);if(value===null){options.expires=-1}if(typeof options.expires==="number"){var days=options.expires,t=options.expires=new Date();t.setDate(t.getDate()+days)}value=config.json?JSON.stringify(value):String(value);return(document.cookie=[encodeURIComponent(key),"=",config.raw?value:encodeURIComponent(value),options.expires?"; expires="+options.expires.toUTCString():"",options.path?"; path="+options.path:"",options.domain?"; domain="+options.domain:"",options.secure?"; secure":""].join(""))}var decode=config.raw?raw:decoded;var cookies=document.cookie.split("; ");var result=key?null:{};for(var i=0,l=cookies.length;i<l;i++){var parts=cookies[i].split("=");var name=decode(parts.shift());var cookie=decode(parts.join("="));if(config.json){cookie=JSON.parse(cookie)}if(key&&key===name){result=cookie;break}if(!key){result[name]=cookie}}return result};config.defaults={};$.removeCookie=function(key,options){if($.cookie(key)!==null){$.cookie(key,null,options);return true}return false}})(jQuery,document);
+
+$(document).ready(function(){
+	//加载当前位置下方广告
+	(function(){
+		$("#ad-position-bottom").html('<a href="https://www.bat888.cn/new/" target="_blank"><img width="100%" src="/uploads/ads/ad_position_bottom_wap.gif?v=' + window.cmsTempletsVer + '" /></a>');
+	})();
+	//加载文章上方广告
+	(function(){
+		var adArcTop =  $("#ad-arc-top").children();
+		//图片广告
+		adArcTop.first().html('<a href="https://www.bat888.cn/new/" target="_blank"><img width="100%" src="/uploads/ads/ad_arc_top.gif?v=' + window.cmsTempletsVer + '" /></a>');
+		//文字广告
+		var adText = adArcTop.last();
+		var adid = adText.attr("adid");
+		if(adid == "linuxprobe"){
+			adText.html('<a href="https://www.linuxprobe.com/chapter-00.html" target="_blank" style="color: #D33428;">《Linux就该这么学》是一本基于最新Linux系统编写的入门必读书籍，内容面向零基础读者，由浅入深渐进式教学，销量保持国内第一，年销售量预期超过10万本。<span style="color:#08c;">点此免费在线阅读。</span></a>');
+		}else{
+			adText.html('<a href="http://fudao.biancheng.net"  rel="nofollow" target="_blank" style="color:#D33428;">C语言中文网推出辅导班啦，包括<span style="color: #008000;">「C语言辅导班、C++辅导班、算法/数据结构辅导班」</span>，全部都是一对一教学：一对一辅导 + 一对一答疑 + 布置作业 + 项目实践 + 永久学习。QQ在线，随时响应！</a>');
+		}
+	})();
+	//加载文章底部广告
+	(function(){
+		var adArcBottom = $("#ad-arc-bottom");
+		var adPicPC = '<p class="pic_pc">'+
+						'<a href="' + 'abchttpsxyz'.substring(3, 8) + '://' + 'combttfulimnp'.substring(3, 10) + '.com/?=biancheng" target="_blank"><img width="100%" src="/uploads/ads/ad_arc_bottom_btt.gif" alt="底部图片广告2_PC" /></a>'+
+					  '</p>';
+		var adPicWAP = '<p class="pic_wap">'+
+						 '<a href="' + 'abchttpsxyz'.substring(3, 8) + '://' + 'combttfulimnp'.substring(3, 10) + '.com/?=biancheng" target="_blank"><img width="100%" src="/uploads/ads/ad_arc_bottom_wap_btt.gif" alt="底部图片广告2_WAP" /></a>'+
+					   '</p>';
+		if(adArcBottom && adArcBottom.length){
+			adArcBottom.html( adPicPC + adPicWAP );
+		}
+
+		var adText = '<p class="text"><a href="/view/6640.html" target="_blank" style="color:#D33428;" rel="nofollow">从草根到<span style="color: #008000;">百万年薪</span>程序员需要哪些 C/C++ 技能？<span style="color: #008000;">站长</span>给你 Share 一套优质的视频教程，看过不后悔！</a></p>'
+		adText += '<p class="text"><a href="https://www.dotcpp.com/vipjoin/4001/747Q17P1"  rel="nofollow" target="_blank" style="color:#333;">100 道真题上机讲解，学习大佬思路，快速提升编码能力，拥有上万行代码量！</a></p>';
+
+		if(adArcBottom && adArcBottom.length){
+			if( /a_\d+/i.test(window.arcIdRaw) ){
+				adArcBottom.html( adPicPC + adPicWAP + adText );
+			}else if( /t_\d+/i.test(window.arcIdRaw) ){
+				adArcBottom.html( adPicPC + adPicWAP );
+			}
+		}
+	})();
+
+
+	// 在目录中找到当前文章
+	(function(){
+		var url = document.location.pathname;
+		var contents = $("#contents");
+		var as = contents.length ? contents.find('a') : null;
+
+		as && as.each(function(index, domEle){
+			var thisURL = $(domEle).attr('href');
+			if(thisURL === url){
+				$(this).parent().addClass('active');
+				return false;
+			}
+		});
+	})();
+
+	//手机版--教程目录切换按钮
+	(function(){
+		var toggleBtn = $("#sidebar-toggle");
+		var sidebar = $("#sidebar");
+		toggleBtn.click(function(){
+			toggleBtn.toggleClass("toggle-btn-active");
+			sidebar.toggleClass("toggle-target-active");
+		});
+	})();
+
+	//返回顶部
+	(function(){
+		$("#return-top").click(function(){
+			$(window).scrollTop(0);
+		});
+	})();
+
+	// 加载代码高亮插件
+	function codeHighlight(){
+		var pres = document.getElementsByTagName("pre");
+		if(!pres || !pres.length) return;
+
+		$.getScript(window.cmsTemplets+"/script/jquery.snippet.js",function(){
+			$(pres).each(function(){
+				var thisClass = $(this).attr("class");
+				thisClass = thisClass && thisClass.replace( /^shell$/, "sh" );  // Shell
+
+				thisClass && !/info-box/.test(thisClass) && $(this).snippet(thisClass,{
+					style:"bright"
+				});
+			});
+		});
+	}
+	codeHighlight();
+
+	//提示开通VIP会员或者加载文章内容
+	(function(){
+		var buyCourseTip = $("#buy-course-tip");  //提示购买课程/开通VIP会员
+		var datPackage = $("#data-package");
+		var hasBuyCourse = false;  //是否购买课程
+		var isVipValid = false;  //是否开通VIP会员
+
+		if( (buyCourseTip && buyCourseTip.length) || (datPackage && datPackage.length) ){
+			var vip = $.cookie("userdata");
+			vip = vip ? vip.split("_") : 0;
+			vip = vip ? vip[1] : 0;
+
+			if(vip>=7){  //如果用户开通了VIP会员
+				isVipValid = true;
+			}else{  //如果用户没有开通VIP会员，那么检测是否购买了当前课程
+				var coursesCookie = $.cookie("course");
+				coursesCookie = coursesCookie ? coursesCookie.split("|") : new Array();
+				var typeidChain = window.typeidChain.split("|");
+
+				//判断用户是否购买了当前课程
+				for(var i=0,len1=coursesCookie.length; i<len1; i++){
+					for(var j=0,len2=typeidChain.length; j<len2; j++){
+						if(coursesCookie[i] == typeidChain[j]){
+							hasBuyCourse = true;
+							break;
+						}
+					}
+				}
+			}
+
+			//判断是否需要加载文章
+			if( buyCourseTip && buyCourseTip.length ){
+				if(isVipValid || hasBuyCourse){
+					$.ajax({
+						method: 'get',
+						url: "http://vip.biancheng.net/get_arc_new.php",
+						dataType: 'jsonp',
+						data: {"aid": buyCourseTip.attr("aid"), "v": window.cmsTempletsVer},
+						timeout: 10000,
+						beforeSend: function(XMLHttpRequest){
+							buyCourseTip.html('<p>正在加载文章内容...</p>');
+						},
+						success: function(retData){
+							var data = decodeURIComponent(retData.data);
+							if(retData.success){
+								buyCourseTip.parent().html(data);
+								codeHighlight();
+							}else{
+								buyCourseTip.html('<p>' + data + '</p>');
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown){
+							buyCourseTip.html('<p>加载文章内容失败，请刷新重试！</p>');
+						}
+					});
+				}else{
+					var topid = parseInt( buyCourseTip.attr("topid") );
+					buyCourseTip.html('<p>您好，您正在阅读付费教程，请<a href="http://vip.biancheng.net/buy.php?from=course_id_' + topid + '" target="_blank">开通VIP会员（永久有效，提供QQ一对一答疑，并赠送1TB视频资料）</a>。</p>');
+
+					/*if(topid == 78){
+						buyCourseTip.html('<p>您好，您正在阅读付费教程，请<a href="http://vip.biancheng.net/buycourse.php?id=' + topid + '" target="_blank">购买课程（赠送 6 篇 Linux 学习线路 + 10 套经典 Linux 视频教程 + 专属QQ群）</a>。</p>');
+					}else if( topid==16 || topid==19 || topid==228 ){
+						buyCourseTip.html('<p>您好，您正在阅读付费教程，请<a href="http://vip.biancheng.net/buy.php?from=course_id_' + topid + '" target="_blank">开通VIP会员（提供QQ一对一答疑，并赠送1TB编程资料）</a>。</p>');
+					}else{
+						buyCourseTip.html('<p>您好，您正在阅读付费教程，请<a href="http://vip.biancheng.net/buy.php?from=course_id_' + topid + '" target="_blank">开通VIP会员（永久有效，赠送1TB视频资料）</a>。</p>');
+					}*/
+				}
+			}
+
+			//判断是否显示资料包
+			if( (datPackage && datPackage.length) && (isVipValid || hasBuyCourse) ){
+				var typeid = parseInt( datPackage.attr("typeid") );
+				if(typeid == 78){
+					datPackage.html('您已购买课程，请「<a href="/uploads/data_package/Linux.zip" target="_blank">猛击这里</a>」下载 Linux+Shell 视频资料包。');
+					datPackage.css("display", "block");
+				}
+			}
+		}
+	})();
+
+	//更新文章点击次数
+	(function(){
+		$.ajax({
+			method: 'get',
+			url: "http://sso.biancheng.net/api/click.php",
+			dataType: 'jsonp',
+			data: {"siteid": window.siteId, "arcid": window.arcId, "v": window.cmsTempletsVer},
+			timeout: 10000,
+			success: function(data){
+				if( !data.success ){
+					//TODO:
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				//TODO:
+			}
+		});
+	})();
+});
