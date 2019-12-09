@@ -1,5 +1,5 @@
-#ifndef  USETRANSFER_H
-#define USETRANSFER_H
+#ifndef  TRANSFER_H
+#define TRANSFER_H
 
 #include <iostream>
 #include <GLFW/glfw3.h>
@@ -149,7 +149,7 @@ public:
 	}
 
 	//课后作业
-	//矩阵变换注意scale带来的影响，不光这几本身尺寸，甚至会影响其他变化
+	//矩阵变换注意scale带来的影响，不光影响本身尺寸，甚至会影响其他变化
 
 };
 #endif

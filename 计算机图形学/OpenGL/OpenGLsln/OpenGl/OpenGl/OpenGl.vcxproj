@@ -125,10 +125,13 @@
     <ClCompile Include="shader_s.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cameratest.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="texturetest.h" />
     <ClInclude Include="uniformtest.h" />
     <ClInclude Include="transfertest.h" />
+    <ClInclude Include="spacetest.h" />
+    <ClInclude Include="camera.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\HelloTexture\usetexture.frag" />

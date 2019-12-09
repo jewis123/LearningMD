@@ -1,5 +1,5 @@
-#ifndef USEUNIFORMTEST_H
-#define USEUNIFORMTEST_H
+#ifndef UNIFORMTEST_H
+#define UNIFORMTEST_H
 
 #include <iostream>
 #include <GLFW/glfw3.h>

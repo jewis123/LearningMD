@@ -25,6 +25,12 @@
     <Filter Include="头文件\4.HelloTransfer">
       <UniqueIdentifier>{fd22e200-a921-443d-ab26-0616fbd78d84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\5.HelloSpace">
+      <UniqueIdentifier>{ea8068e2-4e7d-4cfb-a0ac-fdb83108d60d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\6.HelloCamera">
+      <UniqueIdentifier>{4f536cf3-a688-40e0-868c-da32cc3f276e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\duoyi\Desktop\CMAKE\src\glad.c">
@@ -55,6 +61,15 @@
     </ClInclude>
     <ClInclude Include="uniformtest.h">
       <Filter>头文件\2.HelloShader</Filter>
+    </ClInclude>
+    <ClInclude Include="spacetest.h">
+      <Filter>头文件\5.HelloSpace</Filter>
+    </ClInclude>
+    <ClInclude Include="cameratest.h">
+      <Filter>头文件\6.HelloCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
