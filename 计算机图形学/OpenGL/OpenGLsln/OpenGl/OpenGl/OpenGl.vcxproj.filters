@@ -31,6 +31,9 @@
     <Filter Include="头文件\6.HelloCamera">
       <UniqueIdentifier>{4f536cf3-a688-40e0-868c-da32cc3f276e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\7.HelloColor">
+      <UniqueIdentifier>{463404fa-4bfe-4e5a-8f45-059c2d9067df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\duoyi\Desktop\CMAKE\src\glad.c">
@@ -70,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="colortest.h">
+      <Filter>头文件\7.HelloColor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

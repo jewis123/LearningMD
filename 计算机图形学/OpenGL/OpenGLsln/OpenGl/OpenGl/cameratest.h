@@ -14,7 +14,6 @@ using namespace std;
 using namespace glm;
 
 void processInput(GLFWwindow *window);
-void processInputEx(GLFWwindow *window);
 
 // camera
 vec3 cameraPos = vec3(0.0f, 0.0f, 3.0f);
@@ -187,7 +186,7 @@ public:
 
 
 		mat4 projection = perspective(radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		shaderProgram.setMatrix("projection", projection);
+		shaderProgram.setMat4("projection", projection);
 
 		// 循环渲染，需要每帧刷新的
 		while (!glfwWindowShouldClose(window))
@@ -204,7 +203,7 @@ public:
 			mat4 view = mat4(1.0f);;     //创建一个关注目标位置的观察矩阵
 			view = lookAt(vec3(camX, 0.0, camZ), vec3(0.0, 0.0, 0.0), vec3(0.0, 1.0, 0.0));
 			view = translate(view, vec3(0.0f, 0.0f, -3.0f));
-			shaderProgram.setMatrix("view", view);
+			shaderProgram.setMat4("view", view);
 
 			//要绘制10个立方体，就调用10次glDrawArray, 并在绘制前修改确定他的模型矩阵
 			for (int i = 0; i < 10; i++) {
@@ -213,7 +212,7 @@ public:
 				model = translate(model, cubePositions[i]);
 				float angle = 20.0f * i;
 				model = rotate(model, radians(angle), vec3(1.0f, 0.3f, 0.5f));
-				shaderProgram.setMatrix("model", model);
+				shaderProgram.setMat4("model", model);
 
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
@@ -307,7 +306,7 @@ public:
 
 
 		mat4 projection = perspective(radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
-		shaderProgram.setMatrix("projection", projection);
+		shaderProgram.setMat4("projection", projection);
 
 		// 循环渲染，需要每帧刷新的
 		while (!glfwWindowShouldClose(window))
@@ -325,7 +324,7 @@ public:
 
 			// camera/view transformation
 			mat4 view = lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-			shaderProgram.setMatrix("view", view);
+			shaderProgram.setMat4("view", view);
 
 			//要绘制10个立方体，就调用10次glDrawArray, 并在绘制前修改确定他的模型矩阵
 			for (int i = 0; i < 10; i++) {
@@ -334,7 +333,7 @@ public:
 				model = translate(model, cubePositions[i]);
 				float angle = 20.0f * i;
 				model = rotate(model, radians(angle), vec3(1.0f, 0.3f, 0.5f));
-				shaderProgram.setMatrix("model", model);
+				shaderProgram.setMat4("model", model);
 
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
@@ -439,11 +438,11 @@ public:
 
 			// pass projection matrix to shader (note that in this case it could change every frame)
 			mat4 projection = perspective(radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-			shaderProgram.setMatrix("projection", projection);
+			shaderProgram.setMat4("projection", projection);
 
 			// camera/view transformation
 			mat4 view = camera.GetViewMatrix();
-			shaderProgram.setMatrix("view", view);
+			shaderProgram.setMat4("view", view);
 
 			// render boxes
 			glBindVertexArray(VAO);
@@ -454,7 +453,7 @@ public:
 				model = translate(model, cubePositions[i]);
 				float angle = 20.0f * i;
 				model = rotate(model, radians(angle), vec3(1.0f, 0.3f, 0.5f));
-				shaderProgram.setMatrix("model", model);
+				shaderProgram.setMat4("model", model);
 
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
@@ -490,5 +489,45 @@ public:
 		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
 			cameraPos -= cameraUp * cameraSpeed;
 	}
+
+	glm::mat4 calculate_lookAt_matrix(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp)
+	{
+		// 1. 摄像机坐标：已知
+		// 2. 计算摄像机方向：构造Z轴
+		glm::vec3 zaxis = glm::normalize(position - target);
+		// 3. 通过叉乘计算获得法向量，构造X轴
+		glm::vec3 xaxis = glm::normalize(glm::cross(glm::normalize(worldUp), zaxis));
+		// 4.通过叉乘计算摄像机朝上向量，构造Y轴
+		glm::vec3 yaxis = glm::cross(zaxis, xaxis);
+
+		// 构造位移和转向矩阵
+		// glm中通过mat[col][row]形式获取值
+		glm::mat4 translation = glm::mat4(1.0f); // Identity matrix by default
+		translation[3][0] = -position.x; // Third column, first row
+		translation[3][1] = -position.y;
+		translation[3][2] = -position.z;
+		glm::mat4 rotation = glm::mat4(1.0f);
+		rotation[0][0] = xaxis.x; // First column, first row
+		rotation[1][0] = xaxis.y;
+		rotation[2][0] = xaxis.z;
+		rotation[0][1] = yaxis.x; // First column, second row
+		rotation[1][1] = yaxis.y;
+		rotation[2][1] = yaxis.z;
+		rotation[0][2] = zaxis.x; // First column, third row
+		rotation[1][2] = zaxis.y;
+		rotation[2][2] = zaxis.z;
+
+		// Return lookAt matrix as combination of translation and rotation matrix
+		return rotation * translation; // Remember to read from right to left (first translation then rotation)
+	}
 };
 #endif
+
+
+//课后习题：
+//1. 只能够呆在xz平面上
+//    只要保证摄像机Position.y = 0 即可保持在 xz平面
+//2. 自定义LookAt函数
+//    三要素： 摄像机坐标，WorldUp向量，关注点坐标
+//    先行条件：构造摄像机坐标系
+//    要想移动和旋转，就要在构造移动矩阵和旋转矩阵，详见笔记此章节附图

@@ -128,7 +128,7 @@ public:
 			transform = translate(transform, vec3(0.5f, -0.5f, 0.0f));
 			transform = rotate(transform, (float)glfwGetTime(), vec3(0.0f, 0.0f, 1.0f));
 			transform = scale(transform, glm::vec3(0.5, 0.5, 0.5));
-			shaderProgram.setMatrix("transform", transform);
+			shaderProgram.setMat4("transform", transform);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 			// second transformation
@@ -136,7 +136,7 @@ public:
 			transform = mat4(1.0);    // glm 0.99以上版本需要手动初始化矩阵
 			transform = translate(transform, vec3(-0.5f, 0.5f, 0.0f));
 			transform = scale(transform, glm::vec3(0.5, 0.5, 0.5)* sin((float)glfwGetTime()));
-			shaderProgram.setMatrix("transform", transform);
+			shaderProgram.setMat4("transform", transform);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 			glfwSwapBuffers(window);

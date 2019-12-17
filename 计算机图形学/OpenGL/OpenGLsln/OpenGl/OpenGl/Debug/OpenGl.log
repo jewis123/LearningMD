@@ -1,15 +1,15 @@
 ﻿  glad.c
   shader_s.h
   main.cpp
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\uniformtest.h(54): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(109): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(134): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(135): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(139): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(140): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(142): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(143): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(150): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\uniformtest.h(48): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(112): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(137): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(138): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(142): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(143): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(145): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(146): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+c:\users\duoyi\desktop\learnimgmd\trunk\计算机图形学\opengl\openglsln\opengl\opengl\main.cpp(153): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
   triangletest.h
   stbimg.cpp
   正在生成代码...

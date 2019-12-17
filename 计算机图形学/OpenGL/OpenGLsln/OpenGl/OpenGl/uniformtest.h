@@ -34,16 +34,10 @@ public:
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
-		// render loop
-		// -----------
 		while (!glfwWindowShouldClose(window))
 		{
-			// input
-			// -----
 			processInput(window);
 
-			// render
-			// ------
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
@@ -60,13 +54,11 @@ public:
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 
 			// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-			// -------------------------------------------------------------------------------
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}
 
 		// optional: de-allocate all resources once they've outlived their purpose:
-		// ------------------------------------------------------------------------
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
 	}

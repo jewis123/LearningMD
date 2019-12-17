@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cameratest.h" />
+    <ClInclude Include="colortest.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="texturetest.h" />
     <ClInclude Include="uniformtest.h" />

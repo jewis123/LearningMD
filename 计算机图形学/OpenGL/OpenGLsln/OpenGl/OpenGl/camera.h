@@ -8,7 +8,7 @@
 #include <vector>
 using namespace glm;
 
-// Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
+// 定义几种摄像机移动的方向
 enum Camera_Movement {
 	FORWARD,
 	BACKWARD,
@@ -18,9 +18,9 @@ enum Camera_Movement {
 	DOWN,
 };
 
-// Default camera values
-const float YAW = -90.0f;
-const float PITCH = 0.0f;
+// 摄像机的参数
+const float YAW = -90.0f;    //偏航角，绕Y
+const float PITCH = 0.0f;     //俯仰角，绕X轴
 const float SPEED = 2.5f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
@@ -44,7 +44,7 @@ public:
 	float MouseSensitivity;
 	float Zoom;
 
-	// Constructor with vectors
+	// 用向量初始化摄像机
 	Camera(vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 up = vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) : Front(vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 	{
 		Position = position;
@@ -53,7 +53,7 @@ public:
 		Pitch = pitch;
 		updateCameraVectors();
 	}
-	// Constructor with scalar values
+	// 用标量初始化
 	Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 	{
 		Position = vec3(posX, posY, posZ);
@@ -95,6 +95,7 @@ public:
 
 		Yaw += xoffset;
 		Pitch += yoffset;
+		//cout << Pitch << endl;
 
 		// Make sure that when pitch is out of bounds, screen doesn't get flipped
 		if (constrainPitch)
@@ -124,14 +125,14 @@ private:
 	// Calculates the front vector from the Camera's (updated) Euler Angles
 	void updateCameraVectors()
 	{
-		// Calculate the new Front vector
+		//计算新的摄像机朝向
 		vec3 front;
 		front.x = cos(radians(Yaw)) * cos(radians(Pitch));
 		front.y = sin(radians(Pitch));
 		front.z = sin(radians(Yaw)) * cos(radians(Pitch));
 		Front = normalize(front);
 		// Also re-calculate the Right and Up vector
-		Right = normalize(cross(Front, WorldUp));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+		Right = normalize(cross(Front, WorldUp));  //两个向量叉乘将获得一个法向量
 		Up = normalize(cross(Right, Front));
 	}
 };

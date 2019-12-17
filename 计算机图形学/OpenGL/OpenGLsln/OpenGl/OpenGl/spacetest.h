@@ -129,7 +129,7 @@ public:
 			//构造模型矩阵
 			mat4 model = mat4(1.0);
 			model = rotate(model, (float)glfwGetTime(), glm::vec3(1.0f, 0.0f, 0.0f));
-			shaderProgram.setMatrix("model", model);
+			shaderProgram.setMat4("model", model);
 
 			// 构造观察矩阵
 			mat4 view = mat4(1.0);   
@@ -140,7 +140,7 @@ public:
 			//构造透视矩阵
 			mat4 projection = mat4(1.0);
 			projection = perspective(radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-			shaderProgram.setMatrix("projection", projection);
+			shaderProgram.setMat4("projection", projection);
 
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
@@ -280,19 +280,20 @@ public:
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, texture2);
 
-			//绘制三角形
+			//设置变换矩阵
 			shaderProgram.use();
 			mat4 model = mat4(1.0f);
 			mat4 view = mat4(1.0f);
 			mat4 projection = mat4(1.0f);
-			model = rotate(model, float(glfwGetTime()), vec3(.5f, 1.0f, 0.0f));
+			model = glm::rotate(model, float(glfwGetTime()), vec3(.5f, 1.0f, 0.0f));
 			view = glm::translate(view, glm::vec3(1.0f, 1.0f, -3.0f));
 			projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-			shaderProgram.setMatrix("model", model);
+			shaderProgram.setMat4("model", model);
 			unsigned int viewLoc = glGetUniformLocation(shaderProgram.ID, "view");
 			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-			shaderProgram.setMatrix("projection", projection);
+			shaderProgram.setMat4("projection", projection);
 
+			//绘制
 			glBindVertexArray(VAO);  
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -444,7 +445,7 @@ public:
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
 		mat4 projection = mat4(1.0f);
 		projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		shaderProgram.setMatrix("projection", projection);
+		shaderProgram.setMat4("projection", projection);
 
 		// 循环渲染，需要每帧刷新的
 		while (!glfwWindowShouldClose(window))
@@ -462,7 +463,7 @@ public:
 				model =translate(model, cubePositions[i]);
 				float angle = 20.0f * i;
 				model = rotate(model, float(glfwGetTime())+ angle, vec3(1.0f, 0.3f, 0.5f));
-				shaderProgram.setMatrix("model", model);
+				shaderProgram.setMat4("model", model);
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
 

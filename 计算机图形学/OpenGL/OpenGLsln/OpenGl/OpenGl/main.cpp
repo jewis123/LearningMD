@@ -9,6 +9,7 @@
 #include "transfertest.h"
 #include "spacetest.h"
 #include "cameratest.h"
+#include "colortest.h"
 
 
 using namespace std;
@@ -76,9 +77,12 @@ int windowInit() {
 	//HelloSpace spacetest;
 	//spacetest.Do(window, processInput);
 
-	HelloCamera cameratest;
-	cameratest.Do(window, processInput);
+	//HelloCamera cameratest;
+	//cameratest.Do(window, processInput);
 	//cameratest.DoWithCamera(window, processInput, camera);
+
+	HelloColor colortest;
+	colortest.DoWithCamera(window, processInput, camera);
 
 	//«Â¿Ì Õ∑≈
 	glfwTerminate();
