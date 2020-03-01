@@ -1,4 +1,11 @@
 # coding=utf-8
+"""
+=============================================================
+描述： 将EXCEL文件数据导出到py形成数据块
+需求py： py3.6+
+导出成exe: 需要pip安装pyinstaller
+=============================================================
+"""
 import xlrd
 import argparse
 import os
@@ -41,9 +48,23 @@ def write2File(sOutPath, sFileName, dData):
 		msg = ''
 		for key, value in dData.items():
 			msg += '{}:{},\n'.format(str(key), str(value))
-		msg = """DATA = {
+		msg = """# coding=utf-8
+DATA = {
 %s
-}""" % msg
+}
+def GetData(iBuffID):
+	return DATA[iBuffID]
+	
+def GetData(iBuffID,sAttr,pDefault = None):
+	if iBuffID in DATA:
+		return DATA[iBuffID].get(sAttr,pDefault)
+	else:
+		print '[ERROR]: id not existed!'
+		import traceback
+		traceback.print_stack()
+		return pDefault
+		
+""" % msg
 		with open('{}/{}'.format(sOutPath,sFileName), 'w', encoding='utf-8') as f:
 			f.write(msg)
 	except IOError:

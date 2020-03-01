@@ -10,8 +10,13 @@
 依赖库
 argparse
 xlrd
+pyinstaller
 
 
 使用：
-exe: 双击dist/main.exe使用
-命令行：python mian.py -h 查看帮助
+exe模式: 双击dist/main.exe使用
+命令行模式：python mian.py -h 查看帮助
+
+注意点：
+excel用英文命名
+表头每一列后新加一个空列定义英文列名
