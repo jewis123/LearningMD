@@ -1,0 +1,472 @@
+
+<!-- saved from url=(0103)https://dco-assets.everestads.net/ics-campaign/static/dco/html5-ad-script_v4.html?data=XmztmQAACrPFozkt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="./mraid.js.下载"></script>
+</head>
+<body style="margin:0px">
+<!-- Messaging Script -->
+<script type="text/javascript">
+    // <![CDATA[
+    if(!window.mraid){window.mraid=new Object();window.mraid.open=function(p_url){if(p_url){window.open(p_url, "_blank");};};window.mraid.close=function(){};};
+
+    // No need to worry about namespacing here since this will be loaded in its own iFrame.
+
+    function AmoUtils(p_amoData, p_isn) {
+        var amoData = p_amoData;
+        var isn = p_isn;
+        var camAttribs = amoData.camAttribs;
+        var contentBase = amoData.contentBase;
+        var baseParams = amoData.baseParams;
+        var atsParams = amoData.atsParams;
+        var alsParams = amoData.alsParams;
+        var clickTags = amoData.clickTags;
+        var ad = amoData.ad;
+        var pxid = amoData.pxid;
+        var ut1 = amoData.ut1;
+        var ut2 = amoData.ut2;
+        var ut3 = amoData.ut3;
+        var ut4 = amoData.ut4;
+        var ut5 = amoData.ut5;
+        var bannerAdHtmlText = amoData.bannerAdHtmlText;
+        var clickBeaconArr = amoData.clickBeaconArr;
+        var atsLoggerBasePath = amoData.atsLoggerBasePath;
+        var alsLoggerBasePath = amoData.alsLoggerBasePath;;
+        var engagementBeacon = amoData.engagementBeacon;
+        var clickLogger;
+        var interactionLogger;
+        var pixelDataObject;
+        var pixelIds;
+        var offers = ad;
+
+        var AmoUtils = function(){
+            clickLogger = new ClickLogger(baseParams, atsParams);
+            interactionLogger = new InteractionLogger(baseParams, alsParams);
+            for(var i = 0;offers.length > i;i++){
+                for(var a in offers[i]){
+                    offers[i][a] = offers[i][a].replace(/\|\d+\|\d+\|/g, contentBase);
+                }
+            }
+            pixelDataObject = new Object();
+            if(pxid && pxid != "") {
+                pixelIds = new Array(pxid);
+                if(!isNaN(pxid)) {
+                    pixelDataObject[""+pxid] = new Array(ut1,ut2,ut3,ut4,ut5);
+                }
+            }
+        }();
+
+        this.getAllPixelIds = function(){
+            return pixelIds;
+        }
+
+        this.getPixelData = function(p_pixelId){
+            return pixelDataObject[p_pixelId+""];
+        }
+
+        this.getAllOffers = function(){
+            return offers;
+        }
+        this.getOffer = function(index){
+            return offers[index];
+        }
+        this.getOfferCount = function(){
+            return offers.length;
+        }
+        this.getVariation = function(){
+            return  camAttribs;
+        }
+        this.getClickUrl = function(clickParamName) {
+            var clickUrl = "";
+            if(clickParamName) {
+                if(clickTags && clickTags[clickParamName]) {
+                    clickUrl = clickTags[clickParamName]
+                }
+            }
+            return clickUrl;
+        }
+
+        this.getAllClickUrls = function() {
+            return clickTags; //paramName, Urls in JSON format.
+        }
+
+        this.getDefaultClickUrl = function() {
+            var defaultClickUrl = "";
+            var defaultKey = "";
+
+            if(clickTags) {
+                defaultKey = Object.keys(clickTags)[0];
+                defaultClickUrl = clickTags[defaultKey];
+            }
+            return defaultClickUrl;
+        }
+
+        //reorder params as per below order
+
+        /*
+        0 -  cmd
+        1 -  ProductUrl
+        2 -  ClickTrackerUrl
+        3 -  All Id parameters (AdvertiserId, AdvertiserName, CampaignId, LocationId, ExperienceId, TagId, CAM Ids)
+        4 -  x2_tracking_code_1 thru x2_tracking_code_5
+        5 - age,bt,ms,cc,etc.
+        6 -  Publisher Url
+        */
+        var reorderParams = function(params) {
+            var paramArr = ["cmd","ProductURL","ClickTrackerUrl","ISN","UserId","Provider","AdvertiserID","AdvertiserName","CampaignID","ExperienceID","TumriMiniTag","LocationID","AdPodID","RecipeID","AdType","ProductID","ExternalPageID","ExternalSiteID","ClickX","ClickY","ClickTime","MatchedAudienceSegments"];
+
+            var arr = [];
+            var obj;
+            for (var _i=0; _i < paramArr.length; _i++) {
+                var _key = paramArr[_i];
+                if (params[_key] || params[_key] == "") {
+                    obj={};
+                    obj[_key]=params[_key];
+                    arr.push(obj);
+                }
+            }
+
+            for(var a in params) {
+                var inArr = false;
+                for (var _i=0; _i < paramArr.length && !inArr; _i++) {
+                    if (a == paramArr[_i]) {
+                        inArr=true;
+                    }
+                }
+                if (inArr || (a=="PublisherURL")) {
+                    continue;
+                }
+                obj = {};
+                obj[a] = params[a];
+                arr.push(obj);
+            }
+
+            if(params.PublisherURL) {
+                obj = {};
+                obj["PublisherURL"] = params.PublisherURL;
+                arr.push(obj);
+            }
+
+            return  arr;
+        }
+
+        var createURL = function(p_basePath, p_paramArr) {
+            var queryString = '';
+            var noOfParams = p_paramArr.length;
+
+            for(var i = 0; i <  noOfParams; i++) {
+                var obj = p_paramArr[i];
+
+                for(var property in obj){
+                    queryString += encodeURIComponent(property) + '=' + encodeURIComponent((obj[property]))+'&';
+                }
+            }
+
+            var url = p_basePath + "?" + queryString;
+            return url;
+        }
+
+        this.onClick = function(type, offer, offerIndex, customText, p_x, p_y, extraParams){
+            var clkParams = clickLogger.getParams(type, offer, offerIndex, customText, p_x, p_y, extraParams);
+            var clkParamsArr = [];
+            clkParamsArr = reorderParams(clkParams);
+            var url = createURL(atsLoggerBasePath, clkParamsArr);
+            window.mraid.open(url);
+            var clickBeacons = clickBeaconArr;
+            for (var i = 0; i < clickBeacons.length; i++) {
+                this.fireBeacon(clickBeacons[i],clkParams);
+            }
+        }
+
+        this.onInteraction = function(type, attribute, offer, customText, p_x, p_y, extraParams){
+            var intParams = interactionLogger.getParams(type, attribute, offer, customText, p_x, p_y, extraParams);
+            var intParamsArr = [];
+            intParamsArr = reorderParams(intParams);
+            var url = createURL(alsLoggerBasePath, intParamsArr) + "x2_img=yes";
+            (new Image()).src= url;
+
+            if(isFirstEngagement){
+                this.fireBeacon(engagementBeacon, intParams);
+                isFirstEngagement = false;
+            }
+        }
+
+        this.showDefaultBanner = function(){
+            var bannerHtml = bannerAdHtmlText;
+            var x;
+            x = document.getElementById('bannerHtml_'+ isn); if (x) {x.innerHTML=bannerHtml; }
+            var banner = document.getElementById("bannerAd");
+            banner.style.display = "";
+
+            var adDiv = document.getElementById("tad_"+ isn);
+            if(adDiv){
+                adDiv.style.display = "none";
+            }
+        }
+        this.fireBeacon = function(p_url, paramsObject){
+            try{
+                if(p_url && p_url != "null" && p_url != "undefined"){
+                    var timeStamp = new Date().getTime() + "";
+                    var clickTime = paramsObject ? paramsObject.ClickTime: 0;
+                    var beacon = p_url.replace("[timestamp]", timeStamp);
+                    beacon = beacon.replace("^(SEC)", clickTime/1000);
+                    var bImage = new Image();
+                    bImage.src = beacon;
+                }
+            } catch(e){
+
+            }
+        }
+
+    } //end of amo_Utils
+
+    var amoUtils;
+
+    var amo = {};
+    amo.registerClick = function(clkName,clkVal) {}
+    amo.registerContent = function(contentData){}
+    amo.registerVariation = function(key, value){}
+
+    amo.getAllOffers = function(){
+        return amoUtils.getAllOffers();
+    }
+
+    amo.getOfferCount = function(){
+        return amoUtils.getOfferCount();
+    }
+
+    amo.getOffer = function(index){
+        return amoUtils.getOffer(index);
+    }
+
+    amo.getVariation = function(){
+        return amoUtils.getVariation();
+    }
+
+    amo.showDefaultBanner = function(){
+        amoUtils.showDefaultBanner();
+    }
+
+
+    function ClickLogger(p_baseParams, p_atsParams){
+        var baseObj = p_baseParams;
+        var atsObj = p_atsParams;
+        var clickLogger;
+
+        var getNetVal = function(val){
+            return val || "";
+        }
+
+        var ClickLogger = function(){
+            clickLogger = {};
+            clickLogger.cmd = "CLICK_THRU";
+            for(var a in baseObj){
+                clickLogger[a] = getNetVal(baseObj[a]);
+            }
+            for(var b in atsObj){
+                clickLogger[b] = getNetVal(atsObj[b]);
+            }
+        }();
+
+        this.getParams = function(type, offer, offerIndex, customText, p_x, p_y, extraParams){
+
+            clickLogger.ProductURL = ((extraParams && extraParams.clickUrl) ? extraParams.clickUrl : ((offer)?offer.product_url:""));
+            clickLogger.ClickTime = (extraParams && extraParams.clickTime) ? extraParams.clickTime : "";
+
+            if(offer) {
+                clickLogger.ProductURL = extraParams.clickUrl ? extraParams.clickUrl : offer.product_url;
+                clickLogger.ProductID= getNetVal(offer.id);
+                if(offer.provider){
+                    clickLogger.Provider= getNetVal(offer.provider);
+                }
+                clickLogger.SozFeatures=getNetVal(offer.sozFeatures);
+                clickLogger.GlobalID=getNetVal(offer.globalid);
+            } else {
+                if(clickLogger.AdvertiserName != undefined && clickLogger.AdvertiserName !=''){
+                    clickLogger.Provider=getNetVal(clickLogger.AdvertiserName);
+                    clickLogger.MerchantID=getNetVal(clickLogger.AdvertiserName);
+                }else if(clickLogger.PublisherID!=undefined && clickLogger.PublisherID !=''){
+                    clickLogger.Provider=getNetVal(clickLogger.PublisherID);
+                    clickLogger.MerchantID=getNetVal(clickLogger.PublisherID);
+                } else{
+                    clickLogger.Provider=getNetVal(clickLogger.AdvertiserID);
+                    clickLogger.MerchantID=getNetVal(clickLogger.AdvertiserID);
+                }
+            }
+
+            clickLogger.ClickType=getNetVal(type);
+            clickLogger.ClickID = "";
+            clickLogger.ClickX=getNetVal(p_x);
+            clickLogger.ClickY=getNetVal(p_y);
+            clickLogger.AdLink= getNetVal(customText);
+            clickLogger.AdPosition= getNetVal(offerIndex);
+
+            return clickLogger;
+
+        }
+    } //end ClickLogger
+
+
+
+    function InteractionLogger(p_baseParams, p_alsParams){
+
+        var baseObj = p_baseParams;
+        var alsObj = p_alsParams;
+        var interactionLogger;
+
+        var getNetVal = function(val){
+            return val || "";
+        }
+        var InteractionLogger = function(){
+            interactionLogger = {};
+            interactionLogger.logType="event-log.widgetEvents";
+            for(var a in baseObj){
+                interactionLogger[a] = getNetVal(baseObj[a]);
+            }
+            for(var b in alsObj){
+                interactionLogger[b] = getNetVal(alsObj[b]);
+            }
+        }();
+
+        this.getParams = function(type, attribute, offer, customText, p_x, p_y, extraParams){
+
+            //dynamic logging parameters
+            interactionLogger.EventType=getNetVal(type);
+            interactionLogger.Direction=getNetVal(attribute);
+            interactionLogger.ClickID = "";
+            interactionLogger.ClickX=getNetVal(p_x);
+            interactionLogger.ClickY=getNetVal(p_y);
+            if (extraParams && extraParams["clickTime"]){
+                interactionLogger.ClickTime=""+ extraParams["clickTime"];
+            }
+            if (offer) {
+                interactionLogger.CategoryName=getNetVal(offer.category_id);
+                interactionLogger.CategoryDisplayName=getNetVal(offer.display_category_name);
+                interactionLogger.ProductsViewed="|"+getNetVal(offer.id)+"|";
+            }
+
+            return interactionLogger;
+        }
+    }
+
+    amo.onDynAdClick = function(p_content, p_event, p_override_url, p_custom_text, p_click_time) {
+        var clientX = 0;
+        var clientY = 0;
+        var extraParams = {};
+        var customText = "";
+        var type = "CLICK";
+        var offer;
+        var offerIndex = -1;
+
+        if(p_content) {
+            offer = p_content;
+        }
+        if(p_event) {
+            clientX = p_event.clientX;
+            clientY = p_event.clientY;
+        }
+        if(p_override_url) {
+            extraParams.clickUrl = p_override_url;
+        }
+        if(p_custom_text) {
+            customText = p_custom_text;
+        }
+        if(p_click_time) {
+            extraParams.clickTime = p_click_time;
+        }
+        try {
+            for(var i=0; i<amo.content.length; i++) {
+                if(amo.content[i].gid == offer.gid){
+                    offerIndex = i;
+                    break;
+                }
+            }
+        } catch(err) {}
+        amoUtils.onClick(type, offer, offerIndex.toString(), customText, clientX, clientY, extraParams);
+    }
+
+
+    amo.onAdClick = function(p_url_param, p_event) {
+        var clientX = 0;
+        var clientY = 0;
+        var clickUrl = "";
+
+        if(p_url_param == undefined || p_url_param == null) {
+            clickUrl = amoUtils.getDefaultClickUrl(); //TODO check this.
+        } else {
+            if((p_url_param.indexOf("http://") != -1) || (p_url_param.indexOf("https://") != -1)) {//URL
+                clickUrl = p_url_param;
+            } else { //param
+                clickUrl = amoUtils.getClickUrl(p_url_param);
+            }
+
+            if(clickUrl == undefined || clickUrl == null) {
+                clickUrl = amoUtils.getDefaultClickUrl(); //TODO check this.
+            }
+        }
+
+        if (p_event == undefined || p_event == null) {
+            amoUtils.onClick("CLICK", null, 0, "", clientX, clientY, {"clickUrl":clickUrl});
+        } else {
+
+            if(p_event.clientX != undefined && p_event.clientX != null) {
+                clientX = p_event.clientX;
+            }
+            if(p_event.clientY != undefined && p_event.clientY != null) {
+                clientY = p_event.clientY;
+            }
+            amoUtils.onClick("CLICK", null, 0, "", clientX, clientY, {"clickUrl":clickUrl});
+        }
+    }
+
+    // Code to receive message from parent.
+    function receiveMessage(event) {
+        if(event == "undefined" || event.data.isn != message) {
+            return;
+        }
+        amo.data = event.data;
+        amoUtils = new AmoUtils(amo.data.data, amo.data.isn);
+        amo.content = amoUtils.getAllOffers();
+        amo.variation = amoUtils.getVariation();
+        var frm = createiFrame();
+        frm.setAttribute("src",amo.data.mainHtmlFile);
+        document.body.appendChild(frm);
+    }
+    window.addEventListener("message", receiveMessage, false);
+
+
+    // Create iFrame
+    function createiFrame() {
+        var frm = document.createElement("IFRAME");
+        frm.setAttribute("id","x2_ad");
+        frm.style="border:0;"
+        frm.style.postion="relative";
+        frm.style.top="0px";
+        frm.style.left="0px";
+        frm.style.width="100%";
+        frm.style.height="100%"
+        frm.setAttribute("scrolling","no");
+        frm.setAttribute("frameborder","0");
+        frm.style.margin = "0";
+        return frm;
+    }
+
+    // Send message to Parent.
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            if (decodeURIComponent(pair[0]) == variable) {
+                return decodeURIComponent(pair[1]);
+            }
+        }
+        return "";
+    }
+    var message = getQueryVariable("data");
+    window.parent.postMessage(message,"*");
+    // ]]>
+
+</script>
+
+
+<iframe id="x2_ad" scrolling="no" frameborder="0" src="./index(1).html" style="border: 0px; top: 0px; left: 0px; width: 100%; height: 100%; margin: 0px;"></iframe></body></html>

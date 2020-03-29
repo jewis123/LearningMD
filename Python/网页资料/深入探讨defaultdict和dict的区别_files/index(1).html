@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://dco-assets.everestads.net/ics-campaign//5031/t/7544/3/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Ad</title>
+    <!-- <script type="text/javascript" src="https://ads.everesttech.net/ads/static/local/AMOLibrary.js"></script> -->
+    <link rel="stylesheet" href="./style.min.css">
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/tag1rnw.css"> -->
+    <script src="./script.min.js.下载" charset="utf-8"></script>
+    <script type="text/javascript">
+      // amo.registerAttribute("backgroundImage", "IMAGE", "assets/MGMPark_300x250_Default.png");
+      // amo.registerClick("clickUrl", "https://www.parkmgm.com/en/booking/room-booking.html#/step1");
+    </script>
+    <style media="screen">
+      /* @font-face {
+          font-family: Gotham-Book;
+          src: url('Gotham-Book.woff') format("woff");
+      }
+      @font-face {
+          font-family: Gotham-Medium;
+          src: url('Gotham-Medium.woff') format("woff");
+      }
+      .gothamBook { font-family: Gotham-Book; }
+      .gothamMedium { font-family: Gotham-Medium; } */
+    </style>
+    <!--
+      Available Classes:-
+        For Images :-
+          .asset        -Image Center Align(Image can shrink according to the container but will expand beyond its original size)
+          .asset-top    -Image Top Center Align(Image can shrink according to the container but will expand beyond its original size)
+          .asset-left
+
+    -->
+    <style media="screen">
+      #ad {
+        width: inherit;
+        height: inherit;
+        font-family: "Trebuchet MS", Arial, sans-serif;
+        color: #fff;
+      }
+      #cta { background-color: transparent; }
+      #cta:hover { background-color: #fff; }
+    </style>
+  <script type="text/javascript" src="./AMOLibrary.js.下载"></script></head>
+  <body style="width: 728px; height: 90px;">
+    <div class="" id="ad"><div id="productImage" class="asset" style="top:0px; left:0px; width:inherit; height:inherit;"><img src="./56b2d19b9eff9bf86f6393b99e442ee3.png"></div><div id="backgroundImage" class="asset" style="top:0px; left:0px; width:inherit; height:inherit;"><img src="./1x1_1.png"></div><!-- <div id="ref" class="asset" data-image="ref" style="top:0px; left:0px; width:inherit; height:inherit;"></div> --><!-- <div id="description" class="text" data-text="description" data-style="text-align:center;" style="top:163px; left:15px; width:268px; height:30px; font-size:13px; line-height:15px; -webkit-transition:opacity 1s ease-out 0.4s; transition:opacity 1s ease-out 0.4s; opacity:0;"></div><div id="cta" class="text" data-text="ctaText" style="top:210px; left:181px; width:100px; height:25px; font-size:12px; border:1px solid #fff; color: ctaBtn; -webkit-transition:opacity 1s ease-out 1s; transition:opacity 1s ease-out 1s; opacity:0;" onmouseover="javascript:this.style.color='ctaBtnHover';" onmouseout="javascript:this.style.color='ctaBtn';"></div> --><div id="overlay" style="top: 0px; left: 0px; width: inherit; height: inherit; background-color: rgb(255, 255, 255); opacity: 0; transition: all 0.5s ease 0s; visibility: hidden;"></div><div class="ad-borders"><div class="ad-border-top" style="position:absolute;display:inline-block;width:728px;border-top:1px solid #000;top:0px;left:0px;"></div><div class="ad-border-right" style="position:absolute;display:inline-block;height:90px;border-left:1px solid #000;top:0px;left:727px;"></div><div class="ad-border-bottom" style="position:absolute;display:inline-block;width:728px;border-top:1px solid #000;top:89px;left:0px;"></div><div class="ad-border-left" style="position:absolute;display:inline-block;height:90px;border-left:1px solid #000;top:0px;left:0px;"></div></div></div>
+    <!-- <div id="loadFont" style="width:0;height:0;overflow:hidden;">
+      <div style="font-family: 'myriad-pro',sans-serif;">myriad-pro</div>
+    </div> -->
+    <script type="text/javascript">
+      var adWidth = window.innerWidth;
+      var adHeight = window.innerHeight;
+      document.body.style.width = adWidth + 'px';
+      document.body.style.height = adHeight + 'px';
+      var ad = new Ad({
+        root: document.querySelector('#ad'),
+        width: adWidth,
+        height: adHeight,
+        borderWidth: 1,
+        borderColor: '#000'
+      });
+      ad.loadAssets([(location.hostname == '' || location.hostname == 'localhost' ? 'js/AMOLibrary.js' : 'https://ads.everesttech.net/ads/static/local/AMOLibrary.js')], function(assets){
+        // amo.registerAttribute("backgroundImage", "IMAGE", "assets/MGMPark_" + adWidth + "x" + adHeight + "_Default.png");
+        // amo.registerClick("clickUrl", "https://www.parkmgm.com/en/booking/room-booking.html#/step1");
+        setTimeout(function() {
+          ad.contentSetup({
+            cam: {
+              'backgroundImage': '!{picture_url}',
+              'productImage': '!{picture_url}',
+              impressionTracker: 'assets/1x1.png?ad=' + adWidth + 'x' + adHeight,
+            clickTracker: 'assets/1x1.png?ad=' + adWidth + 'x' + adHeight + '_click',
+              'clickUrl': '!{product_url}'
+            },
+            feed: [
+              {
+                name: 'CBT Nuggets',
+                picture_url: 'assets/' + adWidth + 'x' + adHeight + '-Australia-Accelerate.png',
+                product_url: 'https://adobe.com/#CBTNuggets',
+              }
+            ],
+            staticData: {
+              // ref: 'ref.png'
+            },
+            beforeLoad: function(data){
+              // data.map(function(content){
+              //   content.ctaBtn = content.ctaBtnTextColor.split('^')[0];
+              //   content.ctaBtnHover = content.ctaBtnTextColor.split('^')[1];
+              // });
+              return data;
+            }
+          }, function(data){
+            var adData = data[0], adClickUrl = adData['clickUrl'];
+            ad.root.addEventListener("click", function(e) {
+              if('button' in e.target.dataset) { }
+            else {
+              amo.onDynAdClick(adData.feedData, "CLICK", adClickUrl);
+              if(adData.clickTracker && adData.clickTracker.toLowerCase() != 'na') {
+                var clickTrackers = adData.clickTracker.split('^');
+                  clickTrackers.forEach(function(url){
+                    if(url && url.toLowerCase() != 'na') {
+                        (new Image()).src = url;
+                    }
+                  });
+              }
+            } //amo.onDynAdClick(adData.feedData, "CLICK", adClickUrl);//amo.onAdClick('clickUrl');
+            });
+            if(adData.impressionTracker && adData.impressionTracker.toLowerCase() != 'na') {
+              var impressionTracker = adData.impressionTracker;
+              var isn = 'data' in amo && 'isn' in amo.data ? amo.data.isn : '';
+              var trackingCode = 'data' in amo && 'data' in amo.data && 'atsParams' in amo.data.data && 'x2_tracking_code_5' in amo.data.data.atsParams ? amo.data.data.atsParams.x2_tracking_code_5 : '';
+              if(isn.length) { impressionTracker = impressionTracker.replace('(t_td_isn)', isn); }
+              if(trackingCode.length){ impressionTracker = impressionTracker.replace('$(t_qp_TC_5)', trackingCode); }
+              var impressionTrackers = impressionTracker.split('^');
+              impressionTrackers.forEach(function(url){
+                if(url && url.toLowerCase() != 'na') {
+                    (new Image()).src = url;
+                }
+              });
+            }
+            // ad.layers.description.style.opacity = 1;
+            // ad.layers.cta.style.opacity = 1;
+          });
+        }, 1);
+      });
+    </script>
+  
+
+</body></html>
