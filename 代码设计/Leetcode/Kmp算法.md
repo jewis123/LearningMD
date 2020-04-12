@@ -13,10 +13,10 @@ def search(sShort, sLong):
         for j in range(iLenShort):
             if sShort[j] != sLong[i+j]:
                 break;
-        # pat 全都匹配了
+        # shortStr 全都匹配了
         if j == iLenShort:
         	return i
-    # txt 中不存在 pat 子串
+    # txt 中不存在 shortStr 字串
     return -1
 
 ```
@@ -27,6 +27,3 @@ def search(sShort, sLong):
 
 上述采用双指针解题，那么很自然的想到找办法去减少指针遍历次数。要是能有办法让长串指针跳过检查过的字符就好了
 
-### 窗格法
-
-构建短字串长度窗格，每次向后移动短字串退出循环时移动的步长。
