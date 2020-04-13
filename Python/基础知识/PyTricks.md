@@ -150,3 +150,12 @@ maxes = {max(columns) for columns in zip(*matrix)}
 
 ```
 
+- min,max可以接受函数传参作为比较的key参数
+
+```python
+>>> a = [21,4,53,-412,34,-14,12]
+>>> iAbsMax = max(a,key=abs)
+>>> print(iAbsMax)
+-412
+```
+
