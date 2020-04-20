@@ -1,0 +1,101 @@
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px/16px;
+}
+body {
+  font-size: 100%;
+}
+
+.small, .medium {
+  display: none;
+}
+
+.gist {
+  font-size: 85%;
+  line-height: 1.4em;
+  margin-bottom: 5em;
+  max-height: 30em;
+}
+  .gist-file, .gist-data, .gist-highlight {
+    max-height: 30em;
+  }
+
+h1, h2, h3, h4, h5, h6, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  line-height: 1;
+}
+
+/* clearfix, yo */
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}
+
+iframe {
+  margin: 0 0 1em;
+}
+
+.math {
+  font-size: 1.15em;
+  margin: 1em 0 1.3em;
+}
+
+article .MathJax {
+  display: block;
+}
+
+.advertisement {
+  color: #FFF;
+	width: 8.5em;
+	font-weight: 100;
+}
+
+.advertisement p {
+  margin: 5px 0 0 0;
+  line-height: 1.2;
+  opacity: .6;
+}
+
+.advertisement .fine a, .advertisement p a {
+	color: #FFF;
+	text-decoration: none;
+  display: inline;
+}
+
+.advertisement a:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.advertisement .fine {
+  font-size: 10px;
+  font-style: italic;
+  opacity: .8;
+}
+
+@media only screen and (max-width: 479px) {
+  .advertisement {
+    display: none;
+  }
+}

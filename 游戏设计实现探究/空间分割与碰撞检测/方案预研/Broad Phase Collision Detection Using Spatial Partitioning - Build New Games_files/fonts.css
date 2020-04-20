@@ -1,0 +1,8 @@
+/* fonts, yo */
+
+@font-face {
+  font-family: 'DINWeb';
+  src: url('/assets/fonts/din/DINWeb.eot') format('eot'), 
+       url('/assets/fonts/din/DINWeb.woff') format('woff'), 
+       url('/assets/fonts/din/DINWeb.ttf') format('truetype'); 
+}
