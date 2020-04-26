@@ -5,9 +5,10 @@
 
 
 """
-from graphdata import *
+from graphdata import MAP1, I_NO_WAY
 
-def Dijkstra(iVertexCnt, iSource, MAP):
+
+def Dijkstra(iVertexCnt, iSource):
     """
 已知：
     顶点数：iVertexCnt
@@ -19,16 +20,16 @@ def Dijkstra(iVertexCnt, iSource, MAP):
     """
     # 初始化
     visited = [False] * iVertexCnt
-    lPreNodes = [i for i in range(iVertexCnt)]   # 最短路径中v的前驱结点
-    lShortest = [I_NO_WAY] * iVertexCnt     # 源点各顶点的最短距离
-    lShortest[iSource] = 0                 # 下标表示具体顶点编号，值表示源点到顶点的最短距离
+    lPreNodes = [i for i in range(iVertexCnt)]  # 最短路径中v的前驱结点
+    lShortest = [I_NO_WAY] * iVertexCnt  # 源点各顶点的最短距离
+    lShortest[iSource] = 0  # 下标表示具体顶点编号，值表示源点到顶点的最短距离
 
-    for i in range(iVertexCnt): #确定lShortest
+    for i in range(iVertexCnt):  # 确定lShortest
         # 寻找距离i点最近的节点iNearestVex，和最短距离lShortest[iNearestVex]
         iNearestVex = -1
         iMin = I_NO_WAY
         for j in range(iVertexCnt):
-            if not visited[j] and lShortest[j] < iMin: # 遍历过的直接比较
+            if not visited[j] and lShortest[j] < iMin:  # 遍历过的直接比较
                 iNearestVex = j
                 iMin = lShortest[j]
 
@@ -40,10 +41,9 @@ def Dijkstra(iVertexCnt, iSource, MAP):
 
         # 松弛操作，更新经过iNearest节点的其他节点最短路径
         for k in range(iVertexCnt):
-            if not visited[k] and MAP[iNearestVex][k] != I_NO_WAY and \
-                lShortest[iNearestVex] + MAP[iNearestVex][k] < lShortest[k]:
-
-                lShortest[k] = lShortest[iNearestVex] + MAP[iNearestVex][k]
+            if not visited[k] and MAP1[iNearestVex][k] != I_NO_WAY and \
+                    lShortest[iNearestVex] + MAP1[iNearestVex][k] < lShortest[k]:
+                lShortest[k] = lShortest[iNearestVex] + MAP1[iNearestVex][k]
                 lPreNodes[k] = iNearestVex
 
     return lPreNodes
@@ -56,13 +56,25 @@ def DfsSearch(iSource, iTarget, lPreNodes, lShorestRoutine):
     DfsSearch(iSource, lPreNodes[iTarget], lPreNodes, lShorestRoutine)
     lShorestRoutine.append(iTarget)
 
-if __name__ == '__main__':
 
+def DoSearch(iStart, iEnd):
     lShorestRoutine = []
-    lPreNodes = Dijkstra(6,0, MAP1)
-    print(lPreNodes)
-    
-    #  v = 2: 0->5->2  cost = 2 + 5 = 7
-    #  v = 3: 0->4->3  cost = 1 + 4 = 5
-    DfsSearch(0, 2,lPreNodes, lShorestRoutine)
-    print(lShorestRoutine)
+    lPreNodes = Dijkstra(6, 0)
+    DfsSearch(0, 2, lPreNodes, lShorestRoutine)
+    return lShorestRoutine
+
+
+if __name__ == '__main__':
+    import time
+    import random
+
+    startTime = time.time()
+
+    for _ in range(10000):
+        iStart = random.randint(0, 6)
+        iEnd = random.randint(0, 6)
+        DoSearch(iStart, iEnd)
+
+    endTime = time.time()
+    print(endTime - startTime)  # 0.10372233390808105, 0.10733866691589355, 0.1047523021697998
+    # print(lShorestRoutine)
