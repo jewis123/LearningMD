@@ -4,6 +4,7 @@
 利用Dijkstra算法实现寻找图的单源最短路径
 特点：
     可以知道源点到图上所有节点的最短路径
+    可以通过直接修改矩阵元素应对图上边权存在动态变化的情况
 
 """
 from graphdata import MAP1, I_NO_WAY
@@ -60,22 +61,21 @@ def DfsSearch(iSource, iTarget, lPreNodes, lShorestRoutine):
 
 def DoSearch(iStart, iEnd):
     lShorestRoutine = []
-    lPreNodes = Dijkstra(6, 0)
-    DfsSearch(0, 2, lPreNodes, lShorestRoutine)
+    lPreNodes = Dijkstra(len(MAP1), iStart)
+    DfsSearch(iStart, iEnd, lPreNodes, lShorestRoutine)
     return lShorestRoutine
 
 
 if __name__ == '__main__':
-    import time
-    import random
+    lShorestRoutine = DoSearch(0, 2)
+    print(lShorestRoutine)
 
-    startTime = time.time()
-
-    for _ in range(10000):
-        iStart = random.randint(0, 6)
-        iEnd = random.randint(0, 6)
-        DoSearch(iStart, iEnd)
-
-    endTime = time.time()
-    print(endTime - startTime)  # 0.10372233390808105, 0.10733866691589355, 0.1047523021697998
-    # print(lShorestRoutine)
+    # import time
+    # import random
+    # startTime = time.time()
+    # for _ in range(10000):
+    #     iStart = random.randint(0, 6)
+    #     iEnd = random.randint(0, 6)
+    #     DoSearch(iStart, iEnd)
+    # endTime = time.time()
+    # print(endTime - startTime)  # 0.10372233390808105, 0.10733866691589355, 0.1047523021697998
