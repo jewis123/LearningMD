@@ -2,7 +2,8 @@
 
 """
 利用Dijkstra算法实现寻找图的单源最短路径
-
+特点：
+    可以知道源点到图上所有节点的最短路径
 
 """
 from graphdata import MAP1, I_NO_WAY

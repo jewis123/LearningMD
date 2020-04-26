@@ -2,6 +2,7 @@
 from graphdata import MAP2
 
 """
+利用BFS所有点对点最短路径
 特点： 
     1. 适用于等权或无权图，只关心点到点之间能否找到通路
     2. 如果图上点与点之间的连接关系是动态变化的，需要维护MAP2中点与点之间的关系，这里可以分两种情况：
@@ -9,7 +10,8 @@ from graphdata import MAP2
         - 动态开启/关闭点与点直接的连接，这就需要保存原有图的连接关系，在副本上进行维护
 """
 
-def SearchShortestRoad(iStart, iEnd):
+
+def searchShortestRoad(iStart, iEnd):
     lShortestRoad = []
     lPre = [-1] * len(MAP2)
     bFound = bfsSearch(iStart, iEnd, lPre)
@@ -46,7 +48,7 @@ if __name__ == '__main__':
     for _ in range(10000):
         iStart = random.randint(0, 6)
         iEnd = random.randint(0, 6)
-        SearchShortestRoad(0, 6)
+        searchShortestRoad(0, 6)
     endTime = time.time()
     print(endTime - startTime)  # 0.041967153549194336, 0.04288482666015625, 0.04280686378479004
 
