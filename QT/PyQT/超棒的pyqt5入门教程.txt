@@ -1,0 +1,2 @@
+https://www.learnpyqt.com/courses/
+https://github.com/learnpyqt/15-minute-apps/
