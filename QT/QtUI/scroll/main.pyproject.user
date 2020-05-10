@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.0, 2020-05-02T23:48:09. -->
+<!-- Written by QtCreator 4.12.0, 2020-05-09T23:38:04. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -156,11 +156,11 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">main</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Learning/trunk/QT/QtUI/firstQtUI/main.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Learning/trunk/QT/QtUI/firstQtUI/main.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Learning/trunk/QT/QtUI/scroll/main.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Learning/trunk/QT/QtUI/scroll/main.py</value>
     <value type="bool" key="PythonEditor.RunConfiguation.Buffered">false</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{eb36ec25-79b7-4a72-947c-629e95a3be17}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Learning\trunk\QT\QtUI\firstQtUI\main.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Learning\trunk\QT\QtUI\scroll\main.py</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -170,7 +170,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Learning/trunk/QT/QtUI/firstQtUI</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

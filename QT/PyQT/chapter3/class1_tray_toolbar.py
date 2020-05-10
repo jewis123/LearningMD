@@ -37,19 +37,22 @@ def copy_color_hsv():
         ))
 
 
-# 创建托盘
+# 创建托盘图标
 tray = QSystemTrayIcon()
 tray.setIcon(icon)
 tray.setVisible(True)
 
 menu = QMenu()
+
+#一种创建QAction的方式
 action1 = QAction("Hex")
 action1.triggered.connect(copy_color_hex)
 menu.addAction(action1)
 
-action2 = QAction("RGB")
+#另一种创建QAction的方式
+action2 = menu.addAction("RGB")
 action2.triggered.connect(copy_color_rgb)
-menu.addAction(action2)
+
 
 action3 = QAction("HSV")
 action3.triggered.connect(copy_color_hsv)
