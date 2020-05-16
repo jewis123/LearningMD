@@ -59,19 +59,19 @@ if __name__ == '__main__':
 
     print(searchShortestRoad(4, 6, MAP2))
 
-    # # 动态改变图连通情况
-    # MapCopy = []
-    # lUnReached = [1,2,3]  # 1，2，3索引的点不可达
-    # refreshMap(lUnReached, MapCopy)
-    # # print(MapCopy)
-    # print(searchShortestRoad(0, 4, MapCopy))
+    # 动态改变图连通情况
+    MapCopy = []
+    lUnReached = [1,2,3]  # 1，2，3索引的点不可达
+    refreshMap(lUnReached, MapCopy)
+    # print(MapCopy)
+    print(searchShortestRoad(0, 4, MapCopy))
 
-    # import time
-    # import random
-    # startTime = time.time()
-    # for _ in range(10000):
-    #     iStart = random.randint(0, 6)
-    #     iEnd = random.randint(0, 6)
-    #     searchShortestRoad(0, 6)
-    # endTime = time.time()
-    # print(endTime - startTime)  # 0.041967153549194336, 0.04288482666015625, 0.04280686378479004
+    import time
+    import random
+    startTime = time.time()
+    for _ in range(10000):
+        iStart = random.randint(0, 6)
+        iEnd = random.randint(0, 6)
+        searchShortestRoad(0, 6)
+    endTime = time.time()
+    print(endTime - startTime)  # 0.041967153549194336, 0.04288482666015625, 0.04280686378479004

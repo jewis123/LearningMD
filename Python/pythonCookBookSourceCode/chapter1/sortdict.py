@@ -19,3 +19,5 @@ print(rows_by_uid)
 # itemgetter() 函数也支持多个 keys，比如下面的代码
 rows_by_lfname = sorted(rows, key=itemgetter('lname','fname'))
 print(rows_by_lfname)
+
+sorted
