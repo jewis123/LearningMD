@@ -46,6 +46,11 @@
 
 虽然re模块的API都是封装正则对象的，但是了解正则对象有利于我们理解api内部做了什么。
 
+#### 更详细：
+
+1. [re模块说明](https://docs.python.org/zh-cn/3.7/library/re.html)
+2. [re How Tos](https://docs.python.org/zh-cn/3.7/howto/regex.html#regex-howto)
+
 ## Pattern对象
 
 ### 使用Flag配置
