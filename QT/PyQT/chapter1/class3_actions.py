@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         toolbar = QToolBar("My main toolbar")
         self.addToolBar(toolbar)
 
-        sPath = "D:\\Learning\\trunk\\QT\\PyQT\\img\\icon.png"
+        sPath = "img/icon.png"
         button_action = QAction(QIcon(sPath), "Your button", self)
         button_action.setStatusTip("This is your button")
         button_action.triggered.connect(self.onMyToolBarButtonClick)
