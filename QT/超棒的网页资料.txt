@@ -1,0 +1,4 @@
+【新手入门】https://www.learnpyqt.com/courses/
+【小项目上手】https://github.com/learnpyqt/15-minute-apps/
+【QT手册】(https://doc.qt.io/qt-5/index.html)
+【QThread和QObject实现多线程】(https://blog.csdn.net/czyt1988/article/details/71194457)
