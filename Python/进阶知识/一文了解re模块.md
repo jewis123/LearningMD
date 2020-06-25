@@ -4,7 +4,7 @@
 
 1. 创建正则表达式对象：re.complie
 
-   将正则表达式得样式编译为一个正则对象（re.Pattern）
+   将正则表达式得样式编译为一个正则对象（re.Pattern），这样同一个模式做多次匹配
 
 2. 利用正则对象进行匹配
 
@@ -46,7 +46,7 @@
 
 虽然re模块的API都是封装正则对象的，但是了解正则对象有利于我们理解api内部做了什么。
 
-#### 更详细：
+**更详细**：
 
 1. [re模块说明](https://docs.python.org/zh-cn/3.7/library/re.html)
 2. [re How Tos](https://docs.python.org/zh-cn/3.7/howto/regex.html#regex-howto)
