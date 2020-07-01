@@ -1,4 +1,5 @@
 import random
+import curses
 
 class dungeon_tile:
 	_shape = ''
@@ -211,6 +212,6 @@ def main(stdscr):
 	this_dungeon.draw(stdscr)
  
 	stdscr.getch()
- 
+
 if __name__ == '__main__':
 	curses.wrapper(main)

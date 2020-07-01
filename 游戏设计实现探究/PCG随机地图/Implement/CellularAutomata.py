@@ -4,7 +4,7 @@ class CelluarAutomata():
     def __init__(self):
         self.mapLength = 35
         self.mapWidth = 30
-        self.map = [['■' f random.randint(0,100) < 40 else '□' for x in range(self.mapWidth)] for y in range(self.mapLength)]
+        self.map = [['■' if random.randint(0,100) < 40 else '□' for x in range(self.mapWidth)] for y in range(self.mapLength)]
         self.ShowMap()
 
     def AutoChange(self):
