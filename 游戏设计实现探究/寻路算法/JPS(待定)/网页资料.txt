@@ -1,0 +1,7 @@
+【JPS初识】
+https://zhuanlan.zhihu.com/p/25093275
+https://zhuanlan.zhihu.com/p/80255498
+【详细介绍】
+https://blog.csdn.net/yjxxtd/article/details/93506231
+【论文】
+http://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-aaai11.pdf
