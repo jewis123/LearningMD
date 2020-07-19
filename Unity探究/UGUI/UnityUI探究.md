@@ -1,6 +1,8 @@
-##UI的基本原理
+[TOC]
 
-####术语
+## UI的基本原理
+
+#### 术语
 
 - 画布(Canvas) 是以原生代码编写的Unity组件，它给Unity的渲染系统提供按层划分的几何系统，可以在其内部或其上层绘制其他几何形状。
 
@@ -18,19 +20,19 @@ Graphic和Layout组件都依赖 CanvasUpdateRegistry 类，该类没有在Unity�
 
 Layout和Graphic组件的更新称为 重建(rebuild) 。关于重建过程的进一步详述会在下文中出现。
 
-####渲染细节
+#### 渲染细节
 当使用UI系统构建用户界面时，要时刻注意——***所有的几何形状都会在透明队列(Transparent queue)中绘制***。也就是说，由UI系统生成的几何形状都带有**Alpha混合**，从**后向前地绘制**。
 
 - 站在性能地角度上，需要记住地一件重要的事情是，从多边形栅格化而得到的每个像素都会被采样，即使它们被其他不透明多边形完全遮盖。在移动设备上，这种高层重绘(overdraw)会迅速超出GPU的填充率(fill-rate)容量。
 
-####批处理构建（batch building）过程（画布）
+#### 批处理构建（batch building）过程（画布）
 在批处理构建过程中，***画布合并用于表示UI元素的网格(mesh)***，生成合适的渲染指令发送到Unity的绘图管线。这一过程的**结果会被缓存并重用，直到画布被标记为脏画布**。脏画布会在画布的任一网格构成成员发送改变时产生。
 
 画布所使用的网格是从附加到画布的CanvasRenderer组件集合中获取的，但其中不会包括子画布中的组件。
 
 计算批处理需要根据深度(depth)对网格进行排序、检查网格的重叠、共享材质等情况。这个操作是多线程的，因此在不用的CPU架构上性能差异很大，尤其是在移动版Soc芯片（通常CPU核心数少）和现代桌面CPU（通常有4个或更多核心）之间。
 
-####重建过程（Graphics）
+#### 重建过程（Graphics）
 ***重建过程中进行了Graphic组件中的Layout和网格的重新计算***，这一过程在 CanvasUpdateRegistry 类中执行。CanvasUpdateRegistry是一个C#类，它的源代码可以在Unity’s Bitbucket上查看。
 
 在 CanvasUpdateRegistry 值得注意的方法是 PerformUpdate 。这个方法会在画布组件调用 WillRenderCanvases 事件时被调用。这个事件每帧调用一次。
@@ -45,14 +47,14 @@ Layout和Graphic组件的更新称为 重建(rebuild) 。关于重建过程的�
 
 - Layout和Graphic的重建过程会被拆分成多个部分。Layout重建分3步完成（PreLayout，Layout和PostLayout），Graphic重建分2步完成（PreRender和LatePreRender）。
 
-#####Layout重建
+##### Layout重建
 必须根据Layout层级顺序计算那些包含在Layout中的组件的位置和尺寸。在Game Object层级中，离根节点近的Layout有可能会改变嵌套在在它里面的Layout的位置和尺寸，所以它需要被先计算。
 
 为此，UI系统依据Layout在层级中的深度对脏Layout列表中的Layout进行排序，高层的（例如，父Transform更少）的项会被移动到列表的前面。
 
 排序后的Layout组件列表接下来要重建布局。这时被Layout组件控制的UI元素的位置和尺寸会发生改变。有关Layout如何影响每个元素的位置的详细叙述，请查看Unity手册中的[UI Auto Layout]( https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIAutoLayout.html )。
 
-#####Graphic重建
+##### Graphic重建
 当Graphic组件重建时，UI系统将控制传递给ICanvasElement接口的Rebuild方法。Graphic类实现了这一方法并且在Rebuild过程的PreRender阶段执行两个不同的重建步骤。
 
 如果顶点数据被标记为脏数据（例如，组件的RectTransform改变尺寸），网格会重建。
@@ -82,13 +84,13 @@ Graphic重建不通过任何特定顺序的图形组件列表进行，也不需�
 
 最后，确保不要通过将UI元素的alpha值设为0这种方式来隐藏UI元素，因为这样仍然会将元素发送到GPU并且可能花费宝贵的渲染时间。如果UI元素不需要Graphic组件，可以直接将Graphic组件移除，这时射线仍然可以工作。
 
-####简化UI结构
+#### 简化UI结构
 
 保证UI对象数量尽可能的少对于减少UI重建和渲染时间具有重要意义。尽可能多的进行烘焙，例如，不要通过混合GameObject来改变色调，应该使用材质属性代替。另外，不要仅把游戏对象当作文件夹使用（划分场景内容）。
 
 > [?1]:原文：Try to bake things as much as you can. For example, don’t use a blended GameObject just to change the hue to an element, do this via material properties instead. Also, don’t create game objects acting like folders and having no other purpose than organizing your Scenes.
 
-####禁用不可见的相机输出
+#### 禁用不可见的相机输出
 
 如果打开了带有不透明背景的全屏UI，位于世界空间(world-space)的相机仍会渲染UI后面的标准3D场景。渲染器并不知道全屏UI会遮盖整个3D场景。
 
@@ -98,11 +100,11 @@ Graphic重建不通过任何特定顺序的图形组件列表进行，也不需�
 
 *注意*：如果画布被设为 *Screen Space - Overlay* ，那么它的绘制将与场景中的活动(active)相机数目无关。
 
-####被大面积遮挡的相机
+#### 被大面积遮挡的相机
 
 很多“全屏”UI实际上并没有遮挡整个3D世界，而是留下了一小块可见的世界空间。在这种情况下，仅将可见的这部分世界空间捕获到RenderTexture可能是最佳的做法。如果把可见的场景内容“缓存”到RenderTexture中，那么实际的世界空间相机就可以被禁用，然后将缓存的RenderTexture绘制到UI屏幕后方，来提供一个伪造的3D世界画面。
 
-####基于组合的UI
+#### 基于组合的UI
 
 设计师经常会将UI元素进行组合和分层最终创建一个整合的UI，这种做法很简单，容易迭代，但并不是一个好的做法，因为Unity的UI使用了透明渲染队列。
 
@@ -114,7 +116,7 @@ Graphic重建不通过任何特定顺序的图形组件列表进行，也不需�
 
 合并UI有几个缺点，专用的元素无法被重用，并且需要额外的美术资源。额外添加的大型纹理也可能导致内存开销显著增加，尤其是在UI纹理不能按需加载和卸载时。
 
-####UI着色器与低端设备
+#### UI着色器与低端设备
 
 Unity UI系统所使用的内置着色器包含了对遮罩、裁剪以及其他很多复杂操作的支持。因为这些额外的复杂功能，在低端设备（例如iPhone 4）上UI着色器的性能要比更简单的Unity 2D着色器差很多。
 
@@ -133,7 +135,7 @@ Unity UI系统所使用的内置着色器包含了对遮罩、裁剪以及其他
 
 *重要提示：在画布上无论有什么可绘制的UI元素发生了变化，画布都必须重新运行批处理构建过程。*这一过程会重新分析画布上的每个可绘制元素，无论它有没有发生变化。注意，“变化”是指任意的UI对象外观改变，包括将精灵图赋给SpriteRenderer、改变位置和缩放、将文本合并到网格等。
 
-####子节点顺序
+#### 子节点顺序
 
 Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它们的排序顺序，先出现的对象会排在后出现的对象的后面。批处理过程会从上到下的遍历Hierarchy，收集所有使用相同材质、相同纹理并且没有中间层的对象。**“中间层”是指带有不同材质的绘图对象，它的边界与两个可另行批处理(otherwise-batchable)对象重叠并且位于两个可批处理对象之间。** *中间层会强制破坏本来的批处理* 。
 
@@ -151,7 +153,7 @@ Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它�
 
 这两种操作都可以通过Unity编辑器的Frame Debugger来实现。只需要查看Frame Debugger中Draw Call的数量，就可以找到能够最小化因重叠元素而产生的Draw Call的元素位置和顺序。
 
-####拆分画布
+#### 拆分画布
 
 ***不考虑非常复杂的UI时***，拆分画布通常是个不错的做法，无论是将元素移动到子画布还是兄弟画布。
 
@@ -161,7 +163,7 @@ Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它�
 
 虽然将UI细分到很多子画布看起来像是最佳的做法，但要记得，画布系统同样不会为不同画布中的元素合并批处理。设计高效UI需要在最小化重建开销和最小化无用批处理之间权衡。
 
-####一般原则
+#### 一般原则
 
 因为画布会在其中的任意组件发生变化时进行重新批处理，所以最好将有用的(non-trivial)画布分成至少两部分。进一步将，最好将那些同时变化的元素放到同一画布上。例如，进度条和倒计时UI，它们都依靠相同的底层数据，因此会同时更新，所以它们应该放在同一画布上。
 
@@ -175,7 +177,7 @@ Unity中的UI从后向前进行构建，对象在Hierarchy中的顺序决定它�
 
 在这篇[博客](https://blogs.unity3d.com/cn/2015/09/07/making-the-ui-backend-faster/)中可以找到更多在Unity 5.2中进行的优化信息。
 
-###Unity UI中的输入和射线
+### Unity UI中的输入和射线
 
 默认情况下，Unity使用[GraphicRaycaster](https://docs.unity3d.com/ScriptReference/UI.GraphicRaycaster.html)组件处理输入事件，例如触摸事件和鼠标悬停事件。通常由StandaloneInputManager组件处理输入，如其名称所描述的，StandaloneInputManager是一个“通用”的输入管理系统，鼠标和触摸都可以处理。
 
@@ -224,8 +226,6 @@ GraphicRaycaster的实现相当直接——遍历所有“Raycast Target”属�
 #### 子画布和重写排序(OverrideSorting)属性
 
 子画布中地[overrideSorting](https://docs.unity3d.com/ScriptReference/Canvas-overrideSorting.html)属性会导致GraphicRaycast测试停止遍历Transform层级。如果启用它不会引起排序或射线检测问题，那么应该用其减少射线检测的层级遍历开销。
-
-
 
 #### 禁用画布
 
