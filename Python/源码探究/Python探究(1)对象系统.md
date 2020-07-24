@@ -68,7 +68,7 @@ python假设一个对象的引用计数不会大于32位整形变量
 
 ## Python对象的分类
 
-![对象的分类](对象的分类.png)
+![对象的分类](img/对象的分类.png)
 
 额外解释：
 
@@ -82,10 +82,10 @@ Internal对象：虚拟机运行时内部使用的对象
 
 但是我们通过源码能看到，这个可用`module`对象他的类型是`PyModule_Type`
 
-![](PyModule_Type.png)
+![](img/PyModule_Type.png)
 
 红框处就是调用它的函数指针。
 
 而初始化模块的逻辑如下：
 
-![module_init](module_init.png)
+![module_init](img/module_init.png)
