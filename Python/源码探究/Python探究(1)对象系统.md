@@ -2,7 +2,7 @@
 
 ## 直击灵魂的问题
 
-python是怎么将模块(module)编译成可用对象的？
+python是怎么将模块文件(module)编译成可用对象的？
 
 分解问题涉及的内容：对象系统，编译、虚拟机、名字空间
 
@@ -48,11 +48,15 @@ tp_as_number, tp_as_sequence,tp_as_mapping，不同的操作族中包含不同�
 
 所有自定义class所对应的PyTypeObject对象都是通过PyType_Type这个对象创建的。
 
-PyType_Type也被成为metaclass
+`PyType_Type`也被称为`元类型(metaclass)`（敲黑板，划重点）
+
+### 区分类型对象和对象类型
+
+类型对象即**PyXXObject**，对象类型即**PyXXX_Type**。**类型对象 is instance of 对象类型**。他们之间的关系可以看下图。
 
 ### 类型之间的关系
 
-![类型关系](类型关系.png)
+![类型关系](img/类型关系.png)
 
 ### Python对象的多态性
 
@@ -80,12 +84,10 @@ Internal对象：虚拟机运行时内部使用的对象
 
 从上图我们看到模块对象是由虚拟机在运行时创建出来的对象，所以在我们了解虚拟机运行时做了什么之前，暂时无法完整回答这个问题。
 
-但是我们通过源码能看到，这个可用`module`对象他的类型是`PyModule_Type`
+但是我们可以先了解**模块对象**是个什么对象类型,以及它对应的类型对象。
 
-![](img/PyModule_Type.png)
+通过源码能看到，这个可用`module`对象他的类型是`PyModule_Type`，而对应的类型对象是**`PyModuleObject`**
 
-红框处就是调用它的函数指针。
+![](img/PyModuleObject.png)
 
-而初始化模块的逻辑如下：
-
-![module_init](img/module_init.png)
+![module_init](img/PyModule_Type.png)
