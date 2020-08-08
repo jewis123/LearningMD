@@ -35,52 +35,86 @@ step16：     计算节点N以Nmin为父节点的新的目标函数f(x)_new
 step17：     if f(x)_new < f(x)_old:
 step18：         设置节点N的父节点为Nmin
 step19：         并且更新节点N的目标函数f(x) = f(x)_new
-step20：         转入step7，循环遍历列表Nlist中的所有邻居节点
+step20：转入step7，循环遍历列表Nlist中的所有邻居节点
 step21：转入step4，直到Openlist为空或者Nmin等于终点E
+
+
+注意点：
+fx,gx,hx 不要在初始化node时计算，可减少计算量
 """
 
-from define.node import Node
+from define.node import *
 from defines import *
 
 
-class Astar:
-    def __init__(self):
-        self.lOpen = []
-        self.lClose = []
-        self.lBlock = []
-        self.lNodes = None
+class CAstar:
+    """
+    """
 
-    def GenMapNode(self, map):
-        self.lNodes = [[None for i in range(I_MAP_WIDTH)] for j in range(I_MAP_HEIGHT)]
-        tStartPos, tEndPos = self.getStartEndPos(map)
+    def __init__(self, map):
+        self.lOpen = []  # 存点
+        self.lClose = []  # 存坐标
+        self.lBlock = []  # 存坐标
+        self.lNodes = [[None for i in range(I_MAP_WIDTH)] for j in range(I_MAP_HEIGHT)] # 存点
+        self.tStartPos = self.tEndPos = ()
+        self.map = map
+
+    def GenMapNode(self):
+        self.tStartPos, self.tEndPos = GetStartEndPos()
         for row in range(I_MAP_HEIGHT):
             for col in range(I_MAP_WIDTH):
-                oNode = Node((row, col), tStartPos, tEndPos)
-                self.lNodes = oNode
-                if map[row][col] == S_BLOCK:
-                    self.lBlock.append(oNode)
-                elif map[row][col] == S_START:
+                oNode = Node((row, col))
+                self.lNodes[row][col] = oNode
+                if self.map[row][col] == S_BLOCK:
+                    self.lBlock.append((row, col))
+                elif self.map[row][col] == S_START:
+                    iFx = CalNodeFx(oNode, self.tStartPos, self.tEndPos)
+                    oNode.SetFx(iFx)
                     self.lOpen.append(oNode)
 
     @staticmethod
-    def getStartEndPos(map):
-        tStart = tEnd = (0, 0)
-        bStartFind = bEndFind = False
-        for row in range(I_MAP_HEIGHT):
-            for col in range(I_MAP_WIDTH):
-                if map[row][col] == S_START:
-                    tStart = (row, col)
-                    bStartFind = True
-                elif map[row][col] == S_END:
-                    tEnd = (row, col)
-                    bEndFind = True
-                if bEndFind and bStartFind:
-                    break
-        return tStart, tEnd
+
 
     def FindPath(self):
-        
+        while self.lOpen:
+            oMinFNode = self.getMinFNode()
+            for oNeighbour in self.getNodeNeighbours(oMinFNode):
+                tCur =  oNeighbour.GetPos()
+                iOldFx = oNeighbour.GetFx()
+                if tCur in self.lBlock or tCur in self.lClose:  # 剪枝
+                    continue
+                if oNeighbour in self.lOpen:
+                    iNewFx = CalNodeFx(oNeighbour, oMinFNode.GetPos(), self.tEndPos) + oMinFNode.GetFx()
+                    if iNewFx < iOldFx:
+                        oNeighbour.SetParent(oMinFNode)
+                        oNeighbour.SetFx(iNewFx)
+                else:
+                    iFx = CalNodeFx(oNeighbour, oMinFNode.GetPos(),self.tEndPos)
+                    oNeighbour.SetParent(oMinFNode)
+                    oNeighbour.SetFx(iFx)
+                    self.lOpen.append(oNeighbour)
+
+
+
+
+    def getMinFNode(self):
+        iMinIdx, iMin = 0, 0xff
+        for idx, oNode in enumerate(self.lOpen):
+            if oNode.GetFx() < iMin:
+                iMinIdx = idx
+                iMin = oNode.GetFx()
+        return self.lOpen.pop(iMinIdx)
+
+    def getNodeNeighbours(self, oNode):
+        """采用曼哈顿距离执行四向搜索"""
+        lDir = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # 四个方向邻居
+        tCur = oNode.GetPos()
+        for tDir in lDir:
+            row, col = tCur[0] + tDir[0], tCur[1] + tDir[1]
+            yield self.lNodes[row][col]
+
 
 
 if __name__ == "__main__":
-    pass
+    oLogic = CAstar()
+    oLogic.GenMapNode(MAP1)
