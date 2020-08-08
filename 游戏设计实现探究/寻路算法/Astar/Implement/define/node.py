@@ -3,11 +3,9 @@
 节点定义
 
 欧氏距离（八向）：  dis = sqrt((x2 -x1)**2 + (y2- y1)**2)
-曼哈顿距离（四向）：dis = (x2 -x1) + (y2- y1)
+曼哈顿距离（四向）：dis = |(x2 -x1) + (y2- y1)|
 """
 
-def UpdateNode(oNode, oNewParent):
-    pass
 
 def CalNodeFx(oNode, tStartPos, tEndPos):
     gx = calGx(oNode, tStartPos)
@@ -15,17 +13,22 @@ def CalNodeFx(oNode, tStartPos, tEndPos):
     fx = gx + hx
     return fx
 
+
 def calGx(oNode, tStartPos):
-    pass
+    tPos = oNode.GetPos()
+    return abs(sum(tPos) - sum(tStartPos))
+
 
 def calHx(oNode, tEndPos):
-    pass
+    tPos = oNode.GetPos()
+    return abs(sum(tPos) - sum(tEndPos))
+
 
 class Node:
     def __init__(self, tCurPos):
         self.gx = 0
         self.hx = 0
-        self.fx =0
+        self.fx = 0
         self.tPos = tCurPos
         self.parent = None
 
@@ -47,5 +50,5 @@ class Node:
     def SetParent(self, oNode):
         self.parent = oNode
 
-    def SetFx(self,iFx):
+    def SetFx(self, iFx):
         self.iFx = iFx

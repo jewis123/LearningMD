@@ -35,8 +35,7 @@ step16：     计算节点N以Nmin为父节点的新的目标函数f(x)_new
 step17：     if f(x)_new < f(x)_old:
 step18：         设置节点N的父节点为Nmin
 step19：         并且更新节点N的目标函数f(x) = f(x)_new
-step20：转入step7，循环遍历列表Nlist中的所有邻居节点
-step21：转入step4，直到Openlist为空或者Nmin等于终点E
+step20：转入step4，直到Openlist为空或者Nmin等于终点E
 
 
 注意点：
@@ -55,8 +54,9 @@ class CAstar:
         self.lOpen = []  # 存点
         self.lClose = []  # 存坐标
         self.lBlock = []  # 存坐标
-        self.lNodes = [[None for i in range(I_MAP_WIDTH)] for j in range(I_MAP_HEIGHT)] # 存点
+        self.lNodes = [[None for i in range(I_MAP_WIDTH)] for j in range(I_MAP_HEIGHT)]  # 存点
         self.tStartPos = self.tEndPos = ()
+        self.oStartNode = self.oEndNode = None
         self.map = map
 
     def GenMapNode(self):
@@ -71,33 +71,48 @@ class CAstar:
                     iFx = CalNodeFx(oNode, self.tStartPos, self.tEndPos)
                     oNode.SetFx(iFx)
                     self.lOpen.append(oNode)
-
-    @staticmethod
-
+                    self.oStartNode = oNode
+                elif self.map[row][col] == S_END:
+                    self.oEndNode = oNode
 
     def FindPath(self):
         while self.lOpen:
             oMinFNode = self.getMinFNode()
+            tMinNodePos = oMinFNode.GetPos()
+            if tMinNodePos == self.tEndPos:
+                break
+
             for oNeighbour in self.getNodeNeighbours(oMinFNode):
-                tCur =  oNeighbour.GetPos()
+                tCur = oNeighbour.GetPos()
                 iOldFx = oNeighbour.GetFx()
                 if tCur in self.lBlock or tCur in self.lClose:  # 剪枝
                     continue
                 if oNeighbour in self.lOpen:
-                    iNewFx = CalNodeFx(oNeighbour, oMinFNode.GetPos(), self.tEndPos) + oMinFNode.GetFx()
+                    iNewFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos) + oMinFNode.GetFx()
                     if iNewFx < iOldFx:
                         oNeighbour.SetParent(oMinFNode)
                         oNeighbour.SetFx(iNewFx)
                 else:
-                    iFx = CalNodeFx(oNeighbour, oMinFNode.GetPos(),self.tEndPos)
+                    iFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos)
                     oNeighbour.SetParent(oMinFNode)
                     oNeighbour.SetFx(iFx)
                     self.lOpen.append(oNeighbour)
 
+            self.lClose.append(tMinNodePos)  #用完oMinNode加入CloseList
 
+        self.showPathInMap()
 
+    def showPathInMap(self):
+        oCur = self.oEndNode.GetParent()
+        while oCur.GetParent():
+            row, col = oCur.GetPos()
+            self.map[row][col] = S_PATH
+            oCur = oCur.GetParent()
+        import pprint
+        pprint.pprint(self.map)
 
     def getMinFNode(self):
+        """找出OpenList中Fx最小的点, 并移出OpenList"""
         iMinIdx, iMin = 0, 0xff
         for idx, oNode in enumerate(self.lOpen):
             if oNode.GetFx() < iMin:
@@ -111,10 +126,15 @@ class CAstar:
         tCur = oNode.GetPos()
         for tDir in lDir:
             row, col = tCur[0] + tDir[0], tCur[1] + tDir[1]
-            yield self.lNodes[row][col]
-
+            if 0 <= row < len(self.lNodes) and 0 <= col < len(self.lNodes[0]):
+                yield self.lNodes[row][col]
 
 
 if __name__ == "__main__":
-    oLogic = CAstar()
-    oLogic.GenMapNode(MAP1)
+    import time
+    oLogic = CAstar(MAP1)
+    oLogic.GenMapNode()
+    iStartTime = time.time()
+    oLogic.FindPath()
+    iEndTime = time.time()
+    print("耗时：",iEndTime - iStartTime)
