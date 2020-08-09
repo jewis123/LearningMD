@@ -4,7 +4,12 @@
 
 欧氏距离（八向）：  dis = sqrt((x2 -x1)**2 + (y2- y1)**2)
 曼哈顿距离（四向）：dis = |(x2 -x1)| + |(y2- y1)|
+
+启发函数 = DJK策略*比例1 + 目标有限策略*比例2
 """
+
+GX_WEIGHT = 1
+HX_WEIGHT = 1
 
 
 ## 基础方案
@@ -55,16 +60,18 @@ def GetNodeNeighboursWithNoObs(oNode, lNodeList):
 def CalNodeFx(oNode, tStartPos, tEndPos):
     gx = calGx(oNode, tStartPos)
     hx = calHx(oNode, tEndPos)
-    fx = gx + hx
+    fx = gx * GX_WEIGHT + hx * HX_WEIGHT  # GX_WEIGHT/HX_WEIGHT越大，遍历规模就越大，路线越趋向最短路线；反之，遍历规模越小，目标导向越强，路线可能不是最优路线（绕路）
     return fx
 
 
 def calByManhadun(tPos, tTarPos):
     return abs(tPos[0] - tTarPos[0]) + abs(tPos[1] - tTarPos[1])
 
+
 def calGx(oNode, tStartPos):
     tPos = oNode.GetPos()
     return calByManhadun(tPos, tStartPos)
+
 
 def calHx(oNode, tEndPos):
     tPos = oNode.GetPos()
@@ -106,5 +113,3 @@ class Node:
 
     def SetIsCanGo(self, bFlag):
         self.bCanGo = bFlag
-
-
