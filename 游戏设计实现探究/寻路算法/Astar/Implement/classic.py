@@ -44,20 +44,67 @@ fx,gx,hx 不要在初始化node时计算，可减少计算量
 
 from define.node import *
 from defines import *
+from optimization import *
+
+B_SHOW_MAP_FX = 0
+B_USE_HEAP = 1
 
 
 class CAstar:
-    """
-    """
-
     def __init__(self, map):
         self.lOpen = []  # 存点
-        self.lClose = []  # 存坐标
-        self.lBlock = []  # 存坐标
+        self.nodeHeap = Heap()
+
         self.lNodes = [[None for i in range(I_MAP_WIDTH)] for j in range(I_MAP_HEIGHT)]  # 存点
         self.tStartPos = self.tEndPos = ()
         self.oStartNode = self.oEndNode = None
         self.map = map
+
+    def appendOpenList(self, oNode):
+        if B_USE_HEAP:
+            self.nodeHeap.push(oNode)
+        else:
+            self.lOpen.append(oNode)
+
+    def isOpenListEmpty(self):
+        if B_USE_HEAP:
+            return not self.nodeHeap.IsEmpty()
+        else:
+            return self.lOpen != []
+
+    def showPathInMap(self):
+        oCur = self.oEndNode.GetParent()
+        while oCur.GetParent():
+            row, col = oCur.GetPos()
+            oCur = oCur.GetParent()
+            self.map[row][col] = S_PATH
+            if B_SHOW_MAP_FX:
+                self.map[row][col] = "%d!" % oCur.GetFx()
+        import pprint
+        pprint.pprint(self.map)
+
+    def getMinFNode(self):
+        """找出OpenList中Fx最小的点, 并移出OpenList"""
+        if B_USE_HEAP:
+            return self.nodeHeap.pop()
+        else:
+            iMinIdx, iMin = 0, 0xff
+            for idx, oNode in enumerate(self.lOpen):
+                if oNode.GetFx() < iMin:
+                    iMinIdx = idx
+                    iMin = oNode.GetFx()
+            return self.lOpen.pop(iMinIdx)
+
+    def getNodeNeighbours(self, oNode):
+        bOnlyWhenNoObstacles = 1
+        bCorner = 1
+        if not (bOnlyWhenNoObstacles or bCorner):
+            yield from GetNodeNeighbours(oNode, self.lNodes)
+        if bCorner:
+            if bOnlyWhenNoObstacles:
+                yield from GetNodeNeighboursWithNoObs(oNode, self.lNodes)
+            else:
+                yield from GetNodeNeighbourAllowCorner(oNode, self.lNodes)
 
     def GenMapNode(self):
         self.tStartPos, self.tEndPos = GetStartEndPos()
@@ -65,76 +112,67 @@ class CAstar:
             for col in range(I_MAP_WIDTH):
                 oNode = Node((row, col))
                 self.lNodes[row][col] = oNode
+
                 if self.map[row][col] == S_BLOCK:
-                    self.lBlock.append((row, col))
-                elif self.map[row][col] == S_START:
+                    oNode.SetIsCanGo(False)
+
+                elif self.map[row][col] == S_START:  # 首先起点加入OpenList
                     iFx = CalNodeFx(oNode, self.tStartPos, self.tEndPos)
                     oNode.SetFx(iFx)
-                    self.lOpen.append(oNode)
+                    self.appendOpenList(oNode)
                     self.oStartNode = oNode
+
+                    if B_SHOW_MAP_FX:
+                        self.map[row][col] = str(iFx)
+
                 elif self.map[row][col] == S_END:
                     self.oEndNode = oNode
+                    iFx = CalNodeFx(oNode, self.tStartPos, self.tEndPos)
+                    oNode.SetFx(iFx)
+
+                    if B_SHOW_MAP_FX:
+                        self.map[row][col] = str(iFx)
 
     def FindPath(self):
-        while self.lOpen:
+        while self.isOpenListEmpty():
             oMinFNode = self.getMinFNode()
             tMinNodePos = oMinFNode.GetPos()
             if tMinNodePos == self.tEndPos:
                 break
 
             for oNeighbour in self.getNodeNeighbours(oMinFNode):
-                tCur = oNeighbour.GetPos()
                 iOldFx = oNeighbour.GetFx()
-                if tCur in self.lBlock or tCur in self.lClose:  # 剪枝
+                x, y = oNeighbour.GetPos()
+                if not oNeighbour.IsCanGo():  # 剪枝
                     continue
                 if oNeighbour in self.lOpen:
                     iNewFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos) + oMinFNode.GetFx()
                     if iNewFx < iOldFx:
                         oNeighbour.SetParent(oMinFNode)
                         oNeighbour.SetFx(iNewFx)
+
+                        if B_SHOW_MAP_FX:
+                            self.map[x][y] = str(iNewFx)
                 else:
-                    iFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos)
+                    iFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos) + oMinFNode.GetFx()
                     oNeighbour.SetParent(oMinFNode)
                     oNeighbour.SetFx(iFx)
-                    self.lOpen.append(oNeighbour)
+                    self.appendOpenList(oNeighbour)
 
-            self.lClose.append(tMinNodePos)  #用完oMinNode加入CloseList
+                    if B_SHOW_MAP_FX:
+                        self.map[x][y] = str(iFx)
+
+            oMinFNode.SetIsCanGo(False)
 
         self.showPathInMap()
-
-    def showPathInMap(self):
-        oCur = self.oEndNode.GetParent()
-        while oCur.GetParent():
-            row, col = oCur.GetPos()
-            self.map[row][col] = S_PATH
-            oCur = oCur.GetParent()
-        import pprint
-        pprint.pprint(self.map)
-
-    def getMinFNode(self):
-        """找出OpenList中Fx最小的点, 并移出OpenList"""
-        iMinIdx, iMin = 0, 0xff
-        for idx, oNode in enumerate(self.lOpen):
-            if oNode.GetFx() < iMin:
-                iMinIdx = idx
-                iMin = oNode.GetFx()
-        return self.lOpen.pop(iMinIdx)
-
-    def getNodeNeighbours(self, oNode):
-        """采用曼哈顿距离执行四向搜索"""
-        lDir = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # 四个方向邻居
-        tCur = oNode.GetPos()
-        for tDir in lDir:
-            row, col = tCur[0] + tDir[0], tCur[1] + tDir[1]
-            if 0 <= row < len(self.lNodes) and 0 <= col < len(self.lNodes[0]):
-                yield self.lNodes[row][col]
 
 
 if __name__ == "__main__":
     import time
+
     oLogic = CAstar(MAP1)
     oLogic.GenMapNode()
     iStartTime = time.time()
     oLogic.FindPath()
     iEndTime = time.time()
-    print("耗时：",iEndTime - iStartTime)
+    print("耗时：", iEndTime - iStartTime)
