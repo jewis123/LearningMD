@@ -42,7 +42,7 @@ step20：转入step4，直到Openlist为空或者Nmin等于终点E
 fx,gx,hx 不要在初始化node时计算，可减少计算量
 """
 
-from define.node import *
+from node import *
 from defines import *
 from optimization import *
 
