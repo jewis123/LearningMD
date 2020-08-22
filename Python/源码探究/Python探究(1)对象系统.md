@@ -15,10 +15,13 @@ python是怎么将模块文件(module)编译成可用对象的？
 ### 包含哪些数据？
 
 - 引用计数
-
 - 类型对象（指向对象类型）
 
-## PyTypeObject：PyObject中的第二个数据成员
+这些数据实际都存在PyObject_HEAD中。
+
+## PyTypeObject：
+
+PyObject中的第二个数据成员，对象相关的元信息实际都存在这里
 
 ### 组成成分？
 
@@ -31,8 +34,8 @@ python是怎么将模块文件(module)编译成可用对象的？
 
 **两种方式？**
 
-- 通过C的多态机制创建类型
-- 通过特定接口创建相应类型
+- 泛型API, (PyObject_XXX( type_instance))
+- COL, 通过特定接口创建相应类型（例如：PyString_FromString(s)）
 
 ### 类型行为: PyTypeObject的3种基本操作族
 
