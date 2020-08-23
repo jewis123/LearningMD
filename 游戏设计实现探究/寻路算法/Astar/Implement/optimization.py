@@ -2,21 +2,23 @@
 """
 A* 优化方案
 
+## 计算方面
+fx,gx,hx 不要在初始化node时计算，放在遍历时计算，可避免不要节点的计算。
+
 ## 寻路方面
-- 移除CloseList改用节点属性保存可访问性，可将判断合法性由O(N)降到O(1)
+- 增加 Hx 在启发函数中的比重： 增加选点策略对目标的导向型，减少遍历数量
 
 - 获取最小Fx节点目前是用列表遍历， 可以构造最小堆。
-                    插入            取最小
-            优化前：   1            O(N)
-            优化后：O(logN)          1
+                    插入          删除              取最小（查+删）
+            优化前： O(1)          O(N)             O(N)
+            优化后：O(logN)        O(logN)          O(logN)
 
-- 增加 Hx 在启发函数中的比重： 增加选点策略对目标的导向型
+- 移除CloseList改用节点属性保存可访问性，可将判断合法性由O(N)降到O(1)
 
-- 分级寻径： 在起点到终点增加多个断点， 使得一次寻路变成多次寻路，减少每次的搜索空间。属于分帧思路。
+- 分步寻径： 在起点到终点增加多个断点， 使得一次寻路变成多次寻路，减少每次的搜索空间。属于分帧思路。
 
 ## 地图预处理方面
 - 合并小格子为大格子： 通常合并障碍格子，以及与紧贴障碍格子的平行格子
-
 
 """
 
@@ -38,10 +40,12 @@ class Heap:
         return not self.heap
 
     def push(self, val):
+        """先加入末尾在siftdown"""
         self.heap.append(val)
         self.siftdown(self.heap, 0, len(self.heap) - 1)
 
     def pop(self):
+        """取头，再siftup"""
         if not self.heap:
             raise ValueError("head is empty! can not pop")
         lastElem = self.heap.pop()

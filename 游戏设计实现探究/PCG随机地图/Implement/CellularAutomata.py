@@ -21,7 +21,7 @@ class CelluarAutomata():
         #     self.ShowMap() 
 
     def CheckThisTile1(self,x,y):
-        if self.CountRoundWall(1,x,y) >= 5 or self.CountRoundWall(2,x,y) <= 2: 
+        if self.CountRoundWall(1,x,y) >= 5 or self.CountRoundWall(2,x,y) <= 2:
             self.map[x][y] = '■'
 
     def CheckThisTile2(self,x,y):

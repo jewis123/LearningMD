@@ -133,6 +133,12 @@ class CAstar:
                     if B_SHOW_MAP_FX:
                         self.map[row][col] = str(iFx)
 
+        self.mapPreDeal()
+
+    def mapPreDeal(self):
+        """地图预处理：将相邻block合并"""
+        pass
+
     def FindPath(self):
         while self.isOpenListEmpty():
             oMinFNode = self.getMinFNode()
