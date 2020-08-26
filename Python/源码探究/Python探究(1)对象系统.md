@@ -34,6 +34,8 @@ PyObject中的第二个数据成员，对象相关的元信息实际都存在这
 
 **两种方式？**
 
+- 多态接口创建（例如：直接实例化PyObject_XXX）
+- 通过特定接口创建相应类型（例如：PyInt_FromLong(10)）
 - 泛型API, (PyObject_XXX( type_instance))
 - COL, 通过特定接口创建相应类型（例如：PyString_FromString(s)）
 
