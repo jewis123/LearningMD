@@ -25,5 +25,4 @@ Attribute是C#的功能，在Unity中可以使用Attribute来给变量和方法�
     6.**[SelectionBase]**：当你希望在点击子物体时在Hierarchy选中根物体时使用。
     7.**[CanEditMultipleObjects]** ：当你希望你的脚本能够被多选操作时使用。这需要引用UnityEditor命名空间。
     8.**[CustumEditor(typeof(XXX))]**：这可以使脚本转变成你的自定义的XXX组件。需要是你的脚本继承自Editor。
-    
 以上都是很常用的Attributes, 如需更多，看[Unity文档](https://docs.unity3d.com/ScriptReference/index.html)中的UnityEngine和UnityEditor类下的Attribute分类。
