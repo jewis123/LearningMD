@@ -33,7 +33,14 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>TextLabel</string>
+           <string>11111</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>PushButton</string>
           </property>
          </widget>
         </item>
@@ -89,5 +96,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>pressed()</signal>
+   <receiver>label</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>181</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

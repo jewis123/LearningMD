@@ -2,14 +2,10 @@
 
 # Form implementation generated from reading ui file 'form.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
-#
-"""
-这个文件是通过执行pyuic指令将ui文件转换过来的
-> pyuic5 form.ui -o Form.py
-"""
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -33,6 +29,9 @@ class Ui_QFirstScroll(object):
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
+        self.pushButton = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout.addWidget(self.pushButton)
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
@@ -60,12 +59,14 @@ class Ui_QFirstScroll(object):
         self.menubar.addAction(self.menu_2.menuAction())
 
         self.retranslateUi(QFirstScroll)
+        self.pushButton.pressed.connect(self.label.clear)
         QtCore.QMetaObject.connectSlotsByName(QFirstScroll)
 
     def retranslateUi(self, QFirstScroll):
         _translate = QtCore.QCoreApplication.translate
         QFirstScroll.setWindowTitle(_translate("QFirstScroll", "QFirstScroll"))
-        self.label.setText(_translate("QFirstScroll", "TextLabel"))
+        self.label.setText(_translate("QFirstScroll", "11111"))
+        self.pushButton.setText(_translate("QFirstScroll", "PushButton"))
         self.label_2.setText(_translate("QFirstScroll", "TextLabel"))
         self.label_3.setText(_translate("QFirstScroll", "TextLabel"))
         self.label_4.setText(_translate("QFirstScroll", "TextLabel"))

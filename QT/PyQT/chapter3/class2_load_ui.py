@@ -17,7 +17,7 @@ app = QtWidgets.QApplication([])
 # window = MainWindow()
 
 ## 方法三：让界面集成翻译自ui的py界面
-from .Form import Ui_QFirstScroll
+from Form import Ui_QFirstScroll
 class MainWindow(QtWidgets.QMainWindow, Ui_QFirstScroll):
     def __init__(self, *args, obj=None, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
