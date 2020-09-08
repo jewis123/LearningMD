@@ -31,3 +31,4 @@ if __name__ == '__main__':
     for ch in root.depth_first():
         print(ch)
     # Outputs Node(0), Node(1), Node(3), Node(4), Node(2), Node(5)
+
