@@ -31,7 +31,7 @@ Python
 - UGUI探究
 
 - 编辑器扩展教程
-  - [x] demo
+  - [x] [demo](https://github.com/jewis123/EditorExtensionDemos.git)
 - 场景
   - [x] 光照
   - [x] 遮挡剔除
