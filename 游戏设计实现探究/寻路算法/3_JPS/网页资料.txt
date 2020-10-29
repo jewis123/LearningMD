@@ -1,0 +1,12 @@
+【JPS初识】
+https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html
+【详细介绍】
+https://blog.csdn.net/yjxxtd/article/details/93506231
+https://blog.csdn.net/qq_45504161/article/details/102017599
+【论文】
+http://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-aaai11.pdf
+【视频】
+https://www.gdcvault.com/play/1022094/JPS-Over-100x-Faster-than
+
+【jps+with goal bounding 1000x faster than a*】
+https://github.com/SteveRabin/JPSPlusWithGoalBounding
