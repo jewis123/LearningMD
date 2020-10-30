@@ -3,7 +3,7 @@ import random
 import pprint
 from defines import *
 
-RANDOM_MAP = [["" for i in I_MAP_WIDTH] for j in I_MAP_HEIGHT]
+RANDOM_MAP = [["" for i in range(I_MAP_WIDTH)] for j in range(I_MAP_HEIGHT)]
 lWalkableSpot = []
 
 TEST_MAP = [
@@ -43,9 +43,6 @@ def CreateRandomMap():
             else:
                 RANDOM_MAP[i][j] = S_EMPTY
                 lWalkableSpot.append((i, j))
-
-
-pprint.pprint(RANDOM_MAP)
 
 
 def GetStartEnd():

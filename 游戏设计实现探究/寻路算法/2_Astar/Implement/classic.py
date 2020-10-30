@@ -46,8 +46,8 @@ from node import *
 from defines import *
 from optimization import *
 
-B_SHOW_MAP_FX = 0
-B_USE_HEAP = 1
+B_SHOW_MAP_FX = 0         # 显示节点启发函数得分
+B_USE_HEAP = 1            # 使用小根堆存储
 
 
 class CAstar:
@@ -59,6 +59,8 @@ class CAstar:
         self.tStartPos = self.tEndPos = ()
         self.oStartNode = self.oEndNode = None
         self.map = map
+
+        self.genMapNode()
 
     def appendOpenList(self, oNode):
         if B_USE_HEAP:
@@ -106,7 +108,7 @@ class CAstar:
             else:
                 yield from GetNodeNeighbourAllowCorner(oNode, self.lNodes)
 
-    def GenMapNode(self):
+    def genMapNode(self):
         self.tStartPos, self.tEndPos = GetStartEndPos()
         for row in range(I_MAP_HEIGHT):
             for col in range(I_MAP_WIDTH):
@@ -136,7 +138,15 @@ class CAstar:
         self.mapPreDeal()
 
     def mapPreDeal(self):
-        """地图预处理：将相邻block合并"""
+        """地图预处理"""
+        pass
+
+    def mergeLinkedBlocks(self):
+        """合并连接的障碍"""
+        pass
+
+    def mergeLinkedRoad(self):
+        """合并连接的空路"""
         pass
 
     def FindPath(self):
@@ -177,7 +187,6 @@ if __name__ == "__main__":
     import time
 
     oLogic = CAstar(MAP1)
-    oLogic.GenMapNode()
     iStartTime = time.time()
     oLogic.FindPath()
     iEndTime = time.time()

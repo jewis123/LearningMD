@@ -40,7 +40,7 @@
 
   我们注意到，在对角搜索的情况下会有三个方向需要去搜索（不想直线方向只要搜索一个朝向）。这个时候有个搜索优先级的问题：先直线后对角。
 
-  <img src="D:\LearningMD\游戏设计实现探究\寻路算法\3_JPS\img\对角搜索1.png" alt="对角搜索1" style="zoom:50%;" /><img src="D:\LearningMD\游戏设计实现探究\寻路算法\3_JPS\img\对角搜索2.png" alt="对角搜索2" style="zoom:50%;" /><img src="D:\LearningMD\游戏设计实现探究\寻路算法\3_JPS\img\对角搜索3.png" alt="对角搜索3" style="zoom:50%;" /><img src="D:\LearningMD\游戏设计实现探究\寻路算法\3_JPS\img\对角搜索4.png" alt="对角搜索4" style="zoom:50%;" />
+  <img src="img\对角搜索1.png" alt="对角搜索1" style="zoom:50%;" /><img src="img\对角搜索2.png" alt="对角搜索2" style="zoom:50%;" /><img src="img\对角搜索3.png" alt="对角搜索3" style="zoom:50%;" /><img src="img\对角搜索4.png" alt="对角搜索4" style="zoom:50%;" />
 
   在扩展紫色搜索路径的时候，发现了特殊情况
 
@@ -90,7 +90,7 @@
 
 ### 核心公式
 
-g(y) = g(x) + dist(x,y)
+作为入堆依据：g(y) = g(x) + dist(x,y)
 
 意即：到达y点的距离 = 到达x点的距离 + xy之间的距离
 
