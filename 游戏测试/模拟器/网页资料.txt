@@ -1,0 +1,6 @@
+【as 官方文档】
+https://developer.android.google.cn/studio/debug/am-logcat?hl=zh-cn
+
+【夜神模拟器adb命令详解】
+https://www.yeshen.com/faqs/H15tDZ6YW
+
