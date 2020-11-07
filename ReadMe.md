@@ -50,13 +50,14 @@
   - [x] 光照
   - [x] 遮挡剔除
   - [ ] Navgation Mesh
-  - [ ] TileMap
+  - [x] TileMap
   - [ ] TimeLine
 
 - 源码探究
 
   - [x] UI自动布局详解 
-  - [ ] 
+  - [ ] 内存管理
+  - [ ] 文件系统
 
 - 资源管理
 
