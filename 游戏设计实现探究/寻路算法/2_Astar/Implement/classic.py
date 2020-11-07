@@ -49,6 +49,12 @@ from optimization import *
 B_SHOW_MAP_FX = 0         # 显示节点启发函数得分
 B_USE_HEAP = 1            # 使用小根堆存储
 
+B_SHOW_STEP = False
+I_STEP = 1
+
+B_DIAGNAL_WITH_NO_BLOCK = 1  # 对角移动不存在障碍
+B_DIAGNAL = 1
+
 
 class CAstar:
     def __init__(self, map):
@@ -75,13 +81,16 @@ class CAstar:
             return self.lOpen != []
 
     def showPathInMap(self):
-        oCur = self.oEndNode.GetParent()
-        while oCur.GetParent():
-            row, col = oCur.GetPos()
-            oCur = oCur.GetParent()
-            self.map[row][col] = S_PATH
-            if B_SHOW_MAP_FX:
-                self.map[row][col] = "%d!" % oCur.GetFx()
+        """显示最短路径"""
+        global I_STEP
+        oCur = self.oEndNode.oParent
+        while oCur.oParent:
+            row, col = oCur.tPos
+            self.map[row][col] = I_STEP if B_SHOW_STEP else S_PATH
+            I_STEP += 1
+            if B_SHOW_MAP_FX :
+                self.map[row][col] = "%d!" % oCur.fx
+            oCur = oCur.oParent
         import pprint
         pprint.pprint(self.map)
 
@@ -92,23 +101,23 @@ class CAstar:
         else:
             iMinIdx, iMin = 0, 0xff
             for idx, oNode in enumerate(self.lOpen):
-                if oNode.GetFx() < iMin:
+                if oNode.fx < iMin:
                     iMinIdx = idx
-                    iMin = oNode.GetFx()
+                    iMin = oNode.fx
             return self.lOpen.pop(iMinIdx)
 
     def getNodeNeighbours(self, oNode):
-        bOnlyWhenNoObstacles = 1
-        bCorner = 1
-        if not (bOnlyWhenNoObstacles or bCorner):
+        """获取当前节点的邻居节点"""
+        if not (B_DIAGNAL_WITH_NO_BLOCK or B_DIAGNAL):
             yield from GetNodeNeighbours(oNode, self.lNodes)
-        if bCorner:
-            if bOnlyWhenNoObstacles:
+        if B_DIAGNAL:
+            if B_DIAGNAL_WITH_NO_BLOCK:
                 yield from GetNodeNeighboursWithNoObs(oNode, self.lNodes)
             else:
                 yield from GetNodeNeighbourAllowCorner(oNode, self.lNodes)
 
     def genMapNode(self):
+        """初始化地图节点"""
         self.tStartPos, self.tEndPos = GetStartEndPos()
         for row in range(I_MAP_HEIGHT):
             for col in range(I_MAP_WIDTH):
@@ -116,11 +125,11 @@ class CAstar:
                 self.lNodes[row][col] = oNode
 
                 if self.map[row][col] == S_BLOCK:
-                    oNode.SetIsCanGo(False)
+                    oNode.bCanGo = False
 
                 elif self.map[row][col] == S_START:  # 首先起点加入OpenList
                     iFx = CalNodeFx(oNode, self.tStartPos, self.tEndPos)
-                    oNode.SetFx(iFx)
+                    oNode.fx = iFx
                     self.appendOpenList(oNode)
                     self.oStartNode = oNode
 
@@ -130,7 +139,7 @@ class CAstar:
                 elif self.map[row][col] == S_END:
                     self.oEndNode = oNode
                     iFx = CalNodeFx(oNode, self.tStartPos, self.tEndPos)
-                    oNode.SetFx(iFx)
+                    oNode.fx = iFx
 
                     if B_SHOW_MAP_FX:
                         self.map[row][col] = str(iFx)
@@ -152,33 +161,33 @@ class CAstar:
     def FindPath(self):
         while self.isOpenListEmpty():
             oMinFNode = self.getMinFNode()
-            tMinNodePos = oMinFNode.GetPos()
+            tMinNodePos = oMinFNode.tPos
             if tMinNodePos == self.tEndPos:
                 break
 
             for oNeighbour in self.getNodeNeighbours(oMinFNode):
-                iOldFx = oNeighbour.GetFx()
-                x, y = oNeighbour.GetPos()
-                if not oNeighbour.IsCanGo():  # 剪枝
+                iOldFx = oNeighbour.fx
+                x, y = oNeighbour.tPos
+                if not oNeighbour.bCanGo:  # 剪枝
                     continue
                 if oNeighbour in self.lOpen:
                     iNewFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos) + oMinFNode.GetFx()
                     if iNewFx < iOldFx:
-                        oNeighbour.SetParent(oMinFNode)
-                        oNeighbour.SetFx(iNewFx)
+                        oNeighbour.oParent = oMinFNode
+                        oNeighbour.fx = iNewFx
 
                         if B_SHOW_MAP_FX:
                             self.map[x][y] = str(iNewFx)
                 else:
-                    iFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos) + oMinFNode.GetFx()
-                    oNeighbour.SetParent(oMinFNode)
-                    oNeighbour.SetFx(iFx)
+                    iFx = CalNodeFx(oNeighbour, tMinNodePos, self.tEndPos) + oMinFNode.fx
+                    oNeighbour.oParent = oMinFNode
+                    oNeighbour.fx = iFx
                     self.appendOpenList(oNeighbour)
 
                     if B_SHOW_MAP_FX:
                         self.map[x][y] = str(iFx)
 
-            oMinFNode.SetIsCanGo(False)
+            oMinFNode.bCanGo = False
 
         self.showPathInMap()
 

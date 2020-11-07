@@ -43,7 +43,7 @@ def GetNodeNeighboursWithNoObs(oNode, lNodeList):
     """
     lDirStright = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     lDirDiagnal = [(-1, -1), (1, 1), (-1, 1), (1, -1)]
-    tCur = oNode.GetPos()
+    tCur = oNode.tPos
     for tDir in lDirStright:
         row, col = tCur[0] + tDir[0], tCur[1] + tDir[1]
         if 0 <= row < len(lNodeList) and 0 <= col < len(lNodeList[0]):
@@ -53,11 +53,12 @@ def GetNodeNeighboursWithNoObs(oNode, lNodeList):
         row = tDiagnal[0] + tCur[0]
         col = tDiagnal[1] + tCur[1]
         if 0 <= row < len(lNodeList) and 0 <= col < len(lNodeList[0]):
-            if lNodeList[row][tCur[1]].IsCanGo() and lNodeList[tCur[0]][col].IsCanGo():
+            if lNodeList[row][tCur[1]].bCanGo and lNodeList[tCur[0]][col].bCanGo:
                 yield lNodeList[row][col]
 
 
 def CalNodeFx(oNode, tStartPos, tEndPos):
+    """计算启发函数得分"""
     gx = calGx(oNode, tStartPos)
     hx = calHx(oNode, tEndPos)
     fx = gx * GX_WEIGHT + hx * HX_WEIGHT  # GX_WEIGHT/HX_WEIGHT越大，遍历规模就越大，路线越趋向最短路线；反之，遍历规模越小，目标导向越强，路线可能不是最优路线（绕路）
@@ -65,16 +66,19 @@ def CalNodeFx(oNode, tStartPos, tEndPos):
 
 
 def calByManhadun(tPos, tTarPos):
+    """计算曼哈顿距离"""
     return abs(tPos[0] - tTarPos[0]) + abs(tPos[1] - tTarPos[1])
 
 
 def calGx(oNode, tStartPos):
-    tPos = oNode.GetPos()
+    """计算起点到当前点的开销"""
+    tPos = oNode.tPos
     return calByManhadun(tPos, tStartPos)
 
 
 def calHx(oNode, tEndPos):
-    tPos = oNode.GetPos()
+    """起算起点到终点的开销"""
+    tPos = oNode.tPos
     return calByManhadun(tPos, tEndPos)
 
 
@@ -84,32 +88,5 @@ class Node:
         self.hx = 0
         self.fx = 0
         self.tPos = tCurPos
-        self.parent = None
+        self.oParent = None
         self.bCanGo = True
-
-    def GetGx(self):
-        return self.gx
-
-    def GetHx(self):
-        return self.hx
-
-    def GetFx(self):
-        return self.fx
-
-    def GetParent(self):
-        return self.parent
-
-    def GetPos(self):
-        return self.tPos
-
-    def IsCanGo(self):
-        return self.bCanGo
-
-    def SetParent(self, oNode):
-        self.parent = oNode
-
-    def SetFx(self, iFx):
-        self.fx = iFx
-
-    def SetIsCanGo(self, bFlag):
-        self.bCanGo = bFlag

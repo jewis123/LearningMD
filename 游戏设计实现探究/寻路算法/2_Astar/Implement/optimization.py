@@ -69,7 +69,7 @@ class Heap:
         while pos > startpos:
             iParentIdx = (pos - 1) >> 1
             oParent = heap[iParentIdx]
-            if newItem.GetFx() < oParent.GetFx():
+            if newItem.fx < oParent.fx:
                 heap[pos] = oParent
                 pos = iParentIdx
                 continue
@@ -85,7 +85,7 @@ class Heap:
         iChildPos = 2 * pos + 1  # 最左边的孩子
         while iChildPos < iEndPos:
             iRightPos = iChildPos + 1
-            if iRightPos < iEndPos and not heap[iChildPos].GetFx() < heap[iRightPos].GetFx():
+            if iRightPos < iEndPos and not heap[iChildPos].fx < heap[iRightPos].fx:
                 iChildPos = iRightPos
             heap[pos] = heap[iChildPos]
             pos = iChildPos

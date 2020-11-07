@@ -10,3 +10,5 @@ https://www.gdcvault.com/play/1022094/JPS-Over-100x-Faster-than
 
 【jps+with goal bounding 1000x faster than a*】
 https://github.com/SteveRabin/JPSPlusWithGoalBounding
+【pathfing】
+https://github.com/qiao/PathFinding.js/tree/master/src/finders
