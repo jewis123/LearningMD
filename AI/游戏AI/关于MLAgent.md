@@ -2,7 +2,7 @@
 
 ### 支持的机器学习方法
 
-强化学习，模仿学习，神经进化及其他
+强化学习，[模仿学习](https://github.com/Unity-Technologies/ml-agents/blob/release_7_docs/docs/Learning-Environment-Design-Agents.md#recording-demonstrations)，神经进化及其他
 
 ### 特点
 
@@ -74,3 +74,7 @@ ML-Agent中提供的许多算法都使用某种形式的深度学习，这些深
 1. 从特征向量中学习(3dball)
 2. 利用摄像机输入集合CNN学习(girdworld)
 3. 使用RNN记忆学习（hallway）
+
+### 机器学习文件参数配置
+
+[文档](https://github.com/Unity-Technologies/ml-agents/blob/release_7_docs/docs/Training-Configuration-File.md)

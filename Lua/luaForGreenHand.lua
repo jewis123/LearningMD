@@ -73,8 +73,8 @@ print("2" + "2")
 print("----------------------------------------------------------")
 
 --使用连字符 ..
-print("hello" .. "-" .. "world")
-print(157 .. 428) --注意。。两边要空格
+print("hello" .. "-" .. "world") --连接字符串时隔不隔开都行
+print(157 .. 428) --注意连接数字的时候符号要用空格隔开
 print("----------------------------------------------------------")
 
 --使用#计算字符串长度，放在字符串前面
@@ -115,7 +115,7 @@ print("----------------------------------------------------------")
 --LUA中函数被看作是“第一类值”,因此可以存在变量里
 --E.G.
 
-function factorial(n) --尽然不要返回值类型
+function factorial(n) --不需要返回值类型
   if n == 0 then
     return 1
   else
@@ -201,6 +201,10 @@ function max(num1, num2)
   end
 end
 print("最大值", max(1, 10))
+
+-- 上述示例会联想到Lua中三目运算符应该怎么实现：
+-- 一般公式： ( condition and {res1} or {res2})[1]
+-- 不建议使用，增加代码理解成本。
 print("----------------------------------------------------------")
 
 --E.G.函数作为参数传递
@@ -267,8 +271,6 @@ print((foo1()))      --> a
 print((foo2()))      --> a
 --5.1 一个return语句如果使用圆括号将返回值括起来也将导致返回一个值。
 
-
-
 print("----------------------------------------------------------")
 
 --可变参数  符号为3个点
@@ -290,29 +292,43 @@ print("----------------------------------------------------------")
 
 --参数命名
 function bonus(quantity, price, rate)
-  return quantity * price * rate;
+  return quantity * price * rate
 end
 
-function SalerBonus(saler)   --传入的实际是个表
- if type(saler.name) ~= "string" then
-     print("no name");
- elseif type(saler.sex) ~= "string" then
-     print("no sex");
- elseif type(saler.age) ~= "number" then
-     print("no age");
- end
+function SalerBonus(saler) --传入的实际是个表
+  if type(saler.name) ~= "string" then
+    print("no name")
+  elseif type(saler.sex) ~= "string" then
+    print("no sex")
+  elseif type(saler.age) ~= "number" then
+    print("no age")
+  end
 
- return bonus(saler.quantity or 20, 
-              saler.price or 10, 
-              saler.rate or 0.1);
+  return bonus(saler.quantity or 20, saler.price or 10, saler.rate or 0.1)
 end
 
+print(
+  "Tony's bonus is " ..
+    SalerBonus {
+      name = "Tony",
+      sex = "male",
+      age = 20
+    } ..
+      "$"
+)
 
-print("Tony's bonus is "..SalerBonus{name="Tony", 
-sex="male", age=20}.."$");
-
-print("Andy's bonus is "..SalerBonus{name="Andy", 
-sex="female", age=25, quantity=50, price=20, rate=0.15}.."$");
+print(
+  "Andy's bonus is " ..
+    SalerBonus {
+      name = "Andy",
+      sex = "female",
+      age = 25,
+      quantity = 50,
+      price = 20,
+      rate = 0.15
+    } ..
+      "$"
+)
 
 print("----------------------------------------------------------")
 
@@ -343,7 +359,7 @@ print(string.gsub("ni hao hao ma", "hao", "zai", 1)) --num向符合条件的数�
 
 --string.find(mainString,findString)  -- 返回查找字串的首尾下标
 
---strin.reverse(mainString)    --字符串反转
+--string.reverse(mainString)    --字符串反转
 
 --string.format(...)           --返回一个类似printf的格式化字符串
 
@@ -366,7 +382,7 @@ print(string.byte("ABCD", 4)) --4表示转换第四个字符，不填默认为1
 --string.gmatch(str.pattern)     注意和下面的match区分
 --返回一个迭代函数，每次调用这个函数，直到找不到符合的并返回nil
 --E.G.
-for word in string.gmatch("Hello Lua user", "%a+") do --%a+ 是什么鬼？往下看，这是匹配模式
+for word in string.gmatch("Hello Lua user", "%a+") do --%a+ 是什么鬼？往下看，这是模式匹配
   print(word)
 end
 print("----------------------------------------------------------")
@@ -374,11 +390,11 @@ print("----------------------------------------------------------")
 --string.match(str,pattern,init)
 --它只寻找源字串str中的第一个配对，init为起始位，默认为1
 --E.G.
-print(string.match("I have 2 questions for you.", "%d+ %a+")) --第二个参数是匹配模式
+print(string.match("I have 2 questions for you.", "%d+ %a+")) --第二个参数是模式匹配
 
 print(string.format("%d,%q", string.match("I have 2 questions for you.", "(%d+) (%a+)")))
 
---千万不要将格式化字符串的转义码和匹配模式字符搞混淆
+--千万不要将格式化字符串的转义码和模式匹配字符搞混淆
 print("----------------------------------------------------------")
 
 --字符串查找与反转 string.reverse（string）
@@ -434,10 +450,10 @@ print(string.format("%.4f", 1 / 3)) --保留小数后四位
 
 print("----------------------------------------------------------")
 
---匹配模式
+--模式匹配
 --[[
 
-   Lua 中的匹配模式直接用常规的字符串来描述。
+   Lua 中的模式匹配直接用常规的字符串来描述。
    它用于模式匹配函数 string.find, string.gmatch, string.gsub, string.match。
    你还可以在模式串中使用字符类。
    字符类指可以匹配一个特定字符集合内任何字符的模式项。
@@ -454,10 +470,10 @@ print("----------------------------------------------------------")
 --[[          完整如下
 
        .(点): 与任何字符配对
-	   %a: 与任何字母配对
+	     %a: 与任何字母配对
        %c: 与任何控制符配对(例如\n)
        %d: 与任何数字配对
-	   %l: 与任何小写字母配对
+	     %l: 与任何小写字母配对
        %p: 与任何标点(punctuation)配对
        %s: 与空白字符配对
        %u: 与任何大写字母配对
@@ -474,11 +490,12 @@ print("----------------------------------------------------------")
 
 	 模式条目可以是：
 	    单个字符类匹配该类别中任意单个字符
-		单个字符跟一个 “ * ” ， 将匹配 >= 0 个该类字符，自动取尽可能多
-		单个字符跟一个 “ + ” ， 将匹配 >=1 个该类字符。自动取尽可能多
-		单个字符跟一个 “ - ” ， 将匹配 >= 0 个该类字符，自动取尽可能少
+		  单个字符跟一个 “ * ” ， 将匹配 >= 0 个该类字符，自动取尽可能多
+		  单个字符跟一个 “ + ” ， 将匹配 >=1 个该类字符。自动取尽可能多
+		  单个字符跟一个 “ - ” ， 将匹配 >= 0 个该类字符，自动取尽可能少
 	    单个字符跟一个 '?'， 将匹配 0 / 1 个该类的字符。 只要有可能，它会匹配一个；
-        %n， 这里的 n 可以从 1 到 9； 这个条目匹配一个等于 n 号捕获物（后面有描述）的子串。
+    
+    %n， 这里的 n 可以从 1 到 9； 这个条目匹配一个等于 n 号捕获物（后面有描述）的子串。
 
 		%bxy， 这里的 x 和 y 是两个明确的字符； 这个条目匹配以 x 开始 y 结束， 且其中 x 和 y 保持 平衡 的字符串。
 		意思是，如果从左到右读这个字符串，对每次读到一个 x 就 +1 ，读到一个 y 就 -1， 最终结束处的那个 y 是第一个记数到 0 的 y。
@@ -531,7 +548,6 @@ end
 
 var-list是一个或多个变量列表。exp-list是一个或多个表达式列表，通常只含一个元素即对工厂函数的调用。
 变量列表的第一个元素称为“控制变量”。
-
 --]]
 array = {"a", "b", "c", "d"}
 for k, v in pairs(array) do
@@ -566,23 +582,24 @@ function iter(a, i)
   end
 end
 
-function ipairs(a)
+function myipairs(a)
   return iter, a, 0
 end
 
 --[[  看到现在，我才对之前所说的泛型for循环的状态变量和控制变量有了一定的认识：
       当Lua调用ipairs(a)开始循环时，他获取三个值：迭代函数iter、状态常量a、控制变量初始值0；
-	  然后Lua调用iter(a,0)返回1,a[1]（除非a[1]=nil）；
-	  第二次迭代调用iter(a,1)返回2,a[2]……直到第一个nil元素。
+	    然后Lua调用iter(a,0)返回1,a[1]（除非a[1]=nil）;
+	    第二次迭代调用iter(a,1)返回2,a[2]……直到第一个nil元素。
 --]]
+
 --多状态迭代器
 --[[
 很多情况下，迭代器需要保存多个状态信息而不是简单的状态常量和控制变量，最简单的方法是使用闭包
 还有一种方法就是将所有的状态信息封装到table内，将table作为迭代器的状态常量，
 因为这种情况下可以将所有的信息存放在table内，所以迭代函数通常不需要第二个参数。
 --]]
---E.G. 自定义迭代器
 
+--E.G. 自定义迭代器
 array = {"Lua", "Tutorial"}
 
 function elementIterator(tabl)
@@ -601,8 +618,9 @@ end
 for element in elementIterator(array) do
   print(element)
 end
+print("----------------------------------------------------------")
 
-print("----------------------------------------------------------") --连接从start~end的字符，以sep隔开
+
 
 --table 表
 --[[
@@ -614,17 +632,23 @@ print("----------------------------------------------------------") --连接从s
 --]]
 --table 的索引下标不一定只是数字
 
---[[          秀出一波table的操作  [, XXX]  表示可选参数
-
-   1. table.concat(table[,sep[,start[,end]] -- 2. table.insert(talbe,[pos,]value)          --在指定位置pos插入一个value的值，默认在数组末尾
--- 3. table.remove(table[,pos])                --移除POS位的元素，默认末尾处
--- 4. sort(table[,comp])                       --升序排序
-
+--[[
+1. table.concat 
+连接从start~end的字符，以sep隔开 
+2. table.insert(talbe,[pos,]value)          
+在指定位置pos插入一个value的值，默认在数组末尾 
+3. table.remove(table[,pos])                
+移除POS位的元素，默认末尾处 
+4. sort(table[,comp])                       
+升序排序 
 --]]
 
---E.G. concat()
 
-fruits = {"banana", "orange", "apple"}
+fruits = {
+  "banana",
+  "orange",
+  "apple"
+}
 --返回table连接后的字符串
 print("连接后的字符串：", table.concat(fruits))
 
@@ -869,4 +893,3 @@ tablestring =
 )
 print(tablestring)
 print("----------------------------------------------------------")
-
