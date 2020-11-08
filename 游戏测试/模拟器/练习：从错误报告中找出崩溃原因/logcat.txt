@@ -1,0 +1,764 @@
+--------- beginning of main
+11-07 21:23:47.588  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1709 lines
+11-07 21:23:47.768  3425  3429 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 13 lines
+11-07 21:23:48.332  3425  3474 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 21:23:48.829  3425  3455 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 21:23:48.929  3425  3508 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 5 lines
+11-07 21:23:49.182  3425  3538 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 21:23:49.375  3425  3510 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 21:23:51.003  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 20 lines
+11-07 21:23:51.937  3425  3582 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:23:52.172  3425  3592 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 11 lines
+11-07 21:23:52.174  3425  3587 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 18 lines
+11-07 21:23:52.195  3425  3593 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 27 lines
+11-07 21:23:52.195  3425  3594 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 21:23:52.220  3425  3601 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 8 lines
+11-07 21:23:52.223  3425  3602 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 40 lines
+11-07 21:23:52.247  3425  3597 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:24:52.380  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 12 lines
+11-07 21:27:37.617  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 15 lines
+11-07 21:27:57.675  3425  6024 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:27:59.449  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 22 lines
+11-07 21:27:59.479  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 20 lines
+11-07 21:28:52.335  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 21 lines
+11-07 21:30:14.174  3425  3435 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:30:52.229  3425  3587 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 12 lines
+11-07 21:31:08.056  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 16 lines
+11-07 21:31:08.056  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 32 lines
+11-07 21:33:04.244  3425  3494 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:04.246  3425  7051 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 26 lines
+11-07 21:33:17.165  3425  7067 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:20.396  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 76 lines
+11-07 21:33:20.666  3425  7051 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 21:33:27.774  3425  3597 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 21:33:31.936  3425  3561 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:31.940  3425  7108 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:31.957  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 23 lines
+11-07 21:33:33.599  3425  7116 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 21:33:33.600  3425  7117 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 12 lines
+11-07 21:33:33.604  3425  7122 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 21:33:34.321  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 19 lines
+11-07 21:33:34.791  3425  7142 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:42.607  3425  7150 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:42.784  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 11 lines
+11-07 21:33:47.102  3425  7155 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:47.781  3425  7160 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:48.899  3425  7165 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:50.297  3425  7171 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:55.203  3425  7177 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:33:58.918  3425  7182 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:00.763  3425  7197 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:01.126  3425  7201 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:01.189  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:35:01.418  3425  7206 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:04.629  3425  7212 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:06.260  3425  7217 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:08.110  3425  7222 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:11.671  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 12 lines
+11-07 21:35:11.737  3425  7239 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:13.756  3425  7246 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:14.632  3425  7251 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:19.402  3425  7258 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:35:19.468  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 13 lines
+11-07 21:35:21.435  3425  7266 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:31.367  3425  7283 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:32.574  3425  7287 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:32.771  3425  7292 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:33.275  3425  7297 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:35.931  3425  7303 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:35.974  3425  7308 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:37.823  3425  7313 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:41.619  3425  7334 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:42.502  3425  7339 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:42.575  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 13 lines
+11-07 21:37:44.829  3425  7344 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:37:46.655  3425  7349 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 21:37:49.451  3425  7369 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:38:27.397  3425  7382 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:38:27.509  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:39:01.036  3425  7390 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:01.500  3425  7396 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:02.833  3425  7401 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:04.949  3425  7407 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:04.955  3425  7409 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:06.507  3425  7415 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:07.945  3425  7420 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:11.134  3425  7444 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:15.070  3425  7450 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:15.205  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 15 lines
+11-07 21:39:16.732  3425  7457 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:17.313  3425  7461 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:19.036  3425  7466 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 21:39:20.498  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 20 lines
+11-07 21:39:21.858  3425  7482 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:59.807  3425  7492 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:39:59.915  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:40:21.475  3425  7497 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:22.529  3425  7501 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:24.323  3425  7506 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:25.906  3425  7513 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:29.150  3425  7519 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:30.521  3425  7523 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:31.899  3425  7527 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:34.370  3425  7533 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:37.073  3425  7539 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:37.983  3425  7543 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:39.091  3425  7552 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:40.016  3425  7556 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:43.226  3425  7560 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:46.983  3425  7566 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:40:50.741  3425  7571 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:13.190  3425  7584 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:14.674  3425  7586 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:17.089  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:42:17.292  3425  7608 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:21.930  3425  7613 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:23.205  3425  7618 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:23.769  3425  7624 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:24.889  3425  7629 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:26.590  3425  7635 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:27.653  3425  7640 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:28.554  3425  7645 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:29.015  3425  7652 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:42:29.141  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:51:33.619  3425  7117 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 8 lines
+11-07 21:53:23.721  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 30 lines
+11-07 21:53:42.345  3425  7725 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:42.454  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 155 lines
+11-07 21:53:46.175  3425  7743 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:48.163  3425  7748 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:50.319  3425  7754 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:52.930  3425  7759 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:53.641  3425  7762 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:54.737  3425  7768 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:54.784  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:53:55.629  3425  7772 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:56.105  3425  7774 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:53:56.447  3425  7777 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:00.966  3425  7785 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:02.482  3425  7790 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:03.250  3425  7795 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:05.596  3425  7801 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:09.615  3425  7811 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:09.644  3425  7814 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:11.365  3425  7821 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:12.271  3425  7826 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:13.577  3425  7831 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:15.932  3425  7837 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:16.988  3425  7842 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:18.666  3425  7848 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:19.670  3425  7854 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:19.675  3425  7857 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:20.218  3425  7862 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:20.288  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 19 lines
+11-07 21:54:20.860  3425  7868 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:22.471  3425  7874 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:22.815  3425  7878 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:25.274  3425  7899 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 21:54:28.463  3425  7914 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:32.352  3425  7919 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:36.172  3425  7925 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:36.302  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:54:40.456  3425  7932 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:54.559  3425  7938 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:56.373  3425  7942 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:54:58.071  3425  7946 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:00.557  3425  7952 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:02.210  3425  7957 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:05.207  3425  7993 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:06.847  3425  7997 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:09.359  3425  8000 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:10.997  3425  8003 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:13.479  3425  8007 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:14.155  3425  8012 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:15.464  3425  8017 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:16.553  3425  8022 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:18.763  3425  8077 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:18.844  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 10 lines
+11-07 21:55:20.070  3425  8082 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:20.900  3425  8087 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:21.700  3425  8092 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:23.704  3425  8097 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 21:55:25.153  3425  8099 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:08.113  3425  8154 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:09.263  3425  8159 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:10.037  3425  8164 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:10.198  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 13 lines
+11-07 22:01:10.941  3425  8169 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:11.669  3425  8175 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:13.631  3425  8183 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:22.127  3425  3429 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 3 lines
+11-07 22:01:24.816  3425  8211 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:25.795  3425  8215 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:01:33.357  3425  3425 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 14 lines
+11-07 22:01:38.503  3425  8258 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:02:52.331  3425  8268 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1 line
+11-07 22:02:53.871  3425  8273 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 2 lines
+11-07 22:02:55.298  3425  3549 I chatty  : uid=10040(com.wk.hlxd.yeshen) expire 1786 lines
+11-07 22:02:55.346  3425  3549 I CrashReport-Native:         #02    pc 00008133     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0x9856e133)
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: looking for IP=0x9856e132
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: IP=0x9856e132 not found
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[9856e133] -> cc48314
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[9856e137] -> ffc0f65c
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[9357c798] -> 9357c7dc
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: [EBP=0x9357c798] = 0x9357c7dc
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[9357c7e0] -> 55ad1048
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: [EIP=0x9357c7e0] = 0x55ad1048
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning 1
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: pc = 0x55ad1047, sp = 0x9357c7e4
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Try to search symbol info for pc: 0x55ad1047
+11-07 22:02:55.346  3425  3549 I CrashReport-Native: Can not find symbol info.
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Try to find module for pc: 0x55ad1047
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Found the module: <null>
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Got module name:  for pc: 0x55ad1047
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Can not find function name for pc: 0x55ad1047
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Function with offset 0xd1047 may only be contained in debug so of: 
+11-07 22:02:55.346  3425  3549 I CrashReport-Native:         #03    pc 000d1047     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0x55ad1047)
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: looking for IP=0x55ad1046
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: IP=0x55ad1046 not found
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[55ad1047] -> 56e05896
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[55ad104b] -> ab1e7098
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[9357c7dc] -> 9357c838
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: [EBP=0x9357c7dc] = 0x9357c838
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: mem[9357c83c] -> 9856f033
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: [EIP=0x9357c83c] = 0x9856f033
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning 1
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: pc = 0x9856f032, sp = 0x9357c840
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Try to search symbol info for pc: 0x9856f032
+11-07 22:02:55.346  3425  3549 I CrashReport-Native: Can not find symbol info.
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Try to find module for pc: 0x9856f032
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Found the module: <null>
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Got module name:  for pc: 0x9856f032
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Can not find function name for pc: 0x9856f032
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Function with offset 0x9032 may only be contained in debug so of: 
+11-07 22:02:55.346  3425  3549 I CrashReport-Native:         #04    pc 00009032     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.346  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0x9856f032)
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: looking for IP=0x9856f031
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: IP=0x9856f031 not found
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.346  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9856f032] -> eec15ed1
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9856f036] -> 5df40104
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9357c838] -> 9357c85c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: [EBP=0x9357c838] = 0x9357c85c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9357c860] -> 55ad1110
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: [EIP=0x9357c860] = 0x55ad1110
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning 1
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: pc = 0x55ad110f, sp = 0x9357c864
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Try to search symbol info for pc: 0x55ad110f
+11-07 22:02:55.347  3425  3549 I CrashReport-Native: Can not find symbol info.
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Try to find module for pc: 0x55ad110f
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Found the module: <null>
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Got module name:  for pc: 0x55ad110f
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Can not find function name for pc: 0x55ad110f
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Function with offset 0xd110f may only be contained in debug so of: 
+11-07 22:02:55.347  3425  3549 I CrashReport-Native:         #05    pc 000d110f     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0x55ad110f)
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: looking for IP=0x55ad110e
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: IP=0x55ad110e not found
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[55ad110f] -> 56ef5000
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[55ad1113] -> 97c56898
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9357c85c] -> 9357c8d8
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: [EBP=0x9357c85c] = 0x9357c8d8
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9357c8dc] -> 9856685a
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: [EIP=0x9357c8dc] = 0x9856685a
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning 1
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: pc = 0x98566859, sp = 0x9357c8e0
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Try to search symbol info for pc: 0x98566859
+11-07 22:02:55.347  3425  3549 I CrashReport-Native: Can not find symbol info.
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Try to find module for pc: 0x98566859
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Found the module: <null>
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Got module name:  for pc: 0x98566859
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Can not find function name for pc: 0x98566859
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Function with offset 0x859 may only be contained in debug so of: 
+11-07 22:02:55.347  3425  3549 I CrashReport-Native:         #06    pc 00000859     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0x98566859)
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: looking for IP=0x98566858
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: IP=0x98566858 not found
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[98566859] -> e8c15808
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9856685d] -> 8bc40104
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9357c8d8] -> 9357c928
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: [EBP=0x9357c8d8] = 0x9357c928
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[9357c92c] -> 9275daae
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: [EIP=0x9357c92c] = 0x9275daae
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: returning 1
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: pc = 0x9275daad, sp = 0x9357c930
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Try to search symbol info for pc: 0x9275daad
+11-07 22:02:55.347  3425  3549 I CrashReport-Native: Found symbol info.
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Try to find module for pc: 0x9275daad
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Found the module: /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Got module name: /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so for pc: 0x9275daad
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Can not find function name for pc: 0x9275daad
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Function with offset 0xe5caad may only be contained in debug so of: /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so
+11-07 22:02:55.347  3425  3549 I CrashReport-Native:         #07    pc 00e5caad    /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.347  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0x9275daad)
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: looking for IP=0x9275daac
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a74] -> ffed6f4c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a74] -> ffed6f4c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a74] -> ffed6f4c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a74] -> ffed6f4c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a78] -> 7c8b
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a78] -> 7c8b
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a78] -> 7c8b
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: mem[93210a78] -> 7c8b
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: found table `/data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so': segbase=0x93210a70, len=63766, gp=0x19cbfd8, table_data=0x93210a7c
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: Trying to find .debug_frame for /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: checking 0x4fd89860: 91901000-93320800
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: loaded .debug_frame
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: zero-length .debug_frame
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff6045a0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = fef3cb60
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff04ec80
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff135900
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff5d3640
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff5bf0f0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff141490
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff145790
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff14f4b0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff152440
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff5be8d0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff5be440
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff5be240
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff152d20
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->start_ip_offset = ff5be1f0
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: ip=0x9275daac, start_ip=0xff152d20
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: e->fde_offset = fff1e488, segbase = 93210a70, debug_frame_base = 0, fde_addr = 9312eef8
+11-07 22:02:55.347  3425  3549 D Bugly-libunwind: FDE @ 0x9312eef8
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eef8] -> 1c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eef8] -> 1c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eef8] -> 1c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eef8] -> 1c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eefc] -> 4753c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eefc] -> 4753c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eefc] -> 4753c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312eefc] -> 4753c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: looking for CIE at address 930e79c0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c0] -> 14
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c0] -> 14
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c0] -> 14
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c0] -> 14
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c4] -> 0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c4] -> 0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c4] -> 0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c4] -> 0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c8] -> 527a01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c8] -> 527a01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c8] -> 527a01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79c8] -> 527a01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79cc] -> 1087c01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79cc] -> 1087c01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79cc] -> 1087c01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79cc] -> 1087c01
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[930e79d0] -> 4040c1b
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: CIE parsed OK, augmentation = "zR", handler=0x0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef00] -> ff234890
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef00] -> ff234890
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef00] -> ff234890
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef00] -> ff234890
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef04] -> 1b5f
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef04] -> 1b5f
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef04] -> 1b5f
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef04] -> 1b5f
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9312ef08] -> 80e4100
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: FDE covers IP 0x92363790-0x923652ef, LSDA=0x0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9275daad] -> 20c4832c
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9275dab1] -> 8504478b
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9357c928] -> 9357c9d8
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: [EBP=0x9357c928] = 0x9357c9d8
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: mem[9357c9dc] -> ffffff81
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: [EIP=0x9357c9dc] = 0xffffff81
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: returning 1
+11-07 22:02:55.348  3425  3549 D CrashReport-Native: pc = 0xffffff80, sp = 0x9357c9e0
+11-07 22:02:55.348  3425  3549 D CrashReport-Native: Try to search symbol info for pc: 0xffffff80
+11-07 22:02:55.348  3425  3549 I CrashReport-Native: Can not find symbol info.
+11-07 22:02:55.348  3425  3549 D CrashReport-Native: Try to find module for pc: 0xffffff80
+11-07 22:02:55.348  3425  3549 I CrashReport-Native:         #08    pc ffffff80    <unknown>
+11-07 22:02:55.348  3425  3549 D CrashReport-Native: Append to native stack.
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: (cursor=0x5aa06a00, ip=0xffffff80)
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: acquiring lock
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: looking for IP=0xffffff7f
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: IP=0xffffff7f not found
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: unmasking signals/interrupts and releasing lock
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: returning -10
+11-07 22:02:55.348  3425  3549 D Bugly-libunwind: dwarf_step() failed (ret=-10), trying frame-chain
+11-07 22:02:55.349  3425  3549 D Bugly-libunwind: returning 0
+11-07 22:02:55.349  3425  3549 D Bugly-libunwind: mem[9357c9d8] -> 4
+11-07 22:02:55.349  3425  3549 D Bugly-libunwind: [EBP=0x9357c9d8] = 0x4
+11-07 22:02:55.349  3425  3549 D Bugly-libunwind: dwarf_get([EIP=0x8]) failed
+11-07 22:02:55.349  3425  3549 D Bugly-libunwind: returning -1
+11-07 22:02:55.349  3425  3549 I CrashReport-Native: Record map info of system.
+11-07 22:02:55.349  3425  3549 I CrashReport-Native: Parsing ELF file: /system/bin/app_process32
+11-07 22:02:55.349  3425  3549 I CrashReport-Native: Parsing ELF file: /system/bin/linker
+11-07 22:02:55.372  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsigchain.so
+11-07 22:02:55.372  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/liblz4.so
+11-07 22:02:55.372  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libjnigraphics.so
+11-07 22:02:55.372  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libOpenMAXAL.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libGLESv3.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libOpenSLES.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libwebviewchromium_plat_support.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libopenjdkjvm.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmediadrm.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libandroid.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libcamera2ndk.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmediandk.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libjavacore.so
+11-07 22:02:55.373  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libopenjdk.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libusbhost.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_enc_common.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmediautils.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libhardware.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libhardware_legacy.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libcutils.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libexpat.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libdng_sdk.so
+11-07 22:02:55.374  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libcamera_client.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libutils.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libpdfium.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libGLESv2.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libvorbisidec.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libprocessgroup.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_omx.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libbinder.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libradio_metadata.so
+11-07 22:02:55.375  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libspeexresampler.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libhwui.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libaudioutils.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libselinux.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_http_support.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libradio.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libminikin.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libz.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libRScpp.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmemtrack.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libLLVM.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libbacktrace.so
+11-07 22:02:55.376  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libprotobuf-cpp-lite.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libRS_internal.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsqlite.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libc++.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libcrypto.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/liblog.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libjpeg.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libicui18n.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libpowermanager.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libpcre.so
+11-07 22:02:55.377  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmedia.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libbcinfo.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libpiex.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libwilhelm.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libnativebridge.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsonivox.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libssl.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libc.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libskia.so
+11-07 22:02:55.378  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libm.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/liblzma.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_avc_common.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_yuv.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libinputflinger.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libEGL.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libpackagelistparser.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libunwind.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsync.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright.so
+11-07 22:02:55.379  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libcamera_metadata.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libnativeloader.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libpng.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libdrmframework.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libtiff_directory.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libnetutils.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libopus.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libinput.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libwpa_client.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libbase.so
+11-07 22:02:55.380  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libgui.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libharfbuzz_ng.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libRS.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libETC1.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libGLESv1_CM.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libimg_utils.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libvulkan.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libicuuc.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libft2.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libimage_type_recognition.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libui.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libandroidfw.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libnbaio.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libnativehelper.so
+11-07 22:02:55.381  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libandroid_runtime.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsoundtrigger.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmemunreachable.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libnetd_client.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libbinary_parse.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_foundation.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstdc++.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libart.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libvixl.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libart-compiler.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/hw/gralloc.msm8998.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmtp.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libstagefright_amrnb_common.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libexif.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libmedia_jni.so
+11-07 22:02:55.382  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libkeystore-engine.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libavcodec.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libswresample.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libva.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libavutil.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libavformat.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libva-android.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libffmpeg_extractor.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/vendor/lib/libffmpeg_utils.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libdrm.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libkeymaster1.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libkeymaster_messages.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libjavacrypto.so
+11-07 22:02:55.383  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libkeystore_binder.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsoftkeymasterdevice.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/egl/libGLESv1_CM_adreno.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/egl/libEGL_adreno.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libOpenglSystemCommon.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libGLESv2_enc.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libGLESv1_enc.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/lib_renderControl_enc.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/egl/libGLESv2_adreno.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libcompiler_rt.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libwebviewchromium_loader.so
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Not a elf file: /system/app/webview/webview.apk
+11-07 22:02:55.384  3425  3549 I CrashReport-Native: Parsing ELF file: /data/app/com.wk.hlxd.yeshen-1/oat/x86/base.odex
+11-07 22:02:55.384  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 I CrashReport-Native: Parsing ELF file: /system/lib/libsoundpool.so
+11-07 22:02:55.385  3425  3549 I CrashReport-Native: Parsing ELF file: /data/dalvik-cache/x86/system@app@webview@webview.apk@classes.dex
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 I CrashReport-Native: Parsing ELF file: /data/app/com.wk.hlxd.yeshen-1/lib/x86/libBugly.so
+11-07 22:02:55.385  3425  3549 I CrashReport-Native: SO version is: 3.3.0
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.385  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-org.apache.http.legacy.boot.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-apache-xml.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-ims-common.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-voip-common.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-telephony-common.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-framework.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-ext.oat
+11-07 22:02:55.386  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-bouncycastle.oat
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-core-junit.oat
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-okhttp.oat
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-conscrypt.oat
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot-core-libart.oat
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Parsing ELF file: /system/framework/x86/boot.oat
+11-07 22:02:55.387  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.387  3425  3549 W CrashReport-Native: Failed to open file: <null>, for: No such file or directory
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Stack is succesfully dumped by libUnwind.
+11-07 22:02:55.387  3425  3549 I CrashReport-Native: Dumping of native stack finished.
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: record eup info
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: record eup info end
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: record native key-value list
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: record native key-value list end
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: record native log
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: Native log has not been initiated.
+11-07 22:02:55.392  3425  3549 I CrashReport-Native: record native log end
+11-07 22:02:55.392  3425  3549 D CrashReport-Native: Start to record system log by executing 'logcat'.
+11-07 22:02:55.486  3425  3549 I CrashReport-Native: Finished recorded system log.
+11-07 22:02:55.486  3425  3549 I CrashReport-Native: Handle Native Exception in JNI
+11-07 22:02:55.486  3425  3549 D CrashReport-Native: Successfully got JNIEnv. Checking pending exception.
+11-07 22:02:55.486  3425  3549 D CrashReport-Native: Create a new thread for dump java stack and upload.
+11-07 22:02:55.486  3425  8282 I CrashReport-Native: New thread ID: 8282
+11-07 22:02:55.486  3425  8282 D CrashReport-Native: Attach thread!
+11-07 22:02:55.486  3425  8282 D CrashReport-Native: Try to dump java stack with thread name: GLThread 159
+11-07 22:02:55.486  3425  8282 I CrashReport-Native: Try to find Java thread by Name: GLThread 159
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[0] ＝ ConnectivityManager
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[1] ＝ BUGLY_THREAD
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[2] ＝ HeapTaskDaemon
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[3] ＝ pool-8-thread-11
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[4] ＝ hoolai_http_task_5
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[5] ＝ FileObserver
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[6] ＝ FinalizerWatchdogDaemon
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[7] ＝ Okio Watchdog
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[8] ＝ pool-6-thread-2
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[9] ＝ pool-7-thread-1
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[10] ＝ pool-3-thread-1
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[11] ＝ DplusCacheApi
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[12] ＝ hoolai_http_task_4
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[13] ＝ BUGLY_THREAD
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[14] ＝ EquipmentDataSender
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[15] ＝ SL-NetWorkSender
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[16] ＝ JavaBridge
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[17] ＝ work_thread
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[18] ＝ biHeartbeat
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[19] ＝ OkHttp ConnectionPool
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[20] ＝ BUGLY_THREAD
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[21] ＝ FinalizerDaemon
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[22] ＝ com.sensorsdata.analytics.android.sdk.AnalyticsMessages.Worker
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[23] ＝ ConnectivityThread
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[24] ＝ NetWorkSender
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[25] ＝ com.sensorsdata.analytics.android.sdk.ViewCrawler
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[26] ＝ hoolai_http_task_1
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[27] ＝ Okio Watchdog
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: JavaThreadName[28] ＝ GLThread 159
+11-07 22:02:55.487  3425  8282 D CrashReport-Native: Successfully geted java thread.
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: Java thread Name: GLThread 159
+11-07 22:02:55.487  3425  8282 D CrashReport-Native: Begin to get stack of java thread: GLThread 159
+11-07 22:02:55.487  3425  8282 D CrashReport-Native: Successfully got stacktrace of java thread.
+11-07 22:02:55.487  3425  8282 D CrashReport-Native: Stack line: 4
+11-07 22:02:55.487  3425  8282 I CrashReport-Native: record java stack
+11-07 22:02:55.488  3425  8282 I CrashReport-Native: record jstack end
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: java stack length: 210
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: java:
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: org.cocos2dx.lib.Cocos2dxRenderer.onDrawFrame(Cocos2dxRenderer.java)
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: android.opengl.GLSurfaceView$GLThread.guardedRun(GLSurfaceView.java:1548)
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: android.opengl.GLSurfaceView$GLThread.run(GLSurfaceView.java:1259)
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: Successfully got crash handler.
+11-07 22:02:55.488  3425  8282 D CrashReport-Native: Successfully got exception handler.
+11-07 22:02:55.488  3425  8282 I CrashReport-Native: eupInfo->exceptionThreadName = GLThread 159
+11-07 22:02:55.488  3425  8282 I CrashReport-Native: Use new interface to handle native exception.
+11-07 22:02:55.488  3425  8282 I CrashReport: Native Crash Happen v2
+11-07 22:02:55.488  3425  8282 D CrashReport: crash thread name change to GLThread 159
+11-07 22:02:55.490  3425  8282 I CrashReport: Read system log from native record file(length: 446908 bytes): /data/user/0/com.wk.hlxd.yeshen/app_bugly/sys_log_1604755432195324.txt
+11-07 22:02:55.511  3425  8282 E CrashReport: #++++++++++Record By Bugly++++++++++#
+11-07 22:02:55.511  3425  8282 E CrashReport: # You can use Bugly(http:\\bugly.qq.com) to get more Crash Detail!
+11-07 22:02:55.511  3425  8282 E CrashReport: # PKG NAME: com.wk.hlxd.yeshen
+11-07 22:02:55.511  3425  8282 E CrashReport: # APP VER: 1.0.13
+11-07 22:02:55.511  3425  8282 E CrashReport: # LAUNCH TIME: 2020-11-07 21:23:52
+11-07 22:02:55.511  3425  8282 E CrashReport: # CRASH TYPE: NATIVE_CRASH
+11-07 22:02:55.511  3425  8282 E CrashReport: # CRASH TIME: 2020-11-07 22:02:55
+11-07 22:02:55.511  3425  8282 E CrashReport: # CRASH PROCESS: com.wk.hlxd.yeshen
+11-07 22:02:55.511  3425  8282 E CrashReport: # CRASH THREAD: Thread-3566
+11-07 22:02:55.511  3425  8282 E CrashReport: # REPORT ID: 2b456f4c-9e08-44a1-b74c-fabdf73f08fa
+11-07 22:02:55.511  3425  8282 E CrashReport: # CRASH DEVICE: OPPO R11 Plus ROOTED
+11-07 22:02:55.511  3425  8282 E CrashReport: # RUNTIME AVAIL RAM:2588921856 ROM:64598745088 SD:64598745088
+11-07 22:02:55.511  3425  8282 E CrashReport: # RUNTIME TOTAL RAM:3185491968 ROM:65921708032 SD:65921708032
+11-07 22:02:55.511  3425  8282 E CrashReport: # EXCEPTION FIRED BY KERNEL UNKNOWN
+11-07 22:02:55.511  3425  8282 E CrashReport: # CRASH STACK: 
+11-07 22:02:55.511  3425  8282 E CrashReport: SIGSEGV(SEGV_MAPERR)
+11-07 22:02:55.511  3425  8282 E CrashReport: 0x3
+11-07 22:02:55.511  3425  8282 E CrashReport: #00    pc 0054bff1    /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so (_Z23js_get_type_from_nativeIN7cocos2d9Texture2DEEP13js_type_classPT_+49) [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #01    pc 006dd954    /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so (_Z41js_cocos2dx_TextureCache_getTextureForKeyP9JSContextjPN2JS5ValueE+212) [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #02    pc 00008133     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #03    pc 000d1047     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #04    pc 00009032     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #05    pc 000d110f     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #06    pc 00000859     [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #07    pc 00e5caad    /data/app/com.wk.hlxd.yeshen-1/lib/x86/libcocos2djs.so [x86::9acd2adeea28695a81ff0cb55b443c06]
+11-07 22:02:55.511  3425  8282 E CrashReport: #08    pc ffffff80    <unknown>
+11-07 22:02:55.511  3425  8282 E CrashReport: java:
+11-07 22:02:55.511  3425  8282 E CrashReport: org.cocos2dx.lib.Cocos2dxRenderer.onDrawFrame(Cocos2dxRenderer.java)
+11-07 22:02:55.511  3425  8282 E CrashReport: android.opengl.GLSurfaceView$GLThread.guardedRun(GLSurfaceView.java:1548)
+11-07 22:02:55.511  3425  8282 E CrashReport: android.opengl.GLSurfaceView$GLThread.run(GLSurfaceView.java:1259)
+11-07 22:02:55.511  3425  8282 E CrashReport: #++++++++++++++++++++++++++++++++++++++++++#
+11-07 22:02:55.511  3425  8282 D CrashReport: [Database] deleted t_lr data 0
+11-07 22:02:55.514  3425  8282 D CrashReport: [Database] insert t_lr success.
+11-07 22:02:55.514  3425  8282 I CrashReportInfo: [crash] a crash occur, handling...
+11-07 22:02:55.519  3425  8282 D CrashReport: [Database] insert t_cr success.
+11-07 22:02:55.519  3425  8282 D CrashReport: insert t_cr success!
+11-07 22:02:55.519  3425  8282 I CrashReportInfo: [crash] save crash success
+11-07 22:02:55.519  3425  8282 I CrashReport: try to upload right now
+11-07 22:02:55.519  3425  8282 D CrashReport: attach crash infos
+11-07 22:02:55.519  3425  8282 D CrashReport: zip /data/user/0/com.wk.hlxd.yeshen/app_bugly/tomb_1604757775296.txt
+11-07 22:02:55.519  3425  8282 D CrashReport: rqdp{  ZF start}
+11-07 22:02:55.520  3425  8282 D CrashReport: rqdp{  ZF end}
+11-07 22:02:55.520  3425  8282 D CrashReport: read bytes :824
+11-07 22:02:55.520  3425  8282 D CrashReport: del tmp
+11-07 22:02:55.520  3425  8282 D CrashReport: attach tombs
+11-07 22:02:55.520  3425  8282 D CrashReport: attach pageTracingList
+11-07 22:02:55.521  3425  8282 D CrashReport: SIGSEGV(SEGV_MAPERR) rid:2b456f4c-9e08-44a1-b74c-fabdf73f08fa sess:099e8cd0-561a-410e-ae63-5fe905b57842 ls:2343s isR:false isF:true isM:false isN:true mc:0 ,null ,isUp:false ,vm:34
+11-07 22:02:55.524  3425  8282 D CrashReport: [UploadManager] Add upload task (pid=3425 | tid=8282)
+11-07 22:02:55.524  3425  8282 D CrashReport: [UploadManager] Sucessfully got session ID, try to execute upload task now (pid=3425 | tid=8282)
+11-07 22:02:55.524  3425  8282 D CrashReport: [UploadManager] Execute synchronized upload task (pid=3425 | tid=8282)
+11-07 22:02:55.526  3425  8283 D CrashReport: [UploadManager] Local network consume: 1 KB
+11-07 22:02:55.526  3425  8283 D CrashReport: [Upload] Run upload task with cmd: 830
+11-07 22:02:55.526  3425  8283 D CrashReport: [UploadManager] Integrate security to HTTP headers (pid=3425 | tid=8283)
+11-07 22:02:55.527  3425  8283 D CrashReport: [Util] Zip 59492 bytes data with type Gzip
+11-07 22:02:55.563  3425  8283 D CrashReport: [Database] deleted t_lr data 0
+11-07 22:02:55.566  3425  8283 D CrashReport: [Database] insert t_lr success.
+11-07 22:02:55.566  3425  8283 D CrashReport: [UploadManager] Uploading(ID:1004) time: 2020-11-07 22:02:55
+11-07 22:02:55.566  3425  8283 D CrashReport: [Upload] Send 12171 bytes
+11-07 22:02:55.566  3425  8283 D CrashReport: [Upload] Upload to http://android.bugly.qq.com/rqd/async?aid=4e74d562-9418-49b9-b0a1-fe5434d793f8 with cmd 830 (pid=3425 | tid=8283).
+11-07 22:02:55.566  3425  8283 D CrashReport: request: http://android.bugly.qq.com/rqd/async?aid=4e74d562-9418-49b9-b0a1-fe5434d793f8, send: 12171 (pid=3425 | tid=8283)
+11-07 22:02:55.611  3425  8283 D CrashReport: [Upload] Bugly version from headers is: bugly/1.0
+11-07 22:02:55.611  3425  8283 D CrashReport: [Upload] Status from server is 0 (pid=3425 | tid=8283).
+11-07 22:02:55.611  3425  8283 D CrashReport: [Upload] Received 145 bytes
+11-07 22:02:55.612  3425  8283 D CrashReport: [Util] Unzip 129 bytes data with type Gzip
+11-07 22:02:55.613  3425  8283 D CrashReport: [Upload] Response cmd is: 0, length of sBuffer is: 0
+11-07 22:02:55.615  3425  8283 D CrashReport: [Database] insert t_pf success.
+11-07 22:02:55.615  3425  8283 I CrashReport: [Upload] Success: crash
+11-07 22:02:55.616  3425  8283 D CrashReport: [UploadManager] Local network consume: 1 KB
+11-07 22:02:55.617  3425  8283 D CrashReport: [Database] deleted t_lr data 1
+11-07 22:02:55.619  3425  8283 D CrashReport: [Database] insert t_lr success.
+11-07 22:02:55.619  3425  8283 D CrashReport: [UploadManager] Network total consume: 13 KB
+11-07 22:02:55.619  3425  8283 D CrashReport: up finish update state true
+11-07 22:02:55.619  3425  8283 D CrashReport: pre uid:2b456f4c-9e08-44a1-b74c-fabdf73f08fa uc:0 re:false me:false
+11-07 22:02:55.619  3425  8283 D CrashReport: set uid:2b456f4c-9e08-44a1-b74c-fabdf73f08fa uc:1 re:true me:false
+11-07 22:02:55.624  3425  8283 D CrashReport: [Database] insert t_cr success.
+11-07 22:02:55.624  3425  8283 D CrashReport: insert t_cr success!
+11-07 22:02:55.624  3425  8283 D CrashReport: update state size 1
+11-07 22:02:55.625  3425  8282 D CrashReport: delete record file /data/user/0/com.wk.hlxd.yeshen/app_bugly/rqd_record.eup
+11-07 22:02:55.625  3425  8282 D CrashReport: delete record file /data/user/0/com.wk.hlxd.yeshen/app_bugly/reg_record.txt
+11-07 22:02:55.625  3425  8282 D CrashReport: delete record file /data/user/0/com.wk.hlxd.yeshen/app_bugly/map_record.txt
+11-07 22:02:55.625  3425  8282 D CrashReport: delete record file /data/user/0/com.wk.hlxd.yeshen/app_bugly/sys_log_1604755432195324.txt
+11-07 22:02:55.626  3425  8282 I CrashReport-Native: Successfully handled native exception in Java.
+11-07 22:02:55.626  3425  3549 I CrashReport-Native: Clear eupInfo object.
+11-07 22:02:55.626  3425  3549 D CrashReport-Native: Restored signal handlers.
+11-07 22:02:55.626  3425  3549 D CrashReport-Native: Unregister signal handlers.
+--------- beginning of crash
+11-07 22:02:55.627  3425  3549 F libc    : Fatal signal 11 (SIGSEGV), code 1, fault addr 0x3 in tid 3549 (GLThread 159)
+
+
+答案：最后一行很明显的表明crash的原因SIGSEGV，即空指针崩溃。细节在bugreport中27643行起可查到。这类问题比较难查，因为报错一般只告诉了某个内存地址的引用是不存在的，backtrace的信息会比较少。
