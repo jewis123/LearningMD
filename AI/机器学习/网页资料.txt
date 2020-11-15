@@ -1,2 +1,8 @@
 【机器学习的基本步骤】
 https://zhuanlan.zhihu.com/p/60020980
+
+学习路线指南
+https://zhuanlan.zhihu.com/p/25761248
+
+安装机器学习环境并附一个demo
+https://zhuanlan.zhihu.com/p/75285353
