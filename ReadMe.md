@@ -145,10 +145,9 @@
   
 - [ ] JPS
     - [ ] 经典JPS及其优化
-  - [ ] Astar vs JPS
-  - [ ] 动态寻路规划
-  - [ ] NavMesh 寻路优化
-  
+- [ ] Astar vs JPS
+- [ ] 动态寻路规划
+- [ ] NavMesh 寻路优化
 - 帧同步
 
   - 关于帧同步
