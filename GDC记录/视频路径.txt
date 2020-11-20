@@ -1,0 +1,8 @@
+【古墓丽影中利用光追渲染的影子】
+https://www.gdcvault.com/play/1026163/-Shadows-of-the-Tomb
+
+【基于物理的程序化开放世界】
+https://www.gdcvault.com/play/1023985/-Agents-of-Mayhem-Physically
+
+【一种优于A星100倍的算法：jps+】
+https://www.gdcvault.com/play/1022094/JPS-Over-100x-Faster-than

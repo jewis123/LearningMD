@@ -5,3 +5,6 @@ https://www.lua.org/manual/5.4/
 5.2：https://www.lua.org/manual/5.2/readme.html#changes
 5.3：https://www.lua.org/manual/5.3/readme.html#changes
 5.4：https://www.lua.org/manual/5.4/readme.html#changes
+
+【luajit相关】
+https://zhuanlan.zhihu.com/p/24570361
