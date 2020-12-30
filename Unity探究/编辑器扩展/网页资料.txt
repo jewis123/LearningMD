@@ -6,3 +6,6 @@ https://blog.csdn.net/qq992817263/article/details/79292426
 
 【官方教程】
 https://learn.unity.com/tutorial/editor-scripting#5c7f8528edbc2a002053b5fb
+
+【编辑器数据的保存】
+https://blog.csdn.net/xdestiny110/article/details/79596953

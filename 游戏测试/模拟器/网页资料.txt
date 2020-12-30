@@ -4,6 +4,50 @@ https://developer.android.google.cn/studio/debug/am-logcat?hl=zh-cn
 【夜神模拟器adb命令详解】
 https://www.yeshen.com/faqs/H15tDZ6YW
 
-[实战参考]
+【Android adb forward转发TCP端口连接数据】
+https://blog.csdn.net/zhangphil/article/details/89358894
 
+【实战参考】
 https://blog.csdn.net/hexieshangwang/article/details/49926479
+
+
+
+【bugly查看崩溃问题的实战记录】
+
+[Unity3D Android使用Bugly定位崩溃问题总结](https://blog.csdn.net/sparrowfc/article/details/78384248)
+
+[常见报错signal](https://www.cnblogs.com/kex1n/p/6972046.html)
+
+[javaException常见异常](https://blog.csdn.net/kunshanyuz/article/details/63257690)
+
+[Bugly符号表插件使用指南](https://bugly.qq.com/docs/utility-tools/plugin-gradle-bugly/)
+
+
+
+【UnityBug 处理三则(干货)】
+
+[[U3D]TextureStreamingJob 崩溃分析一则](https://zhuanlan.zhihu.com/p/67941302)
+
+[[U3D] GetPreloadData 崩溃分析](https://zhuanlan.zhihu.com/p/113049982)
+
+[[U3D]StreamedBinaryRead::TransferSTLStyleArray崩溃分析](https://zhuanlan.zhihu.com/p/59394832)
+
+
+
+【apk】
+
+[解压APK能获得什么？](https://www.cnblogs.com/jenson138/p/4220668.html)
+
+[安卓的so文件是什么](https://blog.csdn.net/liyuchong2537631/article/details/53688877?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control)
+
+https://cloud.tencent.com/developer/article/1443783
+
+
+
+【反编译】
+
+[IDA使用教程](https://www.freebuf.com/column/157939.html)
+
+[使用 IDA 排查崩溃问题](https://blog.csdn.net/Raito__/article/details/82967887)
+
+[内存Dump原理](https://blog.csdn.net/baccon/article/details/8606297)

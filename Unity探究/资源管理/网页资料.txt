@@ -1,2 +1,5 @@
 【资产导入新管线：加速资源导入】
 https://zhuanlan.zhihu.com/p/99565238
+
+【Unity资源管理机制】
+https://blog.csdn.net/swj524152416/article/details/54022282

@@ -1,4 +1,4 @@
-array = {"a", "b", "c", "d"}
-for k, v in pairs(array) do
-  print(k .. " " .. v)
+array = {}
+for i=1,#array do
+  print(1)
 end
