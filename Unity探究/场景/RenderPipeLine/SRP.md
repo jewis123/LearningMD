@@ -22,6 +22,8 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 
 函数中的`Context`是上下文的意思，可以理解为持有一次渲染流程细节的对象，同时也起到一个串联注入自定义内容与渲染流程的作用。
 
+> As a user you build up a list of commands and then execute them. The object that you use to build up these commands is called the [‘ScriptableRenderContext’](https://docs.unity3d.com/ScriptReference/Experimental.Rendering.ScriptableRenderContext.html). When you have populated the context with operations, then you can call ‘Submit’ to submit all the queued up draw calls.
+
 ![image-20210103112841286](img\ScriptableRenderContext.png)
 
 **Command Buffer**
@@ -40,7 +42,7 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 
 **相机，剔除**
 
-按序渲染相机内容是RP的责任，相机看不见的内容就会被剔除。结构体([ScriptableCullingParameter](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.ScriptableCullingParameters.html))定义了什么内容需要被剔除，它是我们无法控制的。通过`Camera.TryGetCullingParameters`可以把这个结构体拿出来，再交付上下文去执行剔除，最终获得一个`CullingResults`，结合对应相机，上下文通过`DrawRenderers`函数去绘制剔除剩下的内容。
+按序渲染相机内容是RP的责任，相机看不见的内容就会被剔除(视锥剔除、遮挡剔除)。结构体([ScriptableCullingParameter](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.ScriptableCullingParameters.html))定义了什么内容需要被剔除。通过`Camera.TryGetCullingParameters`可以把这个结构体拿出来，再交付上下文去执行剔除，最终获得一个`CullingResults`，结合对应相机，上下文通过`DrawRenderers`函数去绘制剔除剩下的内容。
 
 ![](img\微信截图_20210103131205.png)
 
@@ -69,9 +71,34 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 - Clear Command Buffer
 - Submit
 
+### SRP Batcher: 加速渲染
+
+**传统的渲染工作流：**
+
+![](img\SRPBatch.png)
+
+在内部渲染循环中，当检测到新材质时，CPU会收集所有属性并在GPU内存中设置不同的常量缓冲区。GPU缓冲区的数量取决于Shader如何声明其CBUFFER。
+
+**新的SRP：**
+
+低级渲染循环可以使材质数据持久保存在GPU内存中。如果Material内容不变，则无需设置缓冲区并将其上传到GPU。另外，有了专用的代码路径来快速更新大型GPU缓冲区中的内置引擎属性。
+
+![SRP-Batcher-OFF](img\SRP-Batcher-OFF.png)
+
+在这里，CPU仅处理标记为对象矩阵转换的内置引擎属性。所有材料在GPU内存中都有持久的CBUFFER，可以随时使用。
+
+```c#
+///运行时打开batcher功能
+GraphicsSettings.useScriptableRenderPipelineBatching = true;
+
+///绘制时给DrawingSettings设置标记
+DrawRenderFlags.EnableDynamicBatching
+```
+
 ### 扩展阅读
 
-[Unity SRP Docs](https://docs.unity3d.com/2019.4/Documentation/Manual/ScriptableRenderPipeline.html)
+[Unity SRP Docs](https://blogs.unity3d.com/2018/01/31/srp-overview/)
 
 [srp tutor](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIxMzgzMzQxOA==&action=getalbum&album_id=1448409828501848064&scene=173&from_msgid=2247487543&from_itemidx=1&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010029&lang=zh_CN&ascene=0&fontgear=2)
 
+[srp batcher](https://blogs.unity3d.com/2019/02/28/srp-batcher-speed-up-your-rendering/)
