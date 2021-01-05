@@ -1,3 +1,5 @@
+[toc]
+
 ### 介绍
 
 在开始学习SRP之前首要对其进行[了解](https://www.cnblogs.com/Jaysonhome/p/12900808.html)：
@@ -7,6 +9,7 @@ SRP是Unity提供的可编程渲染管线，其中包含两套模板：URP，HDR
 #### 问题先行
 
 - 如何控制SRP渲染流程？
+- 其他不同之处？
 
 ### 从代码层面了解SRP工作流
 
@@ -94,6 +97,22 @@ GraphicsSettings.useScriptableRenderPipelineBatching = true;
 ///绘制时给DrawingSettings设置标记
 DrawRenderFlags.EnableDynamicBatching
 ```
+
+### 其他不同之处
+
+**着色器程序**
+
+`SRP`的着色器采用`HLSL`编写。和`GLSL`最大的区别在于，它不会隐式执行任何操作，避免底层默认执行一些老旧操作。
+
+另外，`hlsl`的`shader`代码写法上也有少许不同，通常把顶点函数和片段函数放在`hlsl`后缀的文件内，然后在shader中`#include`该文件。这样的好处是能够复用`pass`代码了，同时能够控制`pass`的执行顺序。
+
+因为，SRP 采用了新的shader格式，所以需要对原先的shader pass进行兼容，不然就会在渲染时被忽略。
+
+**灯光**
+
+- Unity的默认管线针对每个对象在单独的通道中渲染每个灯光。轻量级管线针对每个对象在一次通道中渲染所有灯光。HD管线使用延迟渲染，该渲染将渲染所有对象的表面数据，然后每光源渲染一遍。
+- 灯光强度在默认情况下依旧是伽马空间下的值，但是可以通过配置`GraphicsSettings.lightsUseLinearIntensity`将其设置在线性空间。
+- 因为srp渲染不限制灯光数量，所以需要我们自己注意灯光索引是否越界。
 
 ### 扩展阅读
 
