@@ -51,9 +51,11 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 
 >out处通过内联变量声明将变量指向内存堆栈，通过ref 去修改引用内容。这能够避免创建大结构体的副本，以此避免不必要的内存开销。
 
+值得注意的是，剔除阶段不光只剔除物体，灯光也是在剔除考虑范围内的。如果可见光不存在（即灯光全被剔除的情况下），又去设置灯光索引是会导致Unity崩溃的。
+
 **绘制几何**
 
-在调用上下文`DrawRenderers`函数前会实例化两个设置（DrawingSettings, FilteringSettings)。以下图为例，设置渲染队列中只渲染非透明物体、渲染排序采用默认非透明排序、并采用了前向渲染pass。
+在调用上下文`DrawRenderers`函数前会实例化两个设置（DrawingSettings, FilteringSettings)。以下图为例，设置渲染队列中只渲染非透明物体、渲染排序采用默认非透明排序、并只渲染前向光照的pass。
 
 ![](img\微信截图_20210103133521.png)
 
@@ -61,18 +63,22 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 
 **总结渲染正确顺序**
 
-- EmitWorldGeometryForSceneView
-- Cull
-- Setup
+- EmitWorldGeometryForSceneView（将世界场景中的UI以透明对象形式提交上下文）
+- Cull（执行剔除）
+- Setup（设置各种settings结构体）
 - DrawRenderers
   - 不透明对象
   - 天空盒
   - 透明对象
   - Gizmos
 - Draw Default Pipeline (用于兼容管线不支持的着色器Pass类型)
-- Execut Command Buffer
-- Clear Command Buffer
-- Submit
+- Execut Command Buffer （将命令缓冲提交上下文）
+- Clear Command Buffer （清空命令缓冲避免影响下一次）
+- Submit （提交管线执行渲染事务）
+
+### 源码初窥
+
+- Submit之后，Unity做了什么
 
 ### SRP Batcher: 加速渲染
 
@@ -113,6 +119,10 @@ DrawRenderFlags.EnableDynamicBatching
 - Unity的默认管线针对每个对象在单独的通道中渲染每个灯光。轻量级管线针对每个对象在一次通道中渲染所有灯光。HD管线使用延迟渲染，该渲染将渲染所有对象的表面数据，然后每光源渲染一遍。
 - 灯光强度在默认情况下依旧是伽马空间下的值，但是可以通过配置`GraphicsSettings.lightsUseLinearIntensity`将其设置在线性空间。
 - 因为srp渲染不限制灯光数量，所以需要我们自己注意灯光索引是否越界。
+
+**阴影**
+
+- 
 
 ### 扩展阅读
 
