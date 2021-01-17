@@ -1,15 +1,18 @@
 [toc]
 
-### 介绍
-
-在开始学习SRP之前首要对其进行[了解](https://www.cnblogs.com/Jaysonhome/p/12900808.html)：
-
-SRP是Unity提供的可编程渲染管线，其中包含两套模板：URP，HDRP。相较于原始的BuiltIn渲染管线，他们拥有更加灵活（在C#侧我们能够定制整个渲染流程）、轻便的特性（不需要兼容不相干的平台），同时更能够面向未来。
-
 #### 问题先行
 
+- SRP的存在意义是什么？
 - 如何控制SRP渲染流程？
 - 其他不同之处？
+
+### 介绍
+
+先来看下[Unity官方词条](file:///D:/UnityEditor/2019.4.6f1/Editor/Data/Documentation/en/Manual/scriptable-render-pipeline-introduction.html)怎么说的：
+
+​	SRP是Unity提供的一个API层，让开发者能够C#侧安排和配置渲染指令，然后通过SRP提交到Unity底层的渲染架构，有渲染架构再调用图形API进行渲染。
+
+SRP是Unity提供的可编程渲染管线，其中包含两套模板：URP，HDRP。相较于原始的BuiltIn渲染管线，他们拥有更加灵活（在C#侧我们能够定制整个渲染流程）、轻便的特性（不需要兼容不相干的平台），同时更能够面向未来。
 
 ### 从代码层面了解SRP工作流
 
@@ -23,7 +26,7 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 
 **Context**
 
-函数中的`Context`是上下文的意思，可以理解为持有一次渲染流程细节的对象，同时也起到一个串联注入自定义内容与渲染流程的作用。
+函数中的`Context`是上下文的意思，可以理解为连接C#自定义内容和Unity底层图形架构的桥梁。
 
 > As a user you build up a list of commands and then execute them. The object that you use to build up these commands is called the [‘ScriptableRenderContext’](https://docs.unity3d.com/ScriptReference/Experimental.Rendering.ScriptableRenderContext.html). When you have populated the context with operations, then you can call ‘Submit’ to submit all the queued up draw calls.
 
@@ -61,24 +64,60 @@ protected abstract void Render(ScriptableRenderContext context, Camera[] cameras
 
 ![微信截图_20210103133539](img\微信截图_20210103133539.png)
 
-**总结渲染正确顺序**
+**最基础的一帧渲染**
 
-- EmitWorldGeometryForSceneView（将世界场景中的UI以透明对象形式提交上下文）
-- Cull（执行剔除）
-- Setup（设置各种settings结构体）
-- DrawRenderers
-  - 不透明对象
-  - 天空盒
-  - 透明对象
-  - Gizmos
-- Draw Default Pipeline (用于兼容管线不支持的着色器Pass类型)
-- Execut Command Buffer （将命令缓冲提交上下文）
-- Clear Command Buffer （清空命令缓冲避免影响下一次）
-- Submit （提交管线执行渲染事务）
+![](img\最基础的一帧渲染.png)
+
+**一帧内可细分的渲染顺序**
+
+- BeginFrameRendering
+- 开始逐相机渲染
+  - BeginCameraRendering
+  - EmitWorldGeometryForSceneView（将世界场景中的UI以透明对象形式提交上下文, 编辑器模式下方便预览效果）
+  - Cull（执行剔除）
+  - Setup（pass排队)
+  - 开始渲染各pass
+    - BeginPassRendering
+    - DrawRenderers
+  - Draw Default Pipeline (用于兼容管线不支持的着色器Pass类型)
+  - Submit （提交管线执行渲染事务）
 
 ### 源码初窥
 
-- Submit之后，Unity做了什么
+**上下文ExecuteCommandBuffer是立马执行吗？**
+
+不是的。从源码中看到，其实是把CommandBuffer生成一份拷贝，然后加标签并入队。
+
+![](img\ExecuteCommandBuffer.png)
+
+**上下文DrawRenderers是立马执行吗？**
+
+不是的。从源码中看到，指令也是被加标签后入队了。
+
+![](img\DrawRenderers.png)
+
+**上下文Submit之后，Unity做了什么？**
+
+submit之后正式进入SRP渲染循环。说白了就是把之前记得流水账跑一边。
+
+具体步骤如下：
+
+- 准备好剔除结果中对象的依赖及数据
+- 逐条执行指令队列
+- 清理各种队列，缓存，小块内存分配器
+
+**Unity底层的渲染架构是怎样的？**
+
+- GfxDeviceClient,GfxDevice
+- GfxDeviceWorker(多线程使用)
+
+在单线程的情况下，主线程会运行一个GfxDeviceClient对象(继承自GfxDevice)，来管理渲染指令，然后提交给实际的图形API对应的GfxDevice派生类（比如GfxDeviceGLES）来实际执行渲染。
+
+多线程情况下，GfxDeviceClient不会提交渲染指令到图形设备执行渲染，而仅仅只是维护一个ring buffer（ThreadedStreamBuffer）来缓存中间指令队列；由渲染线程GfxDeviceWorker从ring buffer中取出中间指令，然后再转交图形设备进行渲染。
+
+**在多线程渲染下为什么要加入ring buffer机制**
+
+两个线程之间交互必须要数据传递是线程安全的， 不能出现一个线程还没写完，另一个线程就开始读取的情况
 
 ### SRP Batcher: 加速渲染
 
@@ -119,10 +158,6 @@ DrawRenderFlags.EnableDynamicBatching
 - Unity的默认管线针对每个对象在单独的通道中渲染每个灯光。轻量级管线针对每个对象在一次通道中渲染所有灯光。HD管线使用延迟渲染，该渲染将渲染所有对象的表面数据，然后每光源渲染一遍。
 - 灯光强度在默认情况下依旧是伽马空间下的值，但是可以通过配置`GraphicsSettings.lightsUseLinearIntensity`将其设置在线性空间。
 - 因为srp渲染不限制灯光数量，所以需要我们自己注意灯光索引是否越界。
-
-**阴影**
-
-- 
 
 ### 扩展阅读
 
