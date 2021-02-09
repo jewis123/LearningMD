@@ -1,4 +1,5 @@
 *.pdf
 *.pyc
-游戏设计实现探究/寻路算法/3_JPS/implement/.idea/
-游戏设计实现探究/寻路算法/1_djk_and_bfs/Implement/.idea/
+*/.idea/
+*.mp4
+网络基础/
