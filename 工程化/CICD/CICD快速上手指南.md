@@ -61,13 +61,13 @@ pipeline {
 
 构建页 -> PipelineSyntax -> generate
 
-![img](pipeline语法生成1.png)
+![img](img/pipeline语法生成1.png)
 
-![img](pipeline语法生成2.png)
+![img](img/pipeline语法生成2.png)
 
-![img](pipeline语法生成3.png)
+![img](img/pipeline语法生成3.png)
 
-![img](pipeline语法生成4.png)
+![img](img/pipeline语法生成4.png)
 
 生成了代码之后，我们就能直接粘贴到pipeline script 块中了。
 
