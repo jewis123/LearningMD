@@ -3,3 +3,9 @@ https://zhuanlan.zhihu.com/p/99565238
 
 【Unity资源管理机制】
 https://blog.csdn.net/swj524152416/article/details/54022282
+
+【Unity资源管理和打包】
+https://zhuanlan.zhihu.com/p/88495067
+
+【资源管理之资源打包策略】
+https://zhuanlan.zhihu.com/p/64482834

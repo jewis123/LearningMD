@@ -8,7 +8,7 @@
 
 一次性编译热点代码，然后缓存起来，避免解释器重复解释。下图描绘了这个过程：
 
-![](转码流程图.png)
+![](img/转码流程图.png)
 
 luajit的jit模式（pc和安卓可用）、luajit的interpreter模式（ios下只能运行这个）。
 
@@ -39,9 +39,11 @@ Lua是一种编程语言，LuaJIT是Lua的一种运行时编译器，它支持�
 
 [相关资料：UWA文章](https://blog.csdn.net/UWA4D/article/details/72916830?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.not_use_machine_learn_pai&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.not_use_machine_learn_pai)做如下总结：
 
-LuaJIT并不能百分百JIT化Lua代码，也就是说他的优化功效是比较难控制的，受系统平台、Lua版本语法的限制。另外，再使用LuaJIT前要充分了解它潜在的坑点，不然反而会出现性能问题，例：
+LuaJIT并不能百分百JIT化Lua代码，也就是说他的优化功效是比较难控制的，受系统平台、Lua版本语法的限制。
 
-- 提前分配给LuaJIT64兆连续内存空间；
+另外，再使用LuaJIT前要充分了解它潜在的**坑点**，不然反而会出现性能问题，例：
+
+- 提前分配给LuaJIT 64M连续内存空间；
 - 需要照着LuaJIT的偏好写Lua代码(因为部分Lua编译出来的字节码LuaJIT并不支持)；
 - LuaJIT在局部变量过多的时候会导致寄存器不够用，所以要避免过多局部变量，并限制局部变量的生命周期。
 - 调用C/C#代码无法JIT化，需要使用ffi，或者2.1.0+版本LuaJIT
@@ -49,7 +51,11 @@ LuaJIT并不能百分百JIT化Lua代码，也就是说他的优化功效是比�
 - LuaJIT虽然难以驾驭，但是可以使用`Interpreter`模式，行为更接近原生Lua，性能平均也能快2~3倍，同时不需要对Lua语言进行过多优化。
 - 最大的问题：目前停止迭代了，Lua标准停在了5.1上。
 
-### 结语
+### 扩展阅读
 
-JIT是一个比较通泛的问题，相关的话题在JAVA, Python上也会有涉及，由于LuaJIT已经停止维护，所以大概率会淡出人们视线。
+【luajit相关】
+https://zhuanlan.zhihu.com/p/24570361
+
+[如何通俗易懂地介绍「即时编译」（JIT），它的优点和缺点是什么？]
+https://www.zhihu.com/question/21093419
 
