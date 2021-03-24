@@ -2,3 +2,6 @@
 https://blog.csdn.net/swj524152416/article/details/54022282
 
 【生命周期函数】https://docs.unity.cn/2019.4/Documentation/Manual/ExecutionOrder.html
+
+
+【unity3d资源打包会把哪些打入包】https://blog.csdn.net/weixin_30487201/article/details/98277370

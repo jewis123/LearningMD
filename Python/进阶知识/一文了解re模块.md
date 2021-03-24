@@ -18,7 +18,7 @@
 
 - ```python
   patternObj = re.compile(pattern)
-  marchObj = pattern.match(rawString)
+  marchObj = patternObj.match(rawString)
   #等价于
   result = re.match(pattern, string)
   ```
@@ -79,8 +79,6 @@ re.search(sPattern, string[, iFlag])
 源码中其实是将编译正则对象的过程封装起来了。使用re.search时，不能传入已经编译好的pattern对象。
 
 ### 使用match
-
-
 
 ## Match对象
 
