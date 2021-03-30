@@ -10,8 +10,8 @@
 - 提供web服务，使流水线能用。
 - 代码覆盖测试，例如 PyTest, JUnit。CI/CD 工具能够集成这些工具并将测试过程自动化进行。提前报错。
 - 可选步骤：
-- 容器
-- 中间件自动化工具
+  - 容器
+  - 中间件自动化工具
 
 ### **宏观上了解CICD流程**
 
@@ -23,7 +23,7 @@
 
 内容提要：
 
-- 流水线是一系列作业
+- 流水线是一系列管道组合而成，每个管道做一部分事务
 - jenkins通过编码来指定这条流水线要做哪些事情
 
 ### **jenkins手册速览**
@@ -39,7 +39,7 @@
 
 ### **pipelinefile样板空壳**
 
-```
+```groovy
 pipeline {
     agent { 执行任务的机器或容器 }
     environment {  全局设置  }
@@ -79,7 +79,9 @@ pipeline {
 
 ### **拓展阅读**
 
-[官网](http://www.jenkins.org.cn/category/install)
+[jenkins中文网](http://www.jenkins.org.cn/category/install)
+
+[官方手册](https://www.jenkins.io/doc/book/pipeline/)
 
 [全局变量参考](http://jenkins.yoozoo.com/view/产品技术中心/job/umt_developer_ios_test/pipeline-syntax/globals)
 
